@@ -66,13 +66,27 @@
       </div>
     </div>
 @show
-<div style="margin-left: 300px;" class="container bg-white visible">
+<div style="margin-left: 300px;" class="container p-5">
     @yield('content')
 </div>
 </body>
 </html>
 
 <script type="text/javascript">
+      function allowDrop(ev) {
+        ev.preventDefault();
+      }
+
+      function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+      }
+
+      function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+      }
+
       function dropdown() {
         document.querySelector("#submenu").classList.toggle("hidden");
         document.querySelector("#arrow").classList.toggle("rotate-0");

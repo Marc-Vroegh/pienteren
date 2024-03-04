@@ -1,25 +1,27 @@
 <?php
-  date_default_timezone_set('Europe/Amsterdam');
-  $time2 = date('H');
-  $time3 = date('H:i');
-  $time = (int) $time2;
+  //date_default_timezone_set('Europe/Amsterdam');
+  //$time2 = date('H');
+  //$time3 = date('H:i');
+  //$time = (int) $time2;
   
-  if ($time >= 6 && $time <= 12) {
-    $imageURL = './images/morning.png';
-    $day = 'Goedemorgen';
-  }
-  if ($time >= 12 && $time <= 17) {
-    $imageURL = './images/afternoon.png';
-    $day = 'Goedemiddag';
-  }
-  if ($time >= 17 && $time <= 24) {
-    $imageURL = './images/evening.png';
-    $day = 'Goedeavond';
-  }
-  if ($time >= 24 && $time <= 6) {
-    $imageURL = './images/night.png';
-    $day = 'Goedenacht';
-  }
+  //if ($time >= 6 && $time <= 12) {
+  //  $imageURL = './images/morning.png';
+    //$day = 'Goedemorgen';
+  //}
+ // if ($time >= 12 && $time <= 17) {
+  //  $imageURL = './images/afternoon.png';
+  //  $day = 'Goedemiddag';
+  //}
+  //if ($time >= 17 && $time <= 24) {
+    //$imageURL = './images/evening.png';
+   // $day = 'Goedeavond';
+  //}
+ // if ($time >= 24 && $time <= 6) {
+  //  $imageURL = './images/night.png';
+  //  $day = 'Goedenacht';
+ // }
+ //$imageURL = './images/evening.png';
+ $imageURL = './images/images.png';
 ?>
 <html>
     <head>
@@ -35,10 +37,16 @@
         body { background-image: url(<?php echo $imageURL;?>); }
         </style>
     </head>
-    @section('sidebar')
-    <body class="bg-gray-900">
+    <style>
+      .clock {
+       font-size: 40px;
+      }
 
-    <div style="border-right-width: 1px;" class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-black opacity-85 border-solid; border-r-1 border-gray-600">
+    </style>
+    @section('sidebar')
+    <body style="background-size: cover; background-attachment: fixed;" class="bg-gray-900">
+
+    <div style="border-right-width: 1px;" class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-black opacity-90 border-solid; border-r-1 border-gray-600">
       <div class="text-gray-100 text-xl">
         <div class="p-2.5 mt-1 flex items-center">
           <h1 class="font-bold text-gray-200 text-[30px] ml-3">Dashboard</h1>
@@ -83,11 +91,34 @@
 </html>
 <script>
   $(document).on("click",".widget", function () {
-   document.getElementById("hideatstart").style.display = 'block';
+   document.getElementById("hideatstart").style.display = 'flex';
+   document.getElementById("hideatstart").style.alignItems = 'center';
+  });
+  $(document).on("click",".hideatstart", function () {
+   document.getElementById("hideatstart").style.display = 'none';
   });
 </script>
 
 <script type="text/javascript">
+      function showTime(){
+      var date = new Date();
+      var h = date.getHours(); // 0 - 23
+      var m = date.getMinutes(); // 0 - 59
+      var s = date.getSeconds(); // 0 - 59
+      
+      h = (h < 10) ? "0" + h : h;
+      m = (m < 10) ? "0" + m : m;
+      s = (s < 10) ? "0" + s : s;
+      
+      var time = h + ":" + m + ":" + s;
+      document.getElementById("MyClockDisplay").innerText = time;
+      document.getElementById("MyClockDisplay").textContent = time;
+      
+      setTimeout(showTime, 1000);
+      
+  }
+
+  showTime();
       function sleep(milliseconds) {
         var start = new Date().getTime();
         for (var i = 0; i < 1e7; i++) {
@@ -103,7 +134,8 @@
 
       function drag(ev) {
         ev.dataTransfer.setData("text", ev.target.id);
-        document.getElementById("hideatstart").style.display = 'block';
+        document.getElementById("hideatstart").style.display = 'flex';
+        document.getElementById("hideatstart").style.alignItems = 'center';
       }
 
       function drop(ev) {

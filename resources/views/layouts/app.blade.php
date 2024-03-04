@@ -1,3 +1,26 @@
+<?php
+  date_default_timezone_set('Europe/Amsterdam');
+  $time2 = date('H');
+  $time3 = date('H:i');
+  $time = (int) $time2;
+  
+  if ($time >= 6 && $time <= 12) {
+    $imageURL = './images/morning.png';
+    $day = 'Goedemorgen';
+  }
+  if ($time >= 12 && $time <= 17) {
+    $imageURL = './images/afternoon.png';
+    $day = 'Goedemiddag';
+  }
+  if ($time >= 17 && $time <= 24) {
+    $imageURL = './images/evening.png';
+    $day = 'Goedeavond';
+  }
+  if ($time >= 24 && $time <= 6) {
+    $imageURL = './images/night.png';
+    $day = 'Goedenacht';
+  }
+?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -8,11 +31,14 @@
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
         />
+        <style>
+        body { background-image: url(<?php echo $imageURL;?>); }
+        </style>
     </head>
     @section('sidebar')
     <body class="bg-gray-900">
 
-    <div class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-black">
+    <div style="border-right-width: 1px;" class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-black opacity-85 border-solid; border-r-1 border-gray-600">
       <div class="text-gray-100 text-xl">
         <div class="p-2.5 mt-1 flex items-center">
           <h1 class="font-bold text-gray-200 text-[30px] ml-3">Dashboard</h1>
@@ -41,7 +67,7 @@
 
       <div class="text-left text-sm mt-2 w-4/5 mx-auto text-gray-200 font-bold" id="submenu">
         <h1 id="widget" class="cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-1 widget">
-          Widgetbar tonen
+          Show widgetbar
         </h1>
       </div>
       <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">

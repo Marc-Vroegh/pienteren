@@ -27,6 +27,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
         @vite('resources/css/app.css')
         <script src="https://code.jquery.com/jquery-latest.min.js"></script>
         <link
@@ -55,7 +56,7 @@
       </div> 
 
       <div
-        class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
+        class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white" onclick="homeReload()">
         <i class="bi bi-house-door-fill"></i>
         <span class="text-[15px] ml-4 text-gray-200 font-bold">Home</span>
       </div>
@@ -90,9 +91,30 @@
 </body>
 </html>
 <script>
+  $( document ).ready(function() {
+      $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          })
+      $.ajax
+      ({
+         url: "/retrieveWidget",
+         type : "GET",
+         dataType: 'json',
+        success: function(response)
+        {
+          var keyCount  = Object.keys(response).length;
+          var obj = response;
+          for (let i = 0; i < keyCount; i++) {
+            document.getElementById(obj[i]['container']).appendChild(document.getElementById(obj[i]['widget']));
+          }
+        }
+      });
+    });
   $(document).on("click",".widget", function () {
-   document.getElementById("hideatstart").style.display = 'flex';
-   document.getElementById("hideatstart").style.alignItems = 'center';
+      document.getElementById("hideatstart").style.display = 'flex';
+      document.getElementById("hideatstart").style.alignItems = 'center';
   });
   $(document).on("click",".hideatstart", function () {
    document.getElementById("hideatstart").style.display = 'none';
@@ -128,6 +150,11 @@
         }
       }
 
+      function widgetClick() {
+        document.getElementById("hideatstart2").style.display = 'flex';
+        document.getElementById("hideatstart2").style.alignItems = 'center';
+      }
+
       function allowDrop(ev) {
         ev.preventDefault();
       }
@@ -141,15 +168,40 @@
       function drop(ev) {
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
+        var crsf = ""
         //alert(data);
         //alert(ev.target.id);
         if(!document.getElementById(ev.target.id).contains(document.getElementById('drag'))) {
           ev.target.appendChild(document.getElementById(data));
+
+          var data2 = {
+            target: ev.target.id,
+            widget: data
+          }
+
+          $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          })
+          $.ajax
+          ({
+            url: "/changeWidget",
+            type : "POST",
+            cache : false,
+            data : data2,
+            success: function(response)
+            {
+              //alert(response);
+            }
+          });
+
           document.getElementById("hideatstart").style.display = 'none';
         }
       }
 
-      function hide() {
+      function homeReload() {
+        window.location.reload() 
       }
 
 

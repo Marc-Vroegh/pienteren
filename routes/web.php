@@ -18,9 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
 Route::post('/changeWidget', [widgetController::class, 'store']);
 Route::get('/retrieveWidget', [widgetController::class, 'show']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -47,7 +47,6 @@
     </style>
     @section('sidebar')
     <body style="background-size: cover; background-attachment: fixed;" class="bg-gray-900">
-
     <div style="border-right-width: 1px;" class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-black opacity-90 border-solid; border-r-1 border-gray-600">
       <div class="text-gray-100 text-xl">
         <div class="p-2.5 mt-1 flex items-center">
@@ -215,4 +214,5 @@
       function openSidebar() {
         document.querySelector(".sidebar").classList.toggle("hidden");
       }
+
 </script>

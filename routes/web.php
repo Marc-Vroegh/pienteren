@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\widgetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
+Route::post('/changeWidget', [widgetController::class, 'store']);
+Route::get('/retrieveWidget', [widgetController::class, 'show']);
 
 Auth::routes();
 

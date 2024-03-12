@@ -15,17 +15,15 @@ use App\Http\Controllers\widgetController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
 
 Route::post('/changeWidget', [widgetController::class, 'store']);
 Route::get('/retrieveWidget', [widgetController::class, 'show']);
 
 Auth::routes();
 
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard')->middleware('auth');
+

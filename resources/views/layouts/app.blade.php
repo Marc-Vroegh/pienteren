@@ -113,8 +113,7 @@
       });
     });
   $(document).on("click",".widget", function () {
-      document.getElementById("hideatstart").style.display = 'flex';
-      document.getElementById("hideatstart").style.alignItems = 'center';
+      document.getElementById("hideatstart").style.display = 'block';
   });
   $(document).on("click",".hideatstart", function () {
    document.getElementById("hideatstart").style.display = 'none';
@@ -161,8 +160,7 @@
 
       function drag(ev) {
         ev.dataTransfer.setData("text", ev.target.id);
-        document.getElementById("hideatstart").style.display = 'flex';
-        document.getElementById("hideatstart").style.alignItems = 'center';
+        document.getElementById("hideatstart").style.display = 'block';
       }
 
       function drop(ev) {

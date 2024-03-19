@@ -21,16 +21,20 @@
         </div>
     </div>
 
-    <div style="display: none;" id="hideatstart" class="absolute right-0 top-0 text-white hideatstart h-screen flex items-center">
-        <div style="color: white !important; height: 80%;" class=" bg-gray-300 p-5 rounded-l-2xl border-solid; border-gray-400 border-2 opacity-90 overflow-scroll">
-            <div style="width: 290px; height: 300px; border: 2px;" id="div20" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-            <div style="width: 290px; height: 300px; border: 2px;" id="div21" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-            <div style="width: 290px; height: 300px; border: 2px;" id="div22" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-            <div style="width: 290px; height: 300px; border: 2px;" id="div23" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-            <div style="width: 290px; height: 300px; border: 2px;" id="div24" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-            <div style="width: 290px; height: 300px; border: 2px;" id="div25" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-            <div style="width: 290px; height: 300px; border: 2px;" id="div26" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-            <div style="width: 290px; height: 300px; border: 2px;" id="div27" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div style="display: none; height: 250px; max-width: calc(100% - 300px); margin-left: 300px;" id="hideatstart" class="absolute bottom-0 start-0 text-white hideatstart">
+        <div style="color: white !important; width: 100%; height: 250px;" class=" bg-gray-300 p-5 rounded-t-2xl border-solid; border-gray-400 border-2 opacity-90 overflow-scroll">
+            <div style="color: white !important; width: 100%;" class="overflow-scroll flex items-stretch">
+                <div style="width: 290px; height: 300px; border: 2px;" id="div20" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div style="width: 290px; height: 300px; border: 2px;" id="div21" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div style="width: 290px; height: 300px; border: 2px;" id="div22" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div style="width: 290px; height: 300px; border: 2px;" id="div23" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>  
+            <div style="color: white !important; width: 100%;" class="p-5 overflow-scroll flex items-stretch">
+                <div style="width: 290px; height: 300px; border: 2px;" id="div24" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div style="width: 290px; height: 300px; border: 2px;" id="div25" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div style="width: 290px; height: 300px; border: 2px;" id="div26" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div style="width: 290px; height: 300px; border: 2px;" id="div27" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>   
         </div>
     </div>
 

@@ -44,7 +44,6 @@ $imageURL = './images/images.png';
     }
 </style>
 @section('sidebar')
-
     <body style="background-size: cover; background-attachment: fixed;" class="bg-gray-900">
 
         <div style="border-right-width: 1px;"
@@ -96,45 +95,6 @@ $imageURL = './images/images.png';
 
         </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @show
     <div style="" class="container p-5">
         @yield('content')

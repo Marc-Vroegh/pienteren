@@ -2,7 +2,7 @@
 <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 custom-background">
     <div class="max-w-md w-full space-y-8 bg-black bg-opacity-75 py-12 px-4 sm:px-6 lg:px-8 rounded-lg">
         <div>
-            <h2 class=" text-center text-3xl font-extrabold text-white">
+            <h2 class="text-center text-3xl font-extrabold text-white">
                 {{ __('Login') }}
             </h2>
         </div>
@@ -30,7 +30,8 @@
                 </button>
             </div>
         </form>
+        <div class="text-white text-sm text-center">
+            {{ __("Don't have an account?") }} <a href="{{ route('register') }}" class="text-indigo-400 hover:text-indigo-300">{{ __('Register here') }}</a>
+        </div>
     </div>
 </div>
-
-

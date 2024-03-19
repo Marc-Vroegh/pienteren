@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\widgetController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,17 +16,12 @@ use App\Http\Controllers\widgetController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 
-//Route::get('/dashboard', function () {
-   // return view('dashboard');
-//});
-
-Route::post('/changeWidget', [widgetController::class, 'store']);
-Route::get('/retrieveWidget', [widgetController::class, 'show']);
-
 Auth::routes();
 
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/changeWidget', [widgetController::class, 'store']);
+Route::get('/retrieveWidget', [widgetController::class, 'show']);

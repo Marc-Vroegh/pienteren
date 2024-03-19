@@ -19,13 +19,13 @@ Route::get('/', function () {
 });
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+//Route::get('/dashboard', function () {
+   // return view('dashboard');
+//});
 
 Route::post('/changeWidget', [widgetController::class, 'store']);
 Route::get('/retrieveWidget', [widgetController::class, 'show']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');

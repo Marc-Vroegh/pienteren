@@ -54,7 +54,7 @@
         </div>
         <div class="my-2 bg-gray-600 h-[1px]"></div>
       </div> 
-
+      
       <div
         class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white" onclick="homeReload()">
         <i class="bi bi-house-door-fill"></i>
@@ -114,9 +114,11 @@
     });
   $(document).on("click",".widget", function () {
       document.getElementById("hideatstart").style.display = 'block';
+      document.getElementById("changeHeight").style.height = "calc(100% - 300px)";
   });
   $(document).on("click",".hideatstart", function () {
    document.getElementById("hideatstart").style.display = 'none';
+   document.getElementById("changeHeight").style.height = "100%";
   });
 </script>
 
@@ -160,7 +162,8 @@
 
       function drag(ev) {
         ev.dataTransfer.setData("text", ev.target.id);
-        document.getElementById("hideatstart").style.display = 'block';
+        //document.getElementById("hideatstart").style.display = 'block';
+        //document.getElementById("changeHeight").style.height = "calc(100% - 300px)";
       }
 
       function drop(ev) {
@@ -194,7 +197,8 @@
             }
           });
 
-          document.getElementById("hideatstart").style.display = 'none';
+          //document.getElementById("hideatstart").style.display = 'none';
+          //document.getElementById("changeHeight").style.height = "100%";
         }
       }
 
@@ -205,7 +209,7 @@
 
       function dropdown() {
         document.querySelector("#submenu").classList.toggle("hidden");
-        document.querySelector("#arrow").classList.toggle("rotate-0");
+        document.querySelector("#arrow").classList.toggle("rotate-180");
       }
       dropdown();
 

@@ -47,27 +47,27 @@
     @section('sidebar')
     <body style="background-size: cover; background-attachment: fixed;" class="bg-gray-900">
 
-    <div style="border-right-width: 1px;" class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-black opacity-90 border-solid; border-r-1 border-gray-600">
+    <div style="border-right-width: 1px;" id="sidebar" class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-black opacity-90 border-solid; border-r-1 border-gray-600">
       <div class="text-gray-100 text-xl">
         <div class="p-2.5 mt-1 flex items-center">
-          <h1 class="font-bold text-gray-200 text-[30px] ml-3">Dashboard</h1>
+          <h1 id="sidebarText" class="font-bold text-gray-200 text-[30px] ml-3">Dashboard</h1>
         </div>
         <div class="my-2 bg-gray-600 h-[1px]"></div>
       </div> 
       
       <div
         class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white" onclick="homeReload()">
-        <i class="bi bi-house-door-fill"></i>
-        <span class="text-[15px] ml-4 text-gray-200 font-bold">Home</span>
+        <i id="sidebarIcon" class="bi bi-house-door-fill"></i>
+        <span id="sidebarText1" class="text-[15px] ml-4 text-gray-200 font-bold">Home</span>
       </div>
      
       <div class="my-4 bg-gray-600 h-[1px]"></div>
       <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
         onclick="dropdown()">
 
-        <i class="bi bi-gear-fill"></i>
+        <i id="sidebarIcon1" class="bi bi-gear-fill"></i>
         <div class="flex justify-between w-full items-center">
-          <span class="text-[15px] ml-4 text-gray-200 font-bold">Settings</span>
+          <span id="sidebarText2" class="text-[15px] ml-4 text-gray-200 font-bold">Settings</span>
           <span class="text-sm rotate-180" id="arrow">
             <i class="bi bi-chevron-down"></i>
           </span>
@@ -80,9 +80,15 @@
         </h1>
       </div>
       <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
-        <i class="bi bi-box-arrow-in-right"></i>
-        <span class="text-[15px] ml-4 text-gray-200 font-bold">Logout</span>
+        <i id="sidebarIcon2" class="bi bi-box-arrow-in-right"></i>
+        <span id="sidebarText3" class="text-[15px] ml-4 text-gray-200 font-bold">Logout</span>
       </div>
+
+      <button onclick="CollapseMenu()" class="fixed left-30 bottom-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">
+      <span class="text-sm rotate-180" id="arrowSidebar">
+            <i class="bi bi-arrow-left"></i>
+      </span>
+      </button>
     </div>
 @show
 <div style="" class="container p-5">
@@ -158,6 +164,34 @@
 
       function allowDrop(ev) {
         ev.preventDefault();
+      }
+
+      function CollapseMenu() {
+        var width = document.getElementById("changeHeight").style.marginLeft;
+        if(width == "300px") {
+          document.getElementById("sidebar").style.width = "55px";
+          document.getElementById("sidebarIcon").style.marginLeft = "-5px";
+          document.getElementById("sidebarIcon1").style.marginLeft = "-5px";
+          document.getElementById("sidebarIcon2").style.marginLeft = "-5px";
+          document.getElementById("sidebarText").style.display = "none";
+          document.getElementById("sidebarText1").style.display = "none";
+          document.getElementById("sidebarText2").style.display = "none";
+          document.getElementById("sidebarText3").style.display = "none";
+          document.getElementById("changeHeight").style.marginLeft = "55px";
+          document.querySelector("#arrowSidebar").classList.toggle("rotate-180");
+        }
+        if(width == "55px") {
+          document.getElementById("sidebar").style.width = "300px";
+          document.getElementById("sidebarIcon").style.marginLeft = "0px";
+          document.getElementById("sidebarIcon1").style.marginLeft = "0px";
+          document.getElementById("sidebarIcon2").style.marginLeft = "0px";
+          document.getElementById("sidebarText").style.display = "block";
+          document.getElementById("sidebarText1").style.display = "block";
+          document.getElementById("sidebarText2").style.display = "block";
+          document.getElementById("sidebarText3").style.display = "block";
+          document.getElementById("changeHeight").style.marginLeft = "300px";
+          document.querySelector("#arrowSidebar").classList.toggle("rotate-0x");
+        }
       }
 
       function drag(ev) {

@@ -85,8 +85,8 @@
       </div>
 
       <button onclick="CollapseMenu()" class="fixed left-30 bottom-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">
-      <span class="text-sm rotate-180" id="arrowSidebar">
-            <i class="bi bi-arrow-left"></i>
+      <span class="text-sm rotate-0" id="arrowSidebar2">
+            <i id="arrowSidebar" class="bi bi-arrow-left"></i>
       </span>
       </button>
     </div>
@@ -178,7 +178,7 @@
           document.getElementById("sidebarText2").style.display = "none";
           document.getElementById("sidebarText3").style.display = "none";
           document.getElementById("changeHeight").style.marginLeft = "55px";
-          document.querySelector("#arrowSidebar").classList.toggle("rotate-180");
+          document.getElementById("arrowSidebar").classList.toggle("bi-arrow-right");
         }
         if(width == "55px") {
           document.getElementById("sidebar").style.width = "300px";
@@ -190,7 +190,7 @@
           document.getElementById("sidebarText2").style.display = "block";
           document.getElementById("sidebarText3").style.display = "block";
           document.getElementById("changeHeight").style.marginLeft = "300px";
-          document.querySelector("#arrowSidebar").classList.toggle("rotate-0x");
+          document.getElementById("arrowSidebar").classList.toggle("bi-arrow-right");
         }
       }
 

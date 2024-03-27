@@ -1,0 +1,21 @@
+.sidebar.small {
+    width: 50px; /* Set smaller width */
+}
+
+.sidebar.small #sidebarText {
+    display: none; /* Hide text */
+}
+
+
+.sidebar.small #chevron-icon {
+    display: none; /* Hide submenu and chevron icon */
+}
+
+.sidebar {
+    transition: width 0.5s ease; /* Adding transition for smooth animation */
+  }
+  
+
+
+  /* Add your other styles as needed */
+  

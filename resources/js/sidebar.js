@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to handle click on hamburger icon and toggle sidebar visibility
     function handleHamburgerClick() {
-
         // Function to toggle sidebar visibility and style
         function toggleSidebar() {
             let menuItems = document.querySelectorAll('.sidebar-menu-item-text');
@@ -25,10 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
             if (submenu.getAttribute('opened') == 'false') {
                 submenu.classList.toggle('hidden');
             }
-
-            
-      
-
             // Toggle hidden class for menu item texts
             menuItems.forEach(function (menuItem) {
                 menuItem.classList.toggle('hidden');
@@ -55,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    // Click event on the div.
+    // Click event for sub menu
     settingsDiv.addEventListener('click', toggleSubMenu);
 
 

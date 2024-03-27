@@ -64,10 +64,9 @@
         </a>
     </div>
 </div>
-
-
-
-
-
+@show
+<div style="" class="container p-5">
+    @yield('content')
+</div>
 </body>
 </html>

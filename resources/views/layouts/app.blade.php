@@ -11,6 +11,7 @@
   @vite('resources/css/dashboard.css')
   @vite('resources/js/sidebar.js')
   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="script.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"/>
 
 </head>
@@ -47,11 +48,11 @@
         </div>
         
         <!-- Submenu -->
-        <div class="hidden  text-sm mt-2 w-4/5 mx-auto text-gray-200 font-bold" id="submenu" opened="false">
+        <div class="hidden  text-sm mt-2 w-4/5 mx-auto text-gray-200 font-bold" id="submenu" opened="false" onclick="widgetbarClick()">
           <span>
             <i class="bi bi-collection"></i>
           </span>
-            <span class="text-[15px] ml-4 text-gray-200" id='submenutxt'>Show widgetbar</span>
+            <span id="widget" class="text-[15px] ml-4 text-gray-200" id='submenutxt '>Show widgetbar</span>
         </div>
 
         <!-- Logout -->
@@ -65,7 +66,7 @@
     </div>
 </div>
 @show
-<div style="" class="container p-5">
+<div style="" class="p-5">
     @yield('content')
 </div>
 </body>

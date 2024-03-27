@@ -10,8 +10,10 @@
   @vite('resources/css/app.css')
   @vite('resources/css/dashboard.css')
   @vite('resources/js/sidebar.js')
+  @vite('resources/js/jquery.js')
+  <!-- vite('resources/js/javascript.js') -->
+  <script src="javascript.js"></script>
   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-  <script src="script.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"/>
 
 </head>
@@ -52,7 +54,7 @@
           <span>
             <i class="bi bi-collection"></i>
           </span>
-            <span id="widget" class="text-[15px] ml-4 text-gray-200" id='submenutxt '>Show widgetbar</span>
+            <span class="text-[15px] ml-4 text-gray-200" id='submenutxt'>Show widgetbar</span>
         </div>
 
         <!-- Logout -->

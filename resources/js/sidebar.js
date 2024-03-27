@@ -54,8 +54,4 @@ document.addEventListener("DOMContentLoaded", function () {
     settingsDiv.addEventListener('click', toggleSubMenu);
 
 
-
-
-
-
 });

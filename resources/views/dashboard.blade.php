@@ -5,35 +5,38 @@
 @endsection
 
 @section('content')
-
-<div id="changeHeight" style="" class="">
+  
+<div class="changeMarginLeft2 hidescroll">
 
 
     <!-- Dashboard -->
 
-    <div class="flex flex-wrap">
-        <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div7" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div8" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div9" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div10" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div11" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div12" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div13" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div14" ondrop="drop(event)" ondragover="allowDrop(event)"></div>               
+
+    <div style="overflow: scroll;" id="changeHeight" class="absolute top-4 hidescroll">
+        <div class="flex flex-wrap">
+            <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div7" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div8" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div9" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div10" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div11" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div12" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div13" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div14" ondrop="drop(event)" ondragover="allowDrop(event)"></div>               
+        </div>
     </div>
 
 
     <!-- Widgetbar -->
 
 
-    <div style="height: 250px; min-width: 100%); margin-left: calc(100% / 6)" id="hideatstart" class="absolute bottom-0 start-0 text-white hideatstart">
-        <div style="color: white !important; width: 100%; height: 250px;" class="hidescroll bg-gray-300 p-5 rounded-t-2xl border-solid; border-gray-400 border-2 opacity-90 overflow-scroll">
+    <div style="display: none; height: 250px; min-width: 100%);" id="hideatstart" class="absolute bottom-0 start-0 text-white hideatstart">
+        <div style="color: white !important; width: 100%; height: 250px;" class="changeMarginLeft hidescroll bg-gray-300 p-5 rounded-t-2xl border-solid; border-gray-400 border-2 opacity-90 overflow-scroll">
             <div class="flex flex-wrap">
                 <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div10" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                 <div style="min-width: 278px; min-height: 278px; border: 2px; padding: 10px;" id="div20" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
@@ -77,6 +80,8 @@
             
         </div>
     </div>
+</div>
+
 </div>
 
 

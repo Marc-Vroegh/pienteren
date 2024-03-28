@@ -2,7 +2,7 @@
 
 function widgetbarClick() {
     document.getElementById("hideatstart").style.display = 'block';
-    document.getElementById("changeHeight").style.height = "calc(100% - 300px)";
+    document.getElementById("changeHeight").style.height = "calc(100% - 266px)";
 }
 
 //function for sleep of the code
@@ -68,7 +68,7 @@ function drop(ev) {
             }
         });
 
-        document.getElementById("hideatstart").style.display = 'none';
+        //document.getElementById("hideatstart").style.display = 'none';
     }
 }
 

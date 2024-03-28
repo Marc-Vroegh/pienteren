@@ -22,7 +22,7 @@ $.ajax({
 
 $(document).on("click",".hideatstart", function () {
    document.getElementById("hideatstart").style.display = 'none';
-   document.getElementById("changeHeight").style.height = "100%";
+   document.getElementById("changeHeight").style.height = "calc(100% - 50px)";
 });
 
 

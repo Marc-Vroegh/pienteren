@@ -18,7 +18,7 @@
 
 </head>
 
-{{-- Sidebar section --}}
+<!-- Sidebar section -->
 @section('sidebar')
 <body style="background-image: url(<?php echo $imageURL;?>);">
   <div id="sidebar" class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[200px] overflow-y-auto text-center bg-black opacity-90 border-solid; border-r-1 border-gray-600 lg:w-1/6">
@@ -68,7 +68,7 @@
     </div>
 </div>
 @show
-<div style="" class="p-5">
+<div id="changeMargin" style="" class="changeMargin hidescroll p-5">
     @yield('content')
 </div>
 </body>

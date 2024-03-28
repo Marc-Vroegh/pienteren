@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
-    //Elements
+    // Elements
+    var hamburgerIcon = document.querySelector('.bi-list');
     const sidebar = document.getElementById('sidebar');
     const sidebarText = document.getElementById('sidebarText');
     const submenu = document.getElementById('submenu');
     const chevronIcon = document.getElementById('chevron-icon');
-    const widgetSubtext = this.getElementById('submenutxt');
+    const widgetSubtext = document.getElementById('submenutxt');
     const settingsDiv = document.getElementById('settingsButton');
 
     // Function to handle click on hamburger icon and toggle sidebar visibility
@@ -13,17 +14,14 @@ document.addEventListener("DOMContentLoaded", function () {
         function toggleSidebar() {
             let menuItems = document.querySelectorAll('.sidebar-menu-item-text');
 
-            hideatstart.classList.toggle('changeMarginLeft');
-            changeMargin.classList.toggle('changeMarginLeft2');
-
             // Toggle small class to make sidebar smaller
             sidebar.classList.toggle('small');
-            //Toggle classes to hide which shouldn't be displayed when collapsed
+            // Toggle classes to hide which shouldn't be displayed when collapsed
             sidebarText.classList.toggle('hidden');
             widgetSubtext.classList.toggle('hidden');
             settingsDiv.classList.toggle('hidden');
 
-            //Make sure the submenu stays closed when user closes it closed and vice versa.
+            // Make sure the submenu stays closed when user closes it and vice versa
             if (submenu.getAttribute('opened') == 'false') {
                 submenu.classList.toggle('hidden');
             }
@@ -35,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         toggleSidebar(); // Toggle sidebar visibility and style when hamburger icon is clicked
     }
-    var hamburgerIcon = document.querySelector('.bi-list');
+    
     if (hamburgerIcon) {
         hamburgerIcon.addEventListener('click', handleHamburgerClick);
     }
@@ -49,12 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (submenu.getAttribute('opened') == 'true') {
             submenu.setAttribute('opened', 'false');
         }
-
-
     }
-
-    // Click event for sub menu
+    // Click event for submenu
     settingsDiv.addEventListener('click', toggleSubMenu);
-
-
 });

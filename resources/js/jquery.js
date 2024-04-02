@@ -12,8 +12,17 @@ $.ajax({
     success: function(response) {
         var keyCount = Object.keys(response).length;
         var obj = response;
-        for (let i = 0; i < keyCount; i++) {
-            document.getElementById(obj[i]['container']).appendChild(document.getElementById(obj[i]['widget']));
+        if(keyCount > 0) {
+            for (let i = 0; i < keyCount; i++) {
+                document.getElementById(obj[i]['container']).appendChild(document.getElementById(obj[i]['widget']));
+            } 
+        } else {
+            for (let i = 1; i < 80; i++) {
+                //alert('Hello, welcome to the dashboard, you can arrange the items how you want, try it');        
+                var container = "div" + i;
+                var widget = "drag" + i;
+                document.getElementById(container).appendChild(document.getElementById(widget));
+            }
         }
     }
 });

@@ -11,8 +11,7 @@
   @vite('resources/css/dashboard.css')
   @vite('resources/js/sidebar.js')
   @vite('resources/js/jquery.js')
-  <!-- vite('resources/js/javascript.js') -->
-  <script src="javascript.js"></script>
+
   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"/>
 
@@ -40,7 +39,7 @@
             <span class="sidebar-menu-item-text text-[15px] ml-4 text-gray-200 font-bold">Home</span>
         </div>
 
-        {{-- Settings --}}
+        <!-- Settings -->
         <div class="sidebar-menu-item p-2.5 flex items-center rounded-md duration-300 cursor-pointer hover:bg-blue-600 text-white" onclick="toggleSubMenu()" id="settingsButton">
           <i class="bi bi-gear-fill"></i>
           <span class="sidebar-menu-item-text text-[15px] ml-4 text-gray-200 font-bold">Settings</span>
@@ -68,8 +67,9 @@
     </div>
 </div>
 @show
-<div id="changeMargin" style="" class="changeMargin hidescroll p-5">
+<div id="outer_container" style="" class="outer_container hidescroll">
     @yield('content')
 </div>
+<script src="javascript.js"></script>
 </body>
 </html>

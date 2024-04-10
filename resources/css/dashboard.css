@@ -1,0 +1,92 @@
+.sidebar.small {
+    width: 50px; /* Set smaller width */
+}
+
+.sidebar.small #sidebarText {
+    display: none; /* Hide text */
+}
+
+
+.sidebar.small #chevron-icon {
+    display: none; /* Hide submenu and chevron icon */
+}
+
+.sidebar {
+    transition: width 0.5s ease; /* Adding transition for smooth animation */
+}
+
+.hideatstart {
+    transition: margin-left 0.5s ease; /* Adding transition for smooth animation */
+}
+
+.changeMarginLeft2 {
+    transition: margin-left 0.5s ease; /* Adding transition for smooth animation */
+}
+  
+
+
+  /* Add your other styles as needed */
+
+@media only screen and (max-width: 1000px) {
+    .changeMargin {
+        margin-left: 195px;
+    }
+    #hideatstart {
+        margin-left: 200px;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    #hideatstart {
+        margin-left: calc(100% / 6);
+    }
+    .changeMargin {
+        margin-left: calc(100% / 6);
+    }
+}
+
+body {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+body::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+.hidescroll {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */ 
+}
+
+.hidescroll::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+.hideatstart.changeMarginLeft {
+    margin-left: 50px !important;
+}
+
+.changeMargin.changeMarginLeft2 {
+    margin-left: 50px !important;
+}
+  
+
+.box {
+    min-width: 278px;
+    min-height: 278px;
+    padding: 10px;
+}
+
+
+.widget-container {
+    display: none;
+    height: 250px;  
+    min-width: 100%;
+}
+
+.widget-content {
+    color: white !important;
+    width: 100%;
+    height: 250px;
+}

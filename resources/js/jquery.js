@@ -31,7 +31,7 @@ $.ajax({
 
 $(document).on("click",".widget_container", function () {
    document.getElementById("widget_container").style.display = 'none';
-   document.getElementById("dashboard").style.height = "calc(100% - 50px)";
+   document.getElementById("dashboard").style.height = "calc(100%)";
 });
 
 

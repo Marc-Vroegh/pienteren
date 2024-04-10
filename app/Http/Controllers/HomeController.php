@@ -25,7 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $return = dataBox::where("email", Auth::user()->email)->orderBy('id', 'DESC')->get();
+        //$return = dataBox::where("email", Auth::user()->email)->orderBy('id', 'DESC')->get();
+        $return = dataBox::orderBy('id', 'DESC')->get();
         return view('dashboard')->with('return', $return);
     }
 }

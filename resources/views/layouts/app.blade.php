@@ -20,7 +20,7 @@
 <!-- Sidebar section -->
 @section('sidebar')
 <body style="background-image: url(<?php echo $imageURL;?>);">
-  <div id="sidebar" class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[200px] overflow-y-auto text-center bg-black opacity-90 border-solid; border-r-1 border-gray-600 lg:w-1/6">
+  <div id="sidebar" class="z-50 sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[200px] overflow-y-auto text-center bg-black opacity-90 border-solid; border-r-1 border-gray-600 lg:w-1/6">
     <div class="text-gray-100 text-xl">
         <div class="p-2.5 mt-1 flex justify-between">
             <h1 id="sidebarText" class="font-bold text-gray-200 text-[30px]">Dashboard</h1>
@@ -49,7 +49,7 @@
         </div>
         
         <!-- Submenu -->
-        <div class="hidden  text-sm mt-2 w-4/5 mx-auto text-gray-200 font-bold" id="submenu" opened="false" onclick="widgetbarClick()">
+        <div class="hidden text-sm cursor-pointer pt-2.5 pb-2.5 rounded-md w-4/5 mx-auto text-gray-200 font-bold hover:bg-blue-600" id="submenu" opened="false" onclick="widgetbarClick()">
           <span>
             <i class="bi bi-collection"></i>
           </span>

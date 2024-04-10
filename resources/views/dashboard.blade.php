@@ -32,8 +32,8 @@
 
     <!-- Black container for widget -->
 
-    <di id="black-container" class="hidden w-[calc(100%-300px)] absolute right-0 top-0 text-white black-container h-screen flex items-center">
-        <div style="color: white !important; width: 100%; height: 100%;" class="bg-zinc-950 p-5">
+    <di id="black-container" class="hidden w-[calc(100%-240px)] absolute right-0 top-0 text-white black-container h-screen flex items-center">
+        <div style="color: white !important; width: 100%; height: 100%;" class="bg-neutral-700 p-5">
             
         </div>
     </div>
@@ -46,19 +46,19 @@
 
     <!-- Hardwired Widgets (To be deprecated soon because of livewire) -->
  
-    <div style="width: 100%; height: 100%; max-width: 278px; max-height: 278px; border-width: 1px;" id="drag1" draggable="true" ondragstart="drag(event)" class="w-full aspect-square drag rounded-lg container p-2 bg-gray-500 border-solid; border-gray-400" onclick="widgetClick()">
+    <div style="width: 100%; height: 100%; max-width: 278px; max-height: 278px; border-width: 1px;" id="drag1" draggable="true" ondragstart="drag(event)" class="w-full aspect-auto drag rounded-lg container p-2 bg-gray-500 border-solid; border-gray-400" onclick="widgetClick()">
     <h1>Temperature</h1>
     <div style="margin-left: -20px; margin-top: 30px;" class="flex justify-center items-center">
         <i style="font-size: 100px;" class="bi bi-thermometer-half"></i>
-        <h1><?php echo $return[0]->temp ?> graden</h1>
+        <h1><?php if(isset($return[0])) { echo $return[0]->temp; } ?> graden</h1>
         </div>
     </div>
 
-    <div style="width: 100%; height: 100%; max-width: 278px; max-height: 278px; border-width: 1px;" id="drag3" draggable="true" ondragstart="drag(event)" class="w-full aspect-square drag rounded-lg container p-2 bg-cyan-700 border-solid; border-cyan-600" onclick="widgetClick()">
+    <div style="width: 100%; height: 100%; max-width: 278px; max-height: 278px; border-width: 1px;" id="drag3" draggable="true" ondragstart="drag(event)" class="w-full aspect-auto drag rounded-lg container p-2 bg-cyan-700 border-solid; border-cyan-600" onclick="widgetClick()">
     <h1>Luchtvochtigheid</h1>
     <div style="margin-top: 30px;" class="flex justify-center items-center">
         <i style="font-size: 100px;" class="bi bi-cloud-rain"></i>
-        <h1 style="margin-left: 10px;"><?php echo $return[0]->lvh ?> %</h1>
+        <h1 style="margin-left: 10px;"><?php if(isset($return[0])) { echo $return[0]->lvh; } ?> %</h1>
         </div>
     </div>
     
@@ -68,7 +68,7 @@
            <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
         </div>
     </div>
-    
+
 </div>
 
 </div>

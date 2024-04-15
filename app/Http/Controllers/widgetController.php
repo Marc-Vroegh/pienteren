@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\dataWidget;
+use Auth;
 
 class widgetController extends Controller
 {
@@ -31,12 +32,12 @@ class widgetController extends Controller
         $target = $request['target'];
         $widget = $request['widget'];
 
-            $retrievingWid = dataWidget::where(['email' => 'vroeghmarc@gmail.com', 'widget' => $widget])->get();
+            $retrievingWid = dataWidget::where(['email' => Auth::user()->email, 'widget' => $widget])->get();
             foreach($retrievingWid as $retrievingWid2) {
                dataWidget::find($retrievingWid2->id)->delete();
             }
             dataWidget::create([
-                "email"=>"vroeghmarc@gmail.com",
+                "email"=>Auth::user()->email,
                 "container"=>$target,
                 "widget"=>$widget
             ]);
@@ -50,7 +51,7 @@ class widgetController extends Controller
      */
     public function show()
     {
-        $return = dataWidget::where("email", "vroeghmarc@gmail.com")->get();
+        $return = dataWidget::where("email", Auth::user()->email)->get();
         
         return response()->json($return);
     }

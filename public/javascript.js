@@ -1,8 +1,8 @@
 //onclick widgetbar button show widgetbar
 
 function widgetbarClick() {
-    document.getElementById("hideatstart").style.display = 'block';
-    document.getElementById("changeHeight").style.height = "calc(100% - 266px)";
+    document.getElementById("widget_container").style.display = 'block';
+    document.getElementById("dashboard").style.height = "calc(100% - 250px)";
 }
 
 //function for sleep of the code
@@ -18,9 +18,14 @@ function sleep(milliseconds) {
 
 //on click of the widget show black container
 
-function widgetClick() {
-    document.getElementById("hideatstart2").style.display = 'flex';
-    document.getElementById("hideatstart2").style.alignItems = 'center';
+function widgetClick(id) {
+   // document.getElementById("black-container").style.display = 'flex';
+    //document.getElementById("black-container").style.alignItems = 'center';
+    alert(id);
+    document.getElementById("pop-up-container").style.display = 'flex';
+    var myDiv = document.getElementById(id);
+    var divClone = myDiv.cloneNode(true);
+    document.getElementById("pop-up-inner-container").appendChild(divClone);
 }
 
 //allow drop of the widget to the container
@@ -33,8 +38,8 @@ function allowDrop(ev) {
 
 function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
-    //document.getElementById("hideatstart").style.display = 'block';
-    //document.getElementById("changeHeight").style.height = "calc(100% - 300px)";
+    //document.getElementById("widget_container").style.display = 'block';
+    //document.getElementById("dashboard").style.height = "calc(100% - 300px)";
 }
 
 //When drop append child to container
@@ -68,30 +73,27 @@ function drop(ev) {
             }
         });
 
-        //document.getElementById("hideatstart").style.display = 'none';
+        //document.getElementById("widget_container").style.display = 'none';
     }
 }
 
-    ///need to fix this function
-
     //show time for the widget clock
 
-    //  function showTime() {
-            //var date = new Date();
-        //  var h = date.getHours(); // 0 - 23
-            //var m = date.getMinutes(); // 0 - 59
-        // var s = date.getSeconds(); // 0 - 59
+    function showTime() {
+        var date = new Date();
+        var h = date.getHours(); // 0 - 23
+        var m = date.getMinutes(); // 0 - 59
+        var s = date.getSeconds(); // 0 - 59
 
-        // h = (h < 10) ? "0" + h : h;
-        // m = (m < 10) ? "0" + m : m;
-        // s = (s < 10) ? "0" + s : s;
+        h = (h < 10) ? "0" + h : h;
+        m = (m < 10) ? "0" + m : m;
+        s = (s < 10) ? "0" + s : s;
 
-        // var time = h + ":" + m + ":" + s;
-        // document.getElementById("MyClockDisplay").innerText = 9;
-        // document.getElementById("MyClockDisplay").textContent = 9;
-    //
-        // setTimeout(showTime, 1000);
+        var time = h + ":" + m + ":" + s;
+        document.getElementById("MyClockDisplay").innerText = time;
+        document.getElementById("MyClockDisplay").textContent = time;
 
-    //  }
+        setTimeout(showTime, 1000);
+    }
 
-    // showTime();
+    showTime();

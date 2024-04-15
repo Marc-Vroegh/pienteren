@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\dataBox;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        //$return = dataBox::where("email", Auth::user()->email)->orderBy('id', 'DESC')->get();
+        $return = dataBox::orderBy('id', 'DESC')->get();
+        return view('dashboard')->with('return', $return);
     }
 }

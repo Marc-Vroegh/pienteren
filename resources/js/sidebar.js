@@ -14,6 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
         function toggleSidebar() {
             let menuItems = document.querySelectorAll('.sidebar-menu-item-text');
 
+            widget_container.classList.toggle('widget-content');
+            outer_container.classList.toggle('dashboard-container');
+
             // Toggle small class to make sidebar smaller
             sidebar.classList.toggle('small');
             // Toggle classes to hide which shouldn't be displayed when collapsed

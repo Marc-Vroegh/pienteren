@@ -11,8 +11,7 @@
   @vite('resources/css/dashboard.css')
   @vite('resources/js/sidebar.js')
   @vite('resources/js/jquery.js')
-  <!-- vite('resources/js/javascript.js') -->
-  <script src="javascript.js"></script>
+
   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"/>
 
@@ -21,7 +20,7 @@
 <!-- Sidebar section -->
 @section('sidebar')
 <body style="background-image: url(<?php echo $imageURL;?>);">
-  <div id="sidebar" class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[200px] overflow-y-auto text-center bg-black opacity-90 border-solid; border-r-1 border-gray-600 lg:w-1/6">
+  <div id="sidebar" class="z-50 sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[200px] overflow-y-auto text-center bg-black opacity-90 border-solid; border-r-1 border-gray-600 lg:w-1/6">
     <div class="text-gray-100 text-xl">
         <div class="p-2.5 mt-1 flex justify-between">
             <h1 id="sidebarText" class="font-bold text-gray-200 text-[30px]">Dashboard</h1>
@@ -40,7 +39,7 @@
             <span class="sidebar-menu-item-text text-[15px] ml-4 text-gray-200 font-bold">Home</span>
         </div>
 
-        {{-- Settings --}}
+        <!-- Settings -->
         <div class="sidebar-menu-item p-2.5 flex items-center rounded-md duration-300 cursor-pointer hover:bg-blue-600 text-white" onclick="toggleSubMenu()" id="settingsButton">
           <i class="bi bi-gear-fill"></i>
           <span class="sidebar-menu-item-text text-[15px] ml-4 text-gray-200 font-bold">Settings</span>
@@ -50,7 +49,7 @@
         </div>
         
         <!-- Submenu -->
-        <div class="hidden  text-sm mt-2 w-4/5 mx-auto text-gray-200 font-bold" id="submenu" opened="false" onclick="widgetbarClick()">
+        <div class="hidden text-sm cursor-pointer pt-2.5 pb-2.5 rounded-md w-4/5 mx-auto text-gray-200 font-bold hover:bg-blue-600" id="submenu" opened="false" onclick="widgetbarClick()">
           <span>
             <i class="bi bi-collection"></i>
           </span>
@@ -68,8 +67,9 @@
     </div>
 </div>
 @show
-<div id="changeMargin" style="" class="changeMargin hidescroll p-5">
+<div id="outer_container" style="" class="outer_container hidescroll">
     @yield('content')
 </div>
+<script src="javascript.js"></script>
 </body>
 </html>

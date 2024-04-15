@@ -57,6 +57,11 @@
                             </div>
                         </div>
                     </form>
+                    <div class="text-white text-sm flex justify-around">
+            <a href="{{ route('register') }}" class="text-indigo-400 hover:text-indigo-300">{{ __('Registreer hier') }}</a>
+            <a href="{{ route('password.request') }}"class="text-indigo-400 hover:text-indigo-300">{{ __('Wachtwoord vergeten?') }}
+            </a>
+        </div>
                 </div>
             </div>
         </div>

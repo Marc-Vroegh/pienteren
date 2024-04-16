@@ -10,15 +10,80 @@ $.ajax({
     type: "GET",
     dataType: 'json',
     success: function(response) {
-        var keyCount = Object.keys(response).length;
+
+        //var keyCount = Object.keys(obj['return'][0]).length;
         var obj = response;
-        if(keyCount > 0) {
-            for (let i = 0; i < keyCount; i++) {
-                document.getElementById(obj[i]['container']).appendChild(document.getElementById(obj[i]['widget']));
+        var keyCount2 = Object.keys(obj['return']).length;
+        //alert(keyCount2)
+        if(keyCount2 > 1) {
+            for (let i = 0; i < Object.keys(obj['return']).length; i++) {
+                //alert(obj['return'][i]['widget']);
+                if(obj['return'][i]['widget'].includes("custom") == true) {
+                   //alert('no');
+                } else {
+                    //alert('hello');
+                    document.getElementById(obj['return'][i]['container']).appendChild(document.getElementById(obj['return'][i]['widget']));
+                }
+            } 
+            for (let g = 0; g < 70; g++) {
+                //alert(obj['return2'][g]['color']);
+                //alert(obj['return2'][g]['toCloneDiv']);
+
+                var ClonedDiv = "customDrag" + g;
+
+                var container = "div" + (g + 5);
+
+                //alert(obj['return2'][g]['toCloneDiv']);
+
+
+                // document.getElementById("black-container").style.display = 'flex';
+                //document.getElementById("black-container").style.alignItems = 'center';
+                var myDiv = document.getElementById(obj['return2'][g]['toCloneDiv']);
+                var divClone = myDiv.cloneNode(true);
+
+                //if(obj['return2'][g]['clonedDiv'] == "empty") {
+                   // divClone.id = ClonedDiv;
+                //} else {
+                 //   divClone.id = obj['return2'][g]['clonedDiv']
+               // }
+               divClone.id = ClonedDiv;
+
+               var keyCount2 = Object.keys(obj['return']).length;
+
+               
+                for (let q = 0; q < keyCount2; q++) {
+                    //alert('hello');
+                    //alert('divclone id' + divClone.id)
+                    //alert(obj['return'][q]['widget']);
+                    if(divClone.id == obj['return'][q]['widget']) {
+                        //alert('setted');
+                        document.getElementById(obj['return'][q]['container']).appendChild(divClone);
+                    }
+                } 
+
+
+                document.getElementById(divClone.id).style.backgroundColor = obj['return2'][g]['color'];
+                document.getElementById(divClone.id).style.borderColor = obj['return2'][g]['color'];
+
+                $('#' + divClone.id).find('h1')[0].innerHTML = obj['return2'][g]['name'];
+
+
+
+                //append to form element that you want .
+                //divClone.appendChild(input);
+                //divClone.addEventListener('drag', drag);
+                //var path = divClone.H1[0].value;
+                //alert(document.getElementById("changeH1")[0].value);
+                //var x = document.querySelector("#ClonedDiv").querySelector("#changeH1");
+                //alert(path);
+
+
+
+                //document.getElementById(obj['return2'][i]['container']).appendChild(document.getElementById(obj['return2'][i]['widget']));
             } 
         } else {
             for (let i = 1; i < 80; i++) {
-                //alert('Hello, welcome to the dashboard, you can arrange the items how you want, try it');        
+                alert('Hello, welcome to the dashboard, you can arrange the items how you want, try it');        
                 var container = "div" + (i + 99);
                 var widget = "drag" + i;
                 document.getElementById(container).appendChild(document.getElementById(widget));
@@ -26,6 +91,7 @@ $.ajax({
         }
     }
 });
+
 
 //on click widgetbar hide widgetbar
 

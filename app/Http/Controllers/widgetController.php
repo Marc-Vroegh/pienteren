@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\dataWidget;
+use App\Models\customWidget;
 use Auth;
 
 class widgetController extends Controller
@@ -52,8 +53,9 @@ class widgetController extends Controller
     public function show()
     {
         $return = dataWidget::where("email", Auth::user()->email)->get();
+        $return2 = customWidget::where("email", Auth::user()->email)->get();
         
-        return response()->json($return);
+        return response()->json(['return'=> $return, 'return2' => $return2]);
     }
 
     /**

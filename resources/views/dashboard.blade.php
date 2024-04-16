@@ -53,23 +53,22 @@
                         <div class="pt-3">
                             <div class="grid grid-cols-3 gap-3">
                                 <div>
-                                    <form class="max-w-sm mx-auto">
-                                    <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kies bron</label>
-                                    <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <label for="box" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kies bron</label>
+                                    <select id="box" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onchange="changeColor(this.value)">
                                         <option selected>Box1</option>
-                                        <option value="US">Box2</option>
-                                        <option value="CA">Box3</option>
-                                        <option value="FR">Box4</option>
-                                        <option value="DE">Box5</option>
+                                        <option value="box2">Box2</option>
+                                        <option value="box3">Box3</option>
+                                        <option value="box4">Box4</option>
+                                        <option value="box5">Box5</option>
                                     </select>
                                 </div>
                                 <div><label for="hs-color-input" class="block text-sm font-medium mb-2 dark:text-white">Kies kleur</label>
                                 <input type="color" class=" h-10 w-full block bg-white cursor-pointer rounded-lg disabled:opacity-50 dis
-                                abled:pointer-events-none dark:bg-gray-700 dark:border-gray-700" id="hs-color-input" value="#2563eb" title="Choose your color"></div>
+                                abled:pointer-events-none dark:bg-gray-700 dark:border-gray-700" id="color-input" value="#2563eb" title="Choose your color" onchange="changeColor(this.value)"></div>
                                 
-                                <div><form><div class="grid gap-6 mb-6 md:grid-cols-2"><div><label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kies naam</label>
-                                <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-300px p-2.5 dark:bg-gray-700 dark:bo
-                                rder-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required /></div></div>
+                                <div><div class="grid gap-6 mb-6 md:grid-cols-2"><div><label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kies naam</label>
+                                <input type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-300px p-2.5 dark:bg-gray-700 dark:bo
+                                rder-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Choose name (required)" onchange="changeText(this.value)" required/></div></div>
                             </div>
                         </div> 
                 </div>
@@ -84,7 +83,7 @@
     <!-- Hardwired Widgets (To be deprecated soon because of livewire) -->
  
     <div style="width: 100%; height: 100%; max-width: 278px; max-height: 278px; border-width: 1px;" id="drag1" draggable="true" ondragstart="drag(event)" class="w-full aspect-auto drag rounded-lg container p-2 bg-gray-500 border-solid; border-gray-400" onclick="widgetClick(this.id)">
-    <h1>Temperature</h1>
+    <h1 class="changeH1">Temperature</h1>
     <div style="margin-left: -20px; margin-top: 30px;" class="flex justify-center items-center">
         <i style="font-size: 100px;" class="bi bi-thermometer-half"></i>
         <h1><?php if(isset($return[0])) { echo $return[0]->temp; } ?> °C</h1>
@@ -92,7 +91,7 @@
     </div>
 
     <div style="width: 100%; height: 100%; max-width: 278px; max-height: 278px; border-width: 1px;" id="drag3" draggable="true" ondragstart="drag(event)" class="w-full aspect-auto drag rounded-lg container p-2 bg-cyan-700 border-solid; border-cyan-600" onclick="widgetClick(this.id)">
-    <h1>Luchtvochtigheid</h1>
+    <h1 class="changeH1">Luchtvochtigheid</h1>
     <div style="margin-top: 30px;" class="flex justify-center items-center">
         <i style="font-size: 100px;" class="bi bi-cloud-rain"></i>
         <h1 style="margin-left: 10px;"><?php if(isset($return[0])) { echo $return[0]->lvh; } ?> %</h1>
@@ -100,7 +99,7 @@
     </div>
     
     <div style="width: 100%; height: 100%; max-width: 278px; max-height: 278px; border-width: 1px;" id="drag2" draggable="true" ondragstart="drag(event)" class="w-full aspect-auto drag rounded-lg container p-2 bg-amber-600 border-solid; border-amber-500" onclick="widgetClick(this.id)">
-        <h1>Clock</h1>
+        <h1 class="changeH1">Clock</h1>
         <div style="margin-top: 70px;" class="flex justify-center items-center">
            <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
         </div>

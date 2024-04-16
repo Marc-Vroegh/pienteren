@@ -1,4 +1,7 @@
 //
+function homeReload() {
+    location.replace(location.href);
+}
 
 function changeColor(value) {
     document.getElementById("ClonedDiv").style.backgroundColor = value;
@@ -60,8 +63,9 @@ function sleep(milliseconds) {
 function widgetClick(id) {
    // document.getElementById("black-container").style.display = 'flex';
     //document.getElementById("black-container").style.alignItems = 'center';
+    if ((document.getElementById("pop-up-container").style.display == 'flex') == false && id.includes("custom") == false) {
     document.getElementById("pop-up-container").style.display = 'flex';
-    document.body.style.backgroundColor = "gray";
+    document.getElementById("pop-up-styler").style.display = 'flex';
     var myDiv = document.getElementById(id);
     var divClone = myDiv.cloneNode(true);
     divClone.id = "ClonedDiv";
@@ -82,7 +86,10 @@ function widgetClick(id) {
     //var x = document.querySelector("#ClonedDiv").querySelector("#changeH1");
     //alert(path);
     document.getElementById("pop-up-inner-container").appendChild(divClone);
+
+    //document.getElementById(divClone).removeAttribute("onclick");
     //alert(divClone.find('h1')[0].innerHTML);
+    }
 }
 
 //allow drop of the widget to the container

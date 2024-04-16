@@ -1,5 +1,4 @@
 //retrieving widget data from database and appending child based on the data to the widget container
-
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -13,9 +12,9 @@ $.ajax({
 
         //var keyCount = Object.keys(obj['return'][0]).length;
         var obj = response;
-        var keyCount2 = Object.keys(obj['return']).length;
+        var keyCount = Object.keys(obj['return']).length;
         //alert(keyCount2)
-        if(keyCount2 > 1) {
+        if(keyCount > 1) {
             for (let i = 0; i < Object.keys(obj['return']).length; i++) {
                 //alert(obj['return'][i]['widget']);
                 if(obj['return'][i]['widget'].includes("custom") == true) {
@@ -63,6 +62,7 @@ $.ajax({
 
 
                 document.getElementById(divClone.id).style.backgroundColor = obj['return2'][g]['color'];
+                //newColor = LightenDarkenColor(obj['return2'][g]['color'], -20);
                 document.getElementById(divClone.id).style.borderColor = obj['return2'][g]['color'];
 
                 $('#' + divClone.id).find('h1')[0].innerHTML = obj['return2'][g]['name'];
@@ -83,7 +83,16 @@ $.ajax({
             } 
         } else {
             for (let i = 1; i < 80; i++) {
-                alert('Hello, welcome to the dashboard, you can arrange the items how you want, try it');        
+                if(i == 1) {
+                    alert('Hello, welcome to the dashboard.');
+                    alert('To remove this message, please first remove all the widgets from the WidgetBar, this can be found under the Settings.');
+                    alert('Afterwards the WidgetBar can be closed by clicking on it.');
+                    alert('You can arrange the widgets how you want.');
+                    alert('Clicking on widget causes a Widget Styler to appear, you can use this to style your own Widgets or to add more of the same.');
+                    alert('Try it.');
+                    document.getElementById("widget_container").style.display = 'block';
+                    document.getElementById("dashboard").style.height = "calc(100% - 250px)";
+                }     
                 var container = "div" + (i + 99);
                 var widget = "drag" + i;
                 document.getElementById(container).appendChild(document.getElementById(widget));

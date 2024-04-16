@@ -40,15 +40,15 @@
 
 
     <!-- pop-up container for widget styling -->
-
-    <div id="pop-up-container" class="hidden w-full absolute right-0 top-0 text-white black-container h-screen flex items-center">
+<div id="pop-up-container" class="hidden right-0 top-0 w-full h-screen absolute bg-black bg-opacity-40">
+    <div id="pop-up-styler" class="hidden w-full absolute right-0 top-0 text-white black-container h-screen flex items-center">
         <div style="color: white !important; width: 50%; height: 85%; margin-left: auto; margin-right: auto;" class="overflow-scroll bg-opacity-95 rounded-2xl bg-neutral-700 p-5">
             <h1 class="text-lg">Widget Styler</h1>
                 <div style="" class="p-6">
                     <div style="width: 100%; height: 340px;" id="pop-up-inner-container" class="h-screen flex justify-center pop-up-inner-container">
 
                     </div>  
-                    <div style="" id="pop-up-inner-container-change" class="bg-neutral-900 p-5 rounded-xl pop-up-inner-container-change">
+                    <div style="" id="pop-up-inner-container-change" class="z-50 bg-neutral-900 p-5 rounded-xl pop-up-inner-container-change">
                         <h1>Aanpassingen</h1>
                         <div class="pt-3">
                             <div class="grid grid-cols-3 gap-3">
@@ -74,6 +74,7 @@
                 </div>
         </div>
     </div>
+</div>
 
 
 
@@ -98,7 +99,7 @@
         </div>
     </div>
     
-    <div style="width: 100%; height: 100%; max-width: 278px; max-height: 278px; border-width: 1px;" id="drag2" draggable="true" ondragstart="drag(event)" class="w-full aspect-auto drag rounded-lg container p-2 bg-amber-600 border-solid; border-amber-500" onclick="widgetClick(this.id)">
+    <div style="width: 100%; height: 100%; max-width: 278px; max-height: 278px; border-width: 1px;" id="drag2" draggable="true" ondragstart="drag(event)" class="w-full aspect-auto drag rounded-lg container p-2 bg-amber-600 border-solid; border-amber-500">
         <h1 class="changeH1">Clock</h1>
         <div style="margin-top: 70px;" class="flex justify-center items-center">
            <div id="MyClockDisplay" class="clock" onload="showTime()"></div>

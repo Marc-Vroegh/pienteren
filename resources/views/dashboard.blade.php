@@ -19,7 +19,7 @@
     </div>
     
     <!-- Widgetbar -->
-    <div id="widget_container" class="widget_container absolute bottom-0 start-0 text-white overflow-scroll">
+    <div id="widget_container" class="widget_container absolute bottom-0 start-0 text-white overflow-scroll" opened="false">
         <div class="widget-content bg-gray-300 p-5 rounded-t-2xl border-solid border-gray-400 border-2 opacity-90">
             <div class="flex flex-wrap">
                 <!-- Loop through amount of divs -->

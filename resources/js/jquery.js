@@ -1,4 +1,7 @@
 //retrieving widget data from database and appending child based on the data to the widget container
+
+
+//setting up ajax with a token so it works
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -9,90 +12,61 @@ $.ajax({
     type: "GET",
     dataType: 'json',
     success: function(response) {
-
-        //var keyCount = Object.keys(obj['return'][0]).length;
         var obj = response;
+        //getting response from php controller retrieve widget
         var keyCount = Object.keys(obj['return']).length;
-        //alert(keyCount2)
+        //counting the length from data received
         if(keyCount > 1) {
-            for (let i = 0; i < Object.keys(obj['return']).length; i++) {
-                //alert(obj['return'][i]['widget']);
+            for (let i = 0; i < keyCount; i++) {
+                //checking whatever the return returns a custom widget
                 if(obj['return'][i]['widget'].includes("custom") == true) {
-                   //alert('no');
                 } else {
-                    //alert('hello');
+                    //else append child widget to right container
                     document.getElementById(obj['return'][i]['container']).appendChild(document.getElementById(obj['return'][i]['widget']));
                 }
             } 
-            for (let g = 0; g < 70; g++) {
-                //alert(obj['return2'][g]['color']);
-                //alert(obj['return2'][g]['toCloneDiv']);
-
+            for (let g = 0; g < keyCount; g++) {
                 var ClonedDiv = "customDrag" + g;
-
+                //adding customDrag id to the custom widgets
                 var container = "div" + (g + 5);
-
-                //alert(obj['return2'][g]['toCloneDiv']);
-
-
-                // document.getElementById("black-container").style.display = 'flex';
-                //document.getElementById("black-container").style.alignItems = 'center';
+                //container where the widget goes to if not set
                 var myDiv = document.getElementById(obj['return2'][g]['toCloneDiv']);
+                //getting element by id that needs to be cloned
                 var divClone = myDiv.cloneNode(true);
-
-                //if(obj['return2'][g]['clonedDiv'] == "empty") {
-                   // divClone.id = ClonedDiv;
-                //} else {
-                 //   divClone.id = obj['return2'][g]['clonedDiv']
-               // }
-               divClone.id = ClonedDiv;
-
-               var keyCount2 = Object.keys(obj['return']).length;
-
-               
-                for (let q = 0; q < keyCount2; q++) {
-                    //alert('hello');
-                    //alert('divclone id' + divClone.id)
-                    //alert(obj['return'][q]['widget']);
+                //cloning the div
+                divClone.id = ClonedDiv;
+                //naming the div id from the cloned div CustomDrag(0)
+                for (let q = 0; q < keyCount; q++) {
                     if(divClone.id == obj['return'][q]['widget']) {
+                        //if customDrag0 is the same as Custom drag 0 from dataWidget append child on same key container
                         //alert('setted');
                         document.getElementById(obj['return'][q]['container']).appendChild(divClone);
                     }
-                } 
-
-
+                }
+                //changing background color from new element from color in database 
                 document.getElementById(divClone.id).style.backgroundColor = obj['return2'][g]['color'];
                 //newColor = LightenDarkenColor(obj['return2'][g]['color'], -20);
+                //changing border color from new element from color in database 
                 document.getElementById(divClone.id).style.borderColor = obj['return2'][g]['color'];
-
+                //changing h1 name from new element from h1 name in database 
                 $('#' + divClone.id).find('h1')[0].innerHTML = obj['return2'][g]['name'];
-
-
-
-                //append to form element that you want .
-                //divClone.appendChild(input);
-                //divClone.addEventListener('drag', drag);
-                //var path = divClone.H1[0].value;
-                //alert(document.getElementById("changeH1")[0].value);
-                //var x = document.querySelector("#ClonedDiv").querySelector("#changeH1");
-                //alert(path);
-
-
-
-                //document.getElementById(obj['return2'][i]['container']).appendChild(document.getElementById(obj['return2'][i]['widget']));
             } 
         } else {
-            for (let i = 1; i < 80; i++) {
+            // if no elements in database
+            for (let i = 1; i < 60; i++) {
                 if(i == 1) {
+                    //for new users an instruction
                     alert('Hello, welcome to the dashboard.');
                     alert('To remove this message, please first remove all the widgets from the WidgetBar, this can be found under the Settings.');
                     alert('Afterwards the WidgetBar can be closed by clicking on it.');
                     alert('You can arrange the widgets how you want.');
                     alert('Clicking on widget causes a Widget Styler to appear, you can use this to style your own Widgets or to add more of the same.');
                     alert('Try it.');
+                    //show widgetbar for new users
                     document.getElementById("widget_container").style.display = 'block';
                     document.getElementById("dashboard").style.height = "calc(100% - 250px)";
-                }     
+                } 
+                //adding widgets to widgetbar    
                 var container = "div" + (i + 99);
                 var widget = "drag" + i;
                 document.getElementById(container).appendChild(document.getElementById(widget));
@@ -101,11 +75,10 @@ $.ajax({
     }
 });
 
-
-//on click widgetbar hide widgetbar
-
 $(document).on("click",".widget_container", function () {
+    //on click widgetbar hide widgetbar
    document.getElementById("widget_container").style.display = 'none';
+   //changing height again to match the current widgetbar state
    document.getElementById("dashboard").style.height = "calc(100%)";
 });
 

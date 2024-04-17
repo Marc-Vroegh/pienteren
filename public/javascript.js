@@ -1,15 +1,19 @@
-//
 function homeReload() {
+    //reloading page
     location.replace(location.href);
 }
 
 function changeColor(value) {
+    //setting cloned div background color in styler
     document.getElementById("ClonedDiv").style.backgroundColor = value;
+    //calculate border color
     newvalue = LightenDarkenColor(value, -20);
+    //setting cloned div border color in styler
     document.getElementById("ClonedDiv").style.borderColor = newvalue;
 }
 
 function changeText(value) {
+    //changing text in cloned div in styler
     $('#ClonedDiv').find('h1')[0].innerHTML = value;
 }
 
@@ -19,37 +23,28 @@ function LightenDarkenColor(col,amt) {
         col = col.slice(1);
         usePound = true;
     }
-
     var num = parseInt(col,16);
-
     var r = (num >> 16) + amt;
-
     if ( r > 255 ) r = 255;
     else if  (r < 0) r = 0;
-
     var b = ((num >> 8) & 0x00FF) + amt;
-
     if ( b > 255 ) b = 255;
     else if  (b < 0) b = 0;
-    
     var g = (num & 0x0000FF) + amt;
-
     if ( g > 255 ) g = 255;
     else if  ( g < 0 ) g = 0;
-
     return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
 }
 
-//onclick widgetbar button show widgetbar
-
 function widgetbarClick() {
+    //onclick widgetbar button show widgetbar
     document.getElementById("widget_container").style.display = 'block';
+    //changing dashboard height to make sure widgets don't go underneath widgetbar
     document.getElementById("dashboard").style.height = "calc(100% - 250px)";
 }
 
-//function for sleep of the code
-
 function sleep(milliseconds) {
+    //function for sleep of the code
     var start = new Date().getTime();
     for (var i = 0; i < 1e7; i++) {
         if ((new Date().getTime() - start) > milliseconds) {
@@ -61,120 +56,114 @@ function sleep(milliseconds) {
 //on click of the widget show black container
 
 function widgetClick(id) {
-   // document.getElementById("black-container").style.display = 'flex';
-    //document.getElementById("black-container").style.alignItems = 'center';
+    //checking if the pop up container isn't set to flex, which meens its on the foreground and if there hasn't been clicked on a custom widget
     if ((document.getElementById("pop-up-container").style.display == 'flex') == false && id.includes("custom") == false) {
-    document.getElementById("pop-up-container").style.display = 'flex';
-    document.getElementById("pop-up-styler").style.display = 'flex';
-    var myDiv = document.getElementById(id);
-    var divClone = myDiv.cloneNode(true);
-    divClone.id = "ClonedDiv";
-
-    var input = document.createElement("input");
-
-    input.setAttribute("type", "hidden");
-
-    input.setAttribute("id", "changeDIV");
-
-    input.setAttribute("value", id);
-
-    //append to form element that you want .
-    divClone.appendChild(input);
-    //divClone.addEventListener('drag', drag);
-    //var path = divClone.H1[0].value;
-    //alert(document.getElementById("changeH1")[0].value);
-    //var x = document.querySelector("#ClonedDiv").querySelector("#changeH1");
-    //alert(path);
-    document.getElementById("pop-up-inner-container").appendChild(divClone);
-
-    //document.getElementById(divClone).removeAttribute("onclick");
-    //alert(divClone.find('h1')[0].innerHTML);
+        //set pop-up-container to flex
+        document.getElementById("pop-up-container").style.display = 'flex';
+        //set pop-up-styler to flex
+        document.getElementById("pop-up-styler").style.display = 'flex';
+        //getting element that needs to be cloned
+        var myDiv = document.getElementById(id);
+        //cloning element
+        var divClone = myDiv.cloneNode(true);
+        //changing name of cloned element
+        divClone.id = "ClonedDiv";
+        //creating element input
+        var input = document.createElement("input");
+        //set attribute to that element hidden
+        input.setAttribute("type", "hidden");
+        //set id to changeDIV
+        input.setAttribute("id", "changeDIV");
+        //set value to clicked id
+        input.setAttribute("value", id);
+        //append input child to cloned element
+        divClone.appendChild(input);
+        //append everything to pop up container
+        document.getElementById("pop-up-inner-container").appendChild(divClone);
     }
 }
 
-//allow drop of the widget to the container
-
 function allowDrop(ev) {
+    //allow drop of the widget to the container
     ev.preventDefault();
 }
 
-//on drag of the widget set data
-
 function drag(ev) {
+    //on drag checking whatever widget styler is active
     if ((document.getElementById("pop-up-container").style.display == 'flex') == true) {
-    var div = document.getElementById('changeDIV').value;
-    var color = document.getElementById('color-input').value;
-    var name = document.getElementById('name').value;
-    var box = document.getElementById('box').value;
+        //retrieving all set values in widget styler
+        var div = document.getElementById('changeDIV').value;
+        var color = document.getElementById('color-input').value;
+        var name = document.getElementById('name').value;
+        var box = document.getElementById('box').value;
 
-    //alert(div);
-    //alert(color);
-   // alert(name);
-    //alert(box);
-
-    var data2 = {
-        div: div,
-        color: color,
-        name: name,
-        box: box
-    }
-        
-    $.ajaxSetup({
-        headers: {
-           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //setting them for jquery
+        var data2 = {
+            div: div,
+            color: color,
+            name: name,
+            box: box
         }
-    })
-    $.ajax({
-        url: "/customWidget",
-        type: "POST",
-        cache: false,
-        data: data2,
-        success: function(response) {
-            //alert(response);
-            location.replace(location.href);
-        }
-    });
+          
+        //make sure that ajax works by setting a token
+        $.ajaxSetup({
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
+        $.ajax({
+            //go to php controller to upload this data to database
+            url: "/customWidget",
+            type: "POST",
+            cache: false,
+            data: data2,
+            success: function(response) {
+                //by succes response reloading page
+                //alert(response);
+                location.replace(location.href);
+            }
+        });
     }
-
+    //on drag of the widget set data
     ev.dataTransfer.setData("text", ev.target.id);
-    
-
-    //document.getElementById("widget_container").style.display = 'block';
-    //document.getElementById("dashboard").style.height = "calc(100% - 300px)";
 }
 
 //When drop append child to container
 
 function drop(ev) {
     ev.preventDefault();
+    //setting data transfer
     var data = ev.dataTransfer.getData("text");
     var crsf = ""
-    //alert(data);
-    //alert(ev.target.id);
+
+    //if id contains drag
     if (!document.getElementById(ev.target.id).contains(document.getElementById('drag'))) {
+        //retrieving target container and append widget
         ev.target.appendChild(document.getElementById(data));
 
+        //setting up data for ajax
         var data2 = {
             target: ev.target.id,
             widget: data
         }
-            
+          
+        //making sure ajax can work by setting a token
         $.ajaxSetup({
             headers: {
                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         })
+        //sending data to database by going to php controller
         $.ajax({
             url: "/changeWidget",
             type: "POST",
             cache: false,
             data: data2,
             success: function(response) {
+                //getting succes reponse
                 //alert(response);
             }
         });
-
-        //document.getElementById("widget_container").style.display = 'none';
     }
 }
 

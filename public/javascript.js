@@ -102,16 +102,13 @@ function widgetClick(id) {
         divClone.appendChild(input);
         //append everything to pop up container
         document.getElementById("pop-up-inner-container").appendChild(divClone);
+    } else {
+        //by pressing on widget when widget styler is active call addcustomwidget function
+        addCustomWidget();
     }
 }
 
-function allowDrop(ev) {
-    //allow drop of the widget to the container
-    ev.preventDefault();
-}
-
-function drag(ev) {
-    //on drag checking whatever widget styler is active
+function addCustomWidget(){
     if ((document.getElementById("pop-up-container").style.display == 'flex') == true) {
         //retrieving all set values in widget styler
         var div = document.getElementById('changeDIV').value;
@@ -146,6 +143,14 @@ function drag(ev) {
             }
         });
     } 
+}
+
+function allowDrop(ev) {
+    //allow drop of the widget to the container
+    ev.preventDefault();
+}
+
+function drag(ev) {
     //on drag of the widget set data
     ev.dataTransfer.setData("text", ev.target.id);
 }

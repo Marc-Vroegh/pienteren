@@ -1,3 +1,25 @@
+document.body.onload = function() {myScript()};
+
+function myScript() {
+    //if custom div contains element that starts with customDrag
+    if (document.getElementById('customDiv').contains(document.getElementById(getElementsByIdStartsWith("customDiv", "div", "customDrag")[0].id)) && (document.getElementById("pop-up-container-widget").style.display == 'flex') == false) {
+        //if true show pop up container
+        document.getElementById("pop-up-container-widget").style.display = 'flex';
+    }
+}
+
+function getElementsByIdStartsWith(container, selectorTag, prefix) {
+    var items = [];
+    var myPosts = document.getElementById(container).getElementsByTagName(selectorTag);
+    for (var i = 0; i < myPosts.length; i++) {
+        //omitting undefined null check for brevity
+        if (myPosts[i].id.lastIndexOf(prefix, 0) === 0) {
+            items.push(myPosts[i]);
+        }
+    }
+    return items;
+}
+
 function homeReload() {
     //reloading page
     location.replace(location.href);
@@ -57,7 +79,7 @@ function sleep(milliseconds) {
 
 function widgetClick(id) {
     //checking if the pop up container isn't set to flex, which meens its on the foreground and if there hasn't been clicked on a custom widget
-    if ((document.getElementById("pop-up-container").style.display == 'flex') == false && id.includes("custom") == false) {
+    if ((document.getElementById("pop-up-container").style.display == 'flex') == false && (document.getElementById("pop-up-container-widget").style.display == 'flex') == false && id.includes("custom") == false) {
         //set pop-up-container to flex
         document.getElementById("pop-up-container").style.display = 'flex';
         //set pop-up-styler to flex
@@ -123,7 +145,7 @@ function drag(ev) {
                 location.replace(location.href);
             }
         });
-    }
+    } 
     //on drag of the widget set data
     ev.dataTransfer.setData("text", ev.target.id);
 }
@@ -162,9 +184,13 @@ function drop(ev) {
             success: function(response) {
                 //getting succes reponse
                 //alert(response);
+                //if widget dropped make sure pop up container for widget is hidden
+                document.getElementById("pop-up-container-widget").style.display = 'none';
             }
         });
     }
+    //if ((document.getElementById('customDiv').contains(document.getElementById(getElementsByIdStartsWith("customDiv", "div", "customDrag")[0].id))) == false) {
+    //}
 }
 
     //show time for the widget clock

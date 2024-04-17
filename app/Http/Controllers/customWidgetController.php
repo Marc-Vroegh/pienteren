@@ -48,10 +48,9 @@ class customWidgetController extends Controller
         $Count = $count->count();
         $new = $Count;
 
-        $new2 = $Count + 7;
 
 
-        $divnew = "div".strval($new2);
+        $divnew = "customDiv";
         $newdrag = "customDrag".strval($new);
 
         dataWidget::create([

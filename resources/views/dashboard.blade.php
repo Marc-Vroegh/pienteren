@@ -38,7 +38,7 @@
         </div>
     </div>
 
-     <!-- pop up container for widget -->
+     <!-- pop up container for widget holder -->
 
      <div id="pop-up-container-widget" class="hidden absolute end-0 top-0 text-white black-container z-50 flex items-center h-screen justify-center">
         <div style="color: white !important; width: 230px; height: 266px;;" class="pt-5 pb-5 pr-3 pl-5 bg-gray-300 rounded-l-2xl border-solid border-gray-400 border-2 opacity-90">
@@ -50,7 +50,7 @@
     <!-- pop-up container for widget styling -->
     <div id="pop-up-container" class="hidden right-0 top-0 w-full h-screen absolute bg-black bg-opacity-40 scrollbar-hide">
         <div id="pop-up-styler" class="hidden w-full absolute right-0 top-0 text-white black-container h-screen flex items-center scrollbar-hide">
-            <div style="color: white !important; width: 700px; height: 580px; margin-left: auto; margin-right: auto;" class="scrollbar-hide overflow-scroll bg-opacity-95 rounded-2xl bg-neutral-700 p-5">
+            <div style="color: white !important; width: 680px; height: 580px; margin-left: auto; margin-right: auto;" class="scrollbar-hide overflow-scroll bg-opacity-95 rounded-2xl bg-neutral-700 p-5">
 
                 <h1 class="text-lg">Widget Styler</h1>
 

@@ -108,7 +108,7 @@ function widgetClick(id) {
     }
 }
 
-function addCustomWidget(){
+function addCustomWidget() {
     if ((document.getElementById("pop-up-container").style.display == 'flex') == true) {
         //retrieving all set values in widget styler
         var div = document.getElementById('changeDIV').value;

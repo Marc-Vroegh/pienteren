@@ -67,7 +67,7 @@
     </div>
 </div>
 @show
-<div id="outer_container" style="" class="outer_container hidescroll">
+<div id="outer_container" style="" class="scrollbar-hide outer_container">
     @yield('content')
 </div>
 <script src="javascript.js"></script>

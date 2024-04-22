@@ -1,15 +1,21 @@
 const widgetBar = document.getElementById("widget_container");
-const  dashboard = document.getElementById('dashboard');
+const dashboard = document.getElementById('dashboard');
 const subMenu = document.getElementById('submenu');
 const subMenuText = document.getElementById('submenutxt');
+const popUpContainer = document.getElementById('pop-up-container');
+const popUpContainerWidget = document.getElementById('pop-up-container-widget');
+const popUpStyler = document.getElementById('pop-up-styler');
+const popUpInnerContainer = document.getElementById('pop-up-inner-container');
+const myClockDisplay = document.getElementById("MyClockDisplay");
+const customDiv = document.getElementById('customDiv');
 
-document.body.onload = function() {myScript()};
+document.body.onload = function() {openHolderCustomWidget()};
 
-function myScript() {
+function openHolderCustomWidget() {
     //if custom div contains element that starts with customDrag
-    if (document.getElementById('customDiv').contains(document.getElementById(getElementsByIdStartsWith("customDiv", "div", "customDrag")[0].id)) && (document.getElementById("pop-up-container-widget").style.display == 'flex') == false) {
+    if (customDiv.contains(document.getElementById(getElementsByIdStartsWith("customDiv", "div", "customDrag")[0].id)) && (popUpContainerWidget.style.display == 'flex') == false) {
         //if true show pop up container
-        document.getElementById("pop-up-container-widget").style.display = 'flex';
+        popUpContainerWidget.style.display = 'flex';
     }
 }
 
@@ -41,7 +47,14 @@ function changeColor(value) {
 
 function changeText(value) {
     //changing text in cloned div in styler
-    $('#ClonedDiv').find('h1')[0].innerHTML = value;
+    var clonedDiv = document.getElementById('ClonedDiv'); 
+    // Get the element with id "ClonedDiv"
+    var h1Elements = clonedDiv.getElementsByTagName('h1'); 
+    // Get all <h1> elements within "ClonedDiv"
+    if (h1Elements.length > 0) { 
+        // Check if there are any <h1> elements found
+        h1Elements[0].innerHTML = value;
+    }
 }
 
 function LightenDarkenColor(col,amt) {
@@ -111,11 +124,11 @@ function sleep(milliseconds) {
 
 function widgetClick(id) {
     //checking if the pop up container isn't set to flex, which meens its on the foreground and if there hasn't been clicked on a custom widget
-    if ((document.getElementById("pop-up-container").style.display == 'flex') == false && (document.getElementById("pop-up-container-widget").style.display == 'flex') == false && id.includes("custom") == false) {
+    if ((popUpContainer.style.display == 'flex') == false && (popUpContainerWidget.style.display == 'flex') == false && id.includes("custom") == false) {
         //set pop-up-container to flex
-        document.getElementById("pop-up-container").style.display = 'flex';
+        popUpContainer.style.display = 'flex';
         //set pop-up-styler to flex
-        document.getElementById("pop-up-styler").style.display = 'flex';
+        popUpStyler.style.display = 'flex';
         //getting element that needs to be cloned
         var myDiv = document.getElementById(id);
         //cloning element
@@ -133,7 +146,7 @@ function widgetClick(id) {
         //append input child to cloned element
         divClone.appendChild(input);
         //append everything to pop up container
-        document.getElementById("pop-up-inner-container").appendChild(divClone);
+        popUpInnerContainer.appendChild(divClone);
     } else {
         //by pressing on widget when widget styler is active call addcustomwidget function
         addCustomWidget();
@@ -141,7 +154,7 @@ function widgetClick(id) {
 }
 
 function addCustomWidget() {
-    if ((document.getElementById("pop-up-container").style.display == 'flex') == true) {
+    if ((popUpContainer.style.display == 'flex') == true) {
         //retrieving all set values in widget styler
         var div = document.getElementById('changeDIV').value;
         var color = document.getElementById('color-input').value;
@@ -222,7 +235,7 @@ function drop(ev) {
                 //getting succes reponse
                 //alert(response);
                 //if widget dropped make sure pop up container for widget is hidden
-                document.getElementById("pop-up-container-widget").style.display = 'none';
+                popUpContainerWidget.style.display = 'none';
             }
         });
 
@@ -245,8 +258,8 @@ function drop(ev) {
         s = (s < 10) ? "0" + s : s;
 
         var time = h + ":" + m + ":" + s;
-        document.getElementById("MyClockDisplay").innerText = time;
-        document.getElementById("MyClockDisplay").textContent = time;
+        myClockDisplay.innerText = time;
+        myClockDisplay.textContent = time;
 
         setTimeout(showTime, 1000);
     }

@@ -4,27 +4,38 @@ const subMenu = document.getElementById('submenu');
 const subMenuText = document.getElementById('submenutxt');
 
 
-//WHen the user clicks on ''show widgetbar" show it.
-subMenu.addEventListener('click', function() {
+
+function openWidgetBar(){
     widgetBar.style.display = 'block';
     dashboard.style.height = "calc(100% - 250px)";
     //Set the state to true, when the user opens the the widgetbar..
     widgetBar.setAttribute('opened', 'true');
     //Set the text to hide, when its opened.
     subMenuText.innerHTML = 'Close widgetbar';
-    
-});
+}
 
-//When the user clicks on the sidebar it will closae the
+function closeWidgetBar(){
+    widgetBar.style.display = 'none';
+    dashboard.style.height = 'calc(100%)';
+    //When the user closes the sidebar, it sets the state to false.
+    widgetBar.setAttribute('opened', 'false')
+    //Set the text to hide, when its opened.
+    subMenuText.innerHTML = 'Show widgetbar';
+}
+
+
+function widgetbarSideMenu(){
+    if(widgetBar.getAttribute('opened') == 'true'){
+        closeWidgetBar()
+    }else if (widgetBar.getAttribute('opened') == 'false'){
+        openWidgetBar();
+    }   
+}
+
+//When the user clicks on the widgetbar it will closae the widgetbar.
 widgetBar.addEventListener('click', function() {
-        widgetBar.style.display = 'none';
-        dashboard.style.height = 'calc(100%)';
-        //When the user closes the sidebar, it sets the state to false.
-        widgetBar.setAttribute('opened', 'false')
-        //Set the text to hide, when its opened.
-        subMenuText.innerHTML = 'Show widgetbar';
+    closeWidgetBar();
 });
-
 
 
 

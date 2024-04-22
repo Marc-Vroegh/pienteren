@@ -49,7 +49,7 @@
         </div>
         
         <!-- Submenu -->
-        <div class="hidden text-sm cursor-pointer pt-2.5 pb-2.5 rounded-md w-4/5 mx-auto text-gray-200 font-bold hover:bg-blue-600" id="submenu" opened="false">
+        <div class="hidden text-sm cursor-pointer pt-2.5 pb-2.5 rounded-md w-4/5 mx-auto text-gray-200 font-bold hover:bg-blue-600" id="submenu" opened="false" onclick="widgetbarSideMenu();">
           <span>
             <i class="bi bi-collection"></i>
           </span>

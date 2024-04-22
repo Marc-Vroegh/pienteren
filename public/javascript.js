@@ -63,13 +63,6 @@ function LightenDarkenColor(col,amt) {
     return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
 }
 
-function widgetbarClick() {
-    //onclick widgetbar button show widgetbar
-    document.getElementById("widget_container").style.display = 'block';
-    //changing dashboard height to make sure widgets don't go underneath widgetbar
-    document.getElementById("dashboard").style.height = "calc(100% - 250px)";
-}
-
 function openWidgetBar(){
     widgetBar.style.display = 'block';
     dashboard.style.height = "calc(100% - 250px)";
@@ -101,9 +94,6 @@ function widgetbarSideMenu(){
 widgetBar.addEventListener('click', function() {
     closeWidgetBar();
 });
-
-
-
 
 //function for sleep of the code
 

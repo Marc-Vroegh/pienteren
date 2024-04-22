@@ -1,12 +1,3 @@
-//onclick widgetbar button show widgetbar
-
-document.getElementById('submenu').addEventListener('click', function() {
-    document.getElementById("hideatstart").style.display = 'block';
-    document.getElementById("changeHeight").style.height = "calc(100% - 266px)";
-});
-
-
-
 //function for sleep of the code
 
 function sleep(milliseconds) {

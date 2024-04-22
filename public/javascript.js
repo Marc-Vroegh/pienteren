@@ -1,9 +1,44 @@
-//onclick widgetbar button show widgetbar
+const widgetBar = document.getElementById("widget_container");
+const  dashboard = document.getElementById('dashboard');
+const subMenu = document.getElementById('submenu');
+const subMenuText = document.getElementById('submenutxt');
 
-function widgetbarClick() {
-    document.getElementById("widget_container").style.display = 'block';
-    document.getElementById("dashboard").style.height = "calc(100% - 250px)";
+
+
+function openWidgetBar(){
+    widgetBar.style.display = 'block';
+    dashboard.style.height = "calc(100% - 250px)";
+    //Set the state to true, when the user opens the the widgetbar..
+    widgetBar.setAttribute('opened', 'true');
+    //Set the text to hide, when its opened.
+    subMenuText.innerHTML = 'Close widgetbar';
 }
+
+function closeWidgetBar(){
+    widgetBar.style.display = 'none';
+    dashboard.style.height = 'calc(100%)';
+    //When the user closes the sidebar, it sets the state to false.
+    widgetBar.setAttribute('opened', 'false')
+    //Set the text to hide, when its opened.
+    subMenuText.innerHTML = 'Show widgetbar';
+}
+
+
+function widgetbarSideMenu(){
+    if(widgetBar.getAttribute('opened') == 'true'){
+        closeWidgetBar()
+    }else if (widgetBar.getAttribute('opened') == 'false'){
+        openWidgetBar();
+    }   
+}
+
+//When the user clicks on the widgetbar it will closae the widgetbar.
+widgetBar.addEventListener('click', function() {
+    closeWidgetBar();
+});
+
+
+
 
 //function for sleep of the code
 
@@ -18,9 +53,12 @@ function sleep(milliseconds) {
 
 //on click of the widget show black container
 
-function widgetClick() {
-    document.getElementById("black-container").style.display = 'flex';
-    document.getElementById("black-container").style.alignItems = 'center';
+function widgetClick(id) {
+    alert(id);
+    document.getElementById("pop-up-container").style.display = 'flex';
+    var myDiv = document.getElementById(id);
+    var divClone = myDiv.cloneNode(true);
+    document.getElementById("pop-up-inner-container").appendChild(divClone);
 }
 
 //allow drop of the widget to the container

@@ -29,10 +29,7 @@ $.ajax({
 
 //on click widgetbar hide widgetbar
 
-$(document).on("click",".widget_container", function () {
-   document.getElementById("widget_container").style.display = 'none';
-   document.getElementById("dashboard").style.height = "calc(100%)";
-});
+
 
 
 

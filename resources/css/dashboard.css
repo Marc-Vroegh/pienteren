@@ -15,32 +15,50 @@
     transition: width 0.5s ease; /* Adding transition for smooth animation */
 }
 
-.hideatstart {
+.widget_container {
     transition: margin-left 0.5s ease; /* Adding transition for smooth animation */
 }
 
-.changeMarginLeft2 {
+.dashboard-container {
     transition: margin-left 0.5s ease; /* Adding transition for smooth animation */
 }
+
+.clock {
+    font-size: 40px;
+}
+
+
   
+
+@media only screen and (max-width: 600px) {
+    .box {
+        width: 100% !important;
+    }
+    
+    .drag {
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+    }
+}
 
 
   /* Add your other styles as needed */
 
 @media only screen and (max-width: 1000px) {
-    .changeMargin {
+    .outer_container {
         margin-left: 195px;
     }
-    #hideatstart {
+    #widget_container {
         margin-left: 200px;
     }
 }
 
 @media only screen and (min-width: 1000px) {
-    #hideatstart {
+    #widget_container {
         margin-left: calc(100% / 6);
     }
-    .changeMargin {
+    .outer_container {
         margin-left: calc(100% / 6);
     }
 }
@@ -54,20 +72,20 @@ body::-webkit-scrollbar {
     display: none;  /* Safari and Chrome */
 }
 
-.hidescroll {
+.hides-croll {
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: none;  /* Firefox */ 
 }
 
-.hidescroll::-webkit-scrollbar { 
+.hide-scroll::-webkit-scrollbar { 
     display: none;  /* Safari and Chrome */
 }
 
-.hideatstart.changeMarginLeft {
+.widget_container.widget-content {
     margin-left: 50px !important;
 }
 
-.changeMargin.changeMarginLeft2 {
+.outer_container.dashboard-container {
     margin-left: 50px !important;
 }
   
@@ -79,14 +97,18 @@ body::-webkit-scrollbar {
 }
 
 
-.widget-container {
+.widget_container {
     display: none;
-    height: 250px;  
-    min-width: 100%;
+    max-height: 250px !important;  
 }
 
-.widget-content {
-    color: white !important;
-    width: 100%;
-    height: 250px;
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
 }
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+

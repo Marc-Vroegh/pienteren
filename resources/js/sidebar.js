@@ -10,16 +10,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to handle click on hamburger icon and toggle sidebar visibility
     function handleHamburgerClick() {
+        //A function to toggle multipile visibilitiy on elements.
+        function toggleVisibility(...elements) {
+            //Loop throguh all the elements
+            elements.forEach(element => {
+                if (element) {
+                    //If its element toggle
+                    element.classList.toggle('hidden');
+                }
+            });
+        }
         // Function to toggle sidebar visibility and style
         function toggleSidebar() {
             let menuItems = document.querySelectorAll('.sidebar-menu-item-text');
 
+            widget_container.classList.toggle('widget-content');
+            outer_container.classList.toggle('dashboard-container');
+
             // Toggle small class to make sidebar smaller
             sidebar.classList.toggle('small');
             // Toggle classes to hide which shouldn't be displayed when collapsed
-            sidebarText.classList.toggle('hidden');
-            widgetSubtext.classList.toggle('hidden');
-            settingsDiv.classList.toggle('hidden');
+            toggleVisibility(sidebarText,widgetSubtext,settingsDiv)
 
             // Make sure the submenu stays closed when user closes it and vice versa
             if (submenu.getAttribute('opened') == 'false') {

@@ -17,7 +17,7 @@ $.ajax({
         var keyCount = Object.keys(obj['return']).length;
         //getting custom widget key
         var iCustom = 0;
-        if(keyCount > 1) {
+        if(keyCount > 2) {
             for (let i = 0; i < keyCount; i++) {
                 //checking whatever the return returns a custom widget
                 if(obj['return'][i]['widget'].includes("custom") == true) {

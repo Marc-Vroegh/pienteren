@@ -112,7 +112,3 @@ body::-webkit-scrollbar {
     scrollbar-width: none;  /* Firefox */
 }
 
-    display: none;
-    max-height: 250px !important;  
-}
-

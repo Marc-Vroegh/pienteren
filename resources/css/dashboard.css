@@ -97,24 +97,17 @@ body::-webkit-scrollbar {
     scrollbar-width: none;  /* Firefox */
 }
 
-.widget-container {
-    max-height: 20rem;
-    overflow-y: auto;
-}
-
-.widget {
-    width: calc(20% - 1rem); /* Adjusted width calculation including margin */
-    margin-bottom: 1rem; /* Add bottom margin */
-}
-
-@media (min-width: 768px) {
-    .widget {
-        width: calc(33.333% - 1rem); /* Adjusted width calculation for medium screens */
+/* CSS */
+@media (max-width: 640px) {
+    .widget_container .widget {
+      width: calc(50% - 1rem); /* Adjust the width to fit two widgets per row */
     }
-}
-
-@media (max-width: 480px) {
-    .widget {
-        width: calc(50% - 1rem); /* Adjusted width calculation for small screens */
+  }
+  
+  @media (max-width: 480px) {
+    .widget_container .widget {
+      width: calc(100% - 1rem); /* Adjust the width to fit one widget per row */
     }
-}
+  }
+  
+  

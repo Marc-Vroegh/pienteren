@@ -20,29 +20,15 @@
     
     <!-- Widgetbar -->
 
-
-    <div id="widget_container" class="fixed bottom-0 w-full bg-gray-200 py-4 shadow-md hidden">
-        <div class="px-4">
-            <div id="widget_scroll" class="widget-container flex flex-wrap justify-start gap-4"> <!-- Added flex-wrap and justify-start -->
-                {{-- Temp example of widgets --}}
-                @for ($i = 1; $i <= 10; $i++) <!-- Increased the number of widgets for demonstration -->
-                    <div class="bg-white rounded-md p-4 shadow-md h-64 w-full md:w-auto widget">
-                        <div class="widget-header border-b border-gray-200 pb-2 mb-4">
-                            <h2 class="text-lg font-semibold">Widget {{ $i }}</h2>
-                        </div>
-                        <div class="widget-body">
-                            <!-- Widget Content Goes Here -->
-                            <p>TEXT</p>
-                            <!-- You can add more content here as needed -->
-                        </div>
-                    </div>
-                @endfor
-            </div>
+      <div id="widget_container" class=" w-full widget_container fixed bottom-0  bg-gray-200 py-4 shadow-md overflow-hidden">
+        <div class="px-4 overflow-y-auto max-h-64 w-full">
+          <div class="flex flex-wrap justify-start">
+            @for ($i = 1; $i <= 12; $i++) 
+            <div class="widget mx-2 my-2 w-48 h-48 bg-white rounded shadow-md">{{ $i}}</div>
+        @endfor
+          </div>
         </div>
-    </div>
-    
-    
-
+      </div>
 
     
     <!-- Black container for widget -->

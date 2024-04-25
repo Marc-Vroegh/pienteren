@@ -19,17 +19,32 @@
     </div>
     
     <!-- Widgetbar -->
-    <div id="widget_container" class="widget_container absolute bottom-0 start-0 text-white overflow-scroll scrollbar-hide" opened="false">
-        <div class="widget-content bg-gray-300 scrollbar-hide p-5 rounded-t-2xl border-solid border-gray-400 border-2 opacity-90">
-            <div class="flex flex-wrap">
-                <!-- Loop through amount of divs -->
-                <?php for ($i = 100; $i <= 140; $i += 1) { ?>
-                    <div class="box" id="div<?php echo $i; ?>" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <?php } ?>
+
+
+    <div id="widget_container" class="fixed bottom-0 w-full bg-gray-200 py-4 shadow-md hidden">
+        <div class="px-4">
+            <div id="widget_scroll" class="widget-container flex flex-wrap justify-start gap-4"> <!-- Added flex-wrap and justify-start -->
+                {{-- Temp example of widgets --}}
+                @for ($i = 1; $i <= 10; $i++) <!-- Increased the number of widgets for demonstration -->
+                    <div class="bg-white rounded-md p-4 shadow-md h-64 w-full md:w-auto widget">
+                        <div class="widget-header border-b border-gray-200 pb-2 mb-4">
+                            <h2 class="text-lg font-semibold">Widget {{ $i }}</h2>
+                        </div>
+                        <div class="widget-body">
+                            <!-- Widget Content Goes Here -->
+                            <p>TEXT</p>
+                            <!-- You can add more content here as needed -->
+                        </div>
+                    </div>
+                @endfor
             </div>
         </div>
     </div>
+    
+    
 
+
+    
     <!-- Black container for widget -->
 
     <div id="black-container" class="hidden w-[calc(100%-240px)] absolute right-0 top-0 text-white black-container h-screen flex items-center">
@@ -57,6 +72,14 @@
             <i class="bi bi-x text-2xl"></i>
         </button>
     </div>
+
+
+
+
+
+
+
+
                     <div class="p-6">
                         <div style="width: 100%; height: 340px;" id="pop-up-inner-container" class="h-screen flex justify-center pop-up-inner-container">
                     </div>  
@@ -107,30 +130,6 @@
 
 
 
-    <!-- Hardwired Widgets (To be deprecated soon because of livewire) -->
- 
-    <div style="width: 100%; height: 100%; max-width: 278px; max-height: 278px; border-width: 1px;" id="drag1" draggable="true" ondragstart="drag(event)" class="w-full aspect-auto drag rounded-lg container p-2 bg-gray-500 border-solid; border-gray-400" onclick="widgetClick(this.id)">
-    <h1>Temperature</h1>
-    <div style="margin-left: -20px; margin-top: 30px;" class="flex justify-center items-center">
-        <i style="font-size: 100px;" class="bi bi-thermometer-half"></i>
-        <h1><?php if(isset($return[0])) { echo $return[0]->temp; } ?> graden</h1>
-        </div>
-    </div>
-
-    <div style="width: 100%; height: 100%; max-width: 278px; max-height: 278px; border-width: 1px;" id="drag3" draggable="true" ondragstart="drag(event)" class="w-full aspect-auto drag rounded-lg container p-2 bg-cyan-700 border-solid; border-cyan-600" onclick="widgetClick(this.id)">
-    <h1>Luchtvochtigheid</h1>
-    <div style="margin-top: 30px;" class="flex justify-center items-center">
-        <i style="font-size: 100px;" class="bi bi-cloud-rain"></i>
-        <h1 style="margin-left: 10px;"><?php if(isset($return[0])) { echo $return[0]->lvh; } ?> %</h1>
-        </div>
-    </div>
-    
-    <div style="width: 100%; height: 100%; max-width: 278px; max-height: 278px; border-width: 1px;" id="drag2" draggable="true" ondragstart="drag(event)" class="w-full aspect-auto drag rounded-lg container p-2 bg-amber-600 border-solid; border-amber-500">
-        <h1>Clock</h1>
-        <div style="margin-top: 70px;" class="flex justify-center items-center">
-           <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
-        </div>
-    </div>
 
 </div>
 

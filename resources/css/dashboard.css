@@ -15,9 +15,6 @@
     transition: width 0.5s ease; /* Adding transition for smooth animation */
 }
 
-.widget_container {
-    transition: margin-left 0.5s ease; /* Adding transition for smooth animation */
-}
 
 .dashboard-container {
     transition: margin-left 0.5s ease; /* Adding transition for smooth animation */
@@ -49,15 +46,9 @@
     .outer_container {
         margin-left: 195px;
     }
-    #widget_container {
-        margin-left: 200px;
-    }
 }
 
 @media only screen and (min-width: 1000px) {
-    #widget_container {
-        margin-left: calc(100% / 6);
-    }
     .outer_container {
         margin-left: calc(100% / 6);
     }
@@ -81,9 +72,7 @@ body::-webkit-scrollbar {
     display: none;  /* Safari and Chrome */
 }
 
-.widget_container.widget-content {
-    margin-left: 50px !important;
-}
+
 
 .outer_container.dashboard-container {
     margin-left: 50px !important;
@@ -97,10 +86,6 @@ body::-webkit-scrollbar {
 }
 
 
-.widget_container {
-    display: none;
-    max-height: 250px !important;  
-}
 
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
@@ -112,3 +97,24 @@ body::-webkit-scrollbar {
     scrollbar-width: none;  /* Firefox */
 }
 
+.widget-container {
+    max-height: 20rem;
+    overflow-y: auto;
+}
+
+.widget {
+    width: calc(20% - 1rem); /* Adjusted width calculation including margin */
+    margin-bottom: 1rem; /* Add bottom margin */
+}
+
+@media (min-width: 768px) {
+    .widget {
+        width: calc(33.333% - 1rem); /* Adjusted width calculation for medium screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .widget {
+        width: calc(50% - 1rem); /* Adjusted width calculation for small screens */
+    }
+}

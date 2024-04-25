@@ -9,6 +9,40 @@ const popUpInnerContainer = document.getElementById('pop-up-inner-container');
 const myClockDisplay = document.getElementById("MyClockDisplay");
 const customDiv = document.getElementById('customDiv');
 
+
+// const widgetBar = document.getElementById('widget_container');
+// const dashboard = document.getElementById('dashboard');
+// const subMenuText = document.getElementById('submenu_text');
+
+function toggleWidgetBar() {
+    const isOpen = !widgetBar.classList.contains('hidden');
+    widgetBar.classList.toggle('hidden');
+    if (isOpen) {
+        dashboard.style.height = 'calc(100%)';
+        subMenuText.innerHTML = 'Show widgetbar';
+    } else {
+        dashboard.style.height = 'calc(100% - 250px)';
+        subMenuText.innerHTML = 'Close widgetbar';
+    }
+}
+
+
+function widgetbarSideMenu() {
+    toggleWidgetBar();
+}
+widgetBar.addEventListener('click', toggleWidgetBar);
+
+
+
+
+
+
+
+
+
+
+
+
 document.body.onload = function() {openHolderCustomWidget()};
 
 function openHolderCustomWidget() {
@@ -76,37 +110,6 @@ function LightenDarkenColor(col,amt) {
     return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
 }
 
-function openWidgetBar(){
-    widgetBar.style.display = 'block';
-    dashboard.style.height = "calc(100% - 250px)";
-    //Set the state to true, when the user opens the the widgetbar..
-    widgetBar.setAttribute('opened', 'true');
-    //Set the text to hide, when its opened.
-    subMenuText.innerHTML = 'Close widgetbar';
-}
-
-function closeWidgetBar(){
-    widgetBar.style.display = 'none';
-    dashboard.style.height = 'calc(100%)';
-    //When the user closes the sidebar, it sets the state to false.
-    widgetBar.setAttribute('opened', 'false')
-    //Set the text to hide, when its opened.
-    subMenuText.innerHTML = 'Show widgetbar';
-}
-
-
-function widgetbarSideMenu(){
-    if(widgetBar.getAttribute('opened') == 'true'){
-        closeWidgetBar()
-    }else if (widgetBar.getAttribute('opened') == 'false'){
-        openWidgetBar();
-    }   
-}
-
-//When the user clicks on the widgetbar it will closae the widgetbar.
-widgetBar.addEventListener('click', function() {
-    closeWidgetBar();
-});
 
 //function for sleep of the code
 

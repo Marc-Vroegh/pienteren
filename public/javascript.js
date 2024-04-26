@@ -10,17 +10,15 @@ const myClockDisplay = document.getElementById("MyClockDisplay");
 const customDiv = document.getElementById('customDiv');
 
 
-// const widgetBar = document.getElementById('widget_container');
-// const dashboard = document.getElementById('dashboard');
-// const subMenuText = document.getElementById('submenu_text');
 
 function toggleWidgetBar() {
     const isOpen = !widgetBar.classList.contains('hidden');
     widgetBar.classList.toggle('hidden');
+    console.log(isOpen)
     if (isOpen) {
         dashboard.style.height = 'calc(100%)';
         subMenuText.innerHTML = 'Show widgetbar';
-    } else {
+    } else { 
         dashboard.style.height = 'calc(100% - 250px)';
         subMenuText.innerHTML = 'Close widgetbar';
     }

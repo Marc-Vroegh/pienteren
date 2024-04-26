@@ -73,12 +73,6 @@ $.ajax({
     }
 });
 
-$(document).on("click",".widget_container", function () {
-    //on click widgetbar hide widgetbar
-   document.getElementById("widget_container").style.display = 'none';
-   //changing height again to match the current widgetbar state
-   document.getElementById("dashboard").style.height = "calc(100%)";
-});
 
 
 

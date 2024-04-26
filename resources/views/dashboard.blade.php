@@ -20,11 +20,17 @@
     
     <!-- Widgetbar -->
 
-    <div id="widget_container" class="widget_container fixed bottom-0 bg-gray-300 bg-opacity-75 py-4 shadow-md overflow-hidden">
-        <div class="px-4 overflow-y-auto max-h-64">
+    <div id="widget_container" class="widget_container fixed bottom-0 bg-gray-300 bg-opacity-75 py-4 shadow-md overflow-hidden hidden">
+        <div class="px-4 overflow-y-auto max-h-64"> 
                 <div class="grid gap-2 justify-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                @for ($i = 1; $i <= 7; $i++) 
-                <div class="widget bg-white rounded shadow-md w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64">{{ $i }}</div>
+                    @for ($i = 1; $i <= 7; $i++)
+                    @component('components.widget', [
+                        'title' => "Widget $i",
+                        'icon' => "/path/to/icon.png",
+                        'value' => $i * 10, // Example value
+                        'unit' => "units"
+                    ])
+                    @endcomponent
                 @endfor
             </div>
         </div>

@@ -20,16 +20,17 @@
     
     <!-- Widgetbar -->
 
-      <div id="widget_container" class=" w-full widget_container fixed bottom-0  bg-gray-200 py-4 shadow-md overflow-hidden">
-        <div class="px-4 overflow-y-auto max-h-64 w-full">
-          <div class="flex flex-wrap justify-start">
-            @for ($i = 1; $i <= 12; $i++) 
-            <div class="widget mx-2 my-2 w-48 h-48 bg-white rounded shadow-md">{{ $i}}</div>
-        @endfor
-          </div>
+    <div id="widget_container" class="widget_container fixed bottom-0 bg-gray-300 bg-opacity-75 py-4 shadow-md overflow-hidden">
+        <div class="px-4 overflow-y-auto max-h-64">
+                <div class="grid gap-2 justify-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                @for ($i = 1; $i <= 7; $i++) 
+                <div class="widget bg-white rounded shadow-md w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64">{{ $i }}</div>
+                @endfor
+            </div>
         </div>
-      </div>
-
+    </div>
+    
+      
     
     <!-- Black container for widget -->
 

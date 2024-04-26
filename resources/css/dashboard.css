@@ -15,7 +15,26 @@
     transition: width 0.5s ease; /* Adding transition for smooth animation */
 }
 
+@media only screen and (max-width: 1000px) {
+    .outer_container {
+        margin-left: 195px;
+    }
+}
 
+@media only screen and (min-width: 1000px) {
+    .outer_container {
+        margin-left: calc(100% / 6);
+    }
+}
+
+
+
+.widget_container {
+    width: 100vw; /* Full viewport width */
+    width: -webkit-fill-available; /* For Chrome and other WebKit/Blink browsers */
+    width: -moz-available; /* For Firefox */
+    box-sizing: border-box; /* To include padding and border in the width calculation */
+}
 .dashboard-container {
     transition: margin-left 0.5s ease; /* Adding transition for smooth animation */
 }
@@ -26,6 +45,14 @@
 
 
   
+
+
+
+
+
+
+
+
 
 @media only screen and (max-width: 600px) {
     .box {
@@ -40,19 +67,6 @@
 }
 
 
-  /* Add your other styles as needed */
-
-@media only screen and (max-width: 1000px) {
-    .outer_container {
-        margin-left: 195px;
-    }
-}
-
-@media only screen and (min-width: 1000px) {
-    .outer_container {
-        margin-left: calc(100% / 6);
-    }
-}
 
 body {
     -ms-overflow-style: none;  /* Internet Explorer 10+ */

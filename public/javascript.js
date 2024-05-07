@@ -14,7 +14,6 @@ const customDiv = document.getElementById('customDiv');
 function toggleWidgetBar() {
     const isOpen = !widgetBar.classList.contains('hidden');
     widgetBar.classList.toggle('hidden');
-    console.log(isOpen)
     if (isOpen) {
         dashboard.style.height = 'calc(100%)';
         subMenuText.innerHTML = 'Show widgetbar';
@@ -28,11 +27,6 @@ function toggleWidgetBar() {
 function widgetbarSideMenu() {
     toggleWidgetBar();
 }
-widgetBar.addEventListener('click', toggleWidgetBar);
-
-
-
-
 
 
 
@@ -122,37 +116,6 @@ function sleep(milliseconds) {
 }
 
 //on click of the widget show black container
-
-function widgetClick(id) {
-    //checking if the pop up container isn't set to flex, which meens its on the foreground and if there hasn't been clicked on a custom widget
-    if ((popUpContainer.style.display == 'flex') == false && (popUpContainerWidget.style.display == 'flex') == false && id.includes("custom") == false) {
-        //set pop-up-container to flex
-        popUpContainer.style.display = 'flex';
-        //set pop-up-styler to flex
-        popUpStyler.style.display = 'flex';
-        //getting element that needs to be cloned
-        var myDiv = document.getElementById(id);
-        //cloning element
-        var divClone = myDiv.cloneNode(true);
-        //changing name of cloned element
-        divClone.id = "ClonedDiv";
-        //creating element input
-        var input = document.createElement("input");
-        //set attribute to that element hidden
-        input.setAttribute("type", "hidden");
-        //set id to changeDIV
-        input.setAttribute("id", "changeDIV");
-        //set value to clicked id
-        input.setAttribute("value", id);
-        //append input child to cloned element
-        divClone.appendChild(input);
-        //append everything to pop up container
-        popUpInnerContainer.appendChild(divClone);
-    } else {
-        //by pressing on widget when widget styler is active call addcustomwidget function
-        addCustomWidget();
-    }
-}
 
 function addCustomWidget() {
     if ((popUpContainer.style.display == 'flex') == true) {

@@ -22,19 +22,25 @@
 
     <div id="widget_container" class="widget_container fixed bottom-0 bg-gray-300 bg-opacity-75 py-4 shadow-md overflow-hidden hidden">
         <div class="px-4 overflow-y-auto max-h-64"> 
-                <div class="grid gap-2 justify-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                    @for ($i = 1; $i <= 7; $i++)
+            <div class="grid gap-2 justify-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                @for ($i = 1; $i <= 7; $i++)
+                    @php
+                        $widgetId = 'widget_' . $i; // Generate a unique widget ID
+                    @endphp
+    
                     @component('components.widget', [
                         'title' => "Widget $i",
                         'icon' => "/path/to/icon.png",
                         'value' => $i * 10, // Example value
-                        'unit' => "units"
+                        'unit' => "units",
+                        'widgetId' => $widgetId // Pass the widgetId parameter
                     ])
                     @endcomponent
                 @endfor
             </div>
         </div>
     </div>
+    
     
       
     
@@ -65,17 +71,9 @@
             <i class="bi bi-x text-2xl"></i>
         </button>
     </div>
-
-
-
-
-
-
-
-
                     <div class="p-6">
                         <div style="width: 100%; height: 340px;" id="pop-up-inner-container" class="h-screen flex justify-center pop-up-inner-container">
-                    </div>  
+                        </div>  
 
                     <div id="pop-up-inner-container-change" class="z-50 bg-neutral-900 p-5 rounded-xl pop-up-inner-container-change">
                         <h1>Aanpassingen</h1>

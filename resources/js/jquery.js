@@ -63,6 +63,7 @@ $.ajax({
             //show widgetbar for new users
             document.getElementById("widget_container").style.display = 'block';
             document.getElementById("dashboard").style.height = "calc(100% - 250px)";
+            NewUser();
             for (let i = 1; i < 60; i++) {
                 //adding widgets to widgetbar    
                 var container = "div" + (i + 99);

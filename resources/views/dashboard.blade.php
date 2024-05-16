@@ -28,7 +28,7 @@
                     $widgetId = 'widget_' . $widget->id; // Generate a unique widget ID using the widget's ID
                 @endphp
             
-                {{-- Filling variables of the component --}}
+                {{--  variables of the component --}}
                 @component('components.widget', [
                     'title' => $widget->title,
                     'icon' => $widget->icon,
@@ -72,13 +72,16 @@
             <i class="bi bi-x text-2xl"></i>
         </button>
     </div>
-                    <div class="p-6">
-                        <div style="width: 100%; height: 340px;" id="pop-up-inner-container" class="h-screen flex justify-center pop-up-inner-container">
+                    <div class="p-6 text-black">
+                        <div style="width: 100%; height: 340px;" id="pop-up-inner-container" class="h-screen flex justify-center">
+                            <div style="width: 100%; height: 340px;" id="pop-up-inner-container" class="h-screen flex justify-center ">
+                      
+                            </div>
                         </div>  
 
-                    <div id="pop-up-inner-container-change" class="z-50 bg-neutral-900 p-5 rounded-xl pop-up-inner-container-change">
+                    <div id="pop-up-inner-container-change" class="z-50 bg-neutral-900 p-5 rounded-xl">
                         <h1>Aanpassingen</h1>
-
+                        
                         <div class="pt-3">
                             <div class="grid grid-cols-3 gap-3">
                                 <div>

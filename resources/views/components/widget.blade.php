@@ -22,9 +22,14 @@
         // Retrieve the widget ID from the data attribute
         var widgetId = widget.getAttribute('data-widget-id');
         console.log("Widget clicked: " + widgetId);
+
+        //Clone pressed widget to pop up
+        let widgetHtml = widget.outerHTML;
+        popUpInnerContainer.innerHTML = widgetHtml;
+
+        //Show widgetstyler
         popUpContainer.classList.toggle('hidden');
         popUpStyler.classList.toggle('hidden');
 
-    
     }
 </script>

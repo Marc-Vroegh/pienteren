@@ -23,21 +23,21 @@
     <div id="widget_container" class="widget_container fixed bottom-0 bg-gray-300 bg-opacity-75 py-4 shadow-md overflow-hidden hidden">
         <div class="px-4 overflow-y-auto max-h-64"> 
             <div class="grid gap-2 justify-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                @for ($i = 1; $i <= 7; $i++)
-                    @php
-                        $widgetId = 'widget_' . $i; // Generate a unique widget ID
-                    @endphp
-
-                    {{-- Filling variablaes of the component. --}}
-                    @component('components.widget', [
-                        'title' => "Widget $i",
-                        'icon' => "bi-calendar-date",
-                        'value' => $i * 10, 
-                        'unit' => "units",
-                        'widgetId' => $widgetId 
-                    ])
-                    @endcomponent
-                @endfor
+                @foreach($widgets as $widget)
+                @php
+                    $widgetId = 'widget_' . $widget->id; // Generate a unique widget ID using the widget's ID
+                @endphp
+            
+                {{-- Filling variables of the component --}}
+                @component('components.widget', [
+                    'title' => $widget->title,
+                    'icon' => $widget->icon,
+                    'value' => $widget->value,
+                    'unit' => $widget->unit,
+                    'widgetId' => $widgetId
+                ])
+                @endcomponent
+            @endforeach
             </div>
         </div>
     </div>

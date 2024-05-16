@@ -27,13 +27,14 @@
                     @php
                         $widgetId = 'widget_' . $i; // Generate a unique widget ID
                     @endphp
-    
+
+                    {{-- Filling variablaes of the component. --}}
                     @component('components.widget', [
                         'title' => "Widget $i",
-                        'icon' => "/path/to/icon.png",
-                        'value' => $i * 10, // Example value
+                        'icon' => "bi-calendar-date",
+                        'value' => $i * 10, 
                         'unit' => "units",
-                        'widgetId' => $widgetId // Pass the widgetId parameter
+                        'widgetId' => $widgetId 
                     ])
                     @endcomponent
                 @endfor

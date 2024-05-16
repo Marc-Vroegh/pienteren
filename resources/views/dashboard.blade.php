@@ -73,11 +73,9 @@
         </button>
     </div>
                     <div class="p-6 text-black">
-                        <div style="width: 100%; height: 340px;" id="pop-up-inner-container" class="h-screen flex justify-center">
-                            <div style="width: 100%; height: 340px;" id="pop-up-inner-container" class="h-screen flex justify-center ">
+                                <div style="width: 100%; height: 340px;" id="pop-up-inner-container" class="h-screen flex justify-center ">
                       
                             </div>
-                        </div>  
 
                     <div id="pop-up-inner-container-change" class="z-50 bg-neutral-900 p-5 rounded-xl">
                         <h1>Aanpassingen</h1>
@@ -86,26 +84,28 @@
                             <div class="grid grid-cols-3 gap-3">
                                 <div>
                                     <label for="box" class="block mb-2 text-sm font-medium text-gray-900 text-white">Kies bron</label>
-                                        <select id="box" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onchange="changeColor(this.value)">
-                                            <option selected>Box1</option>
-                                            <option value="box2">Box2</option>
-                                            <option value="box3">Box3</option>
-                                            <option value="box4">Box4</option>
-                                            <option value="box5">Box5</option>
-                                        </select>
+                                    <select id="box" class="form-select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option value="Select">Select</option>
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            <option value="box{{ $i }}">{{ "Box" . $i }}</option>
+                                        @endfor
+                                    </select>
                                 </div>
-
-                                <div><label for="hs-color-input" class="block text-sm font-medium mb-2 dark:text-white">Kies kleur</label>
-                                    <input type="color" class=" h-10 w-full block bg-white cursor-pointer rounded-lg disabled:opacity-50 dis
-                                    abled:pointer-events-none dark:bg-gray-700 dark:border-gray-700" id="color-input" value="#2563eb" title="Choose your color" onchange="changeColor(this.value)">
+                        
+                                <div>
+                                    <label for="color-input" class="block mb-2 text-sm font-medium text-gray-900 text-white">Kies kleur</label>
+                                    <input type="color" id="color-input" class="h-10 w-full block bg-white cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-700 dark:border-gray-700">
                                 </div>
-                                    
-                                <div><label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 text-white">Kies naam</label>
-                                    <input type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:bo
-                                    rder-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" maxlength="30" placeholder="Choose name (required)" onchange="changeText(this.value)" required/></div></div>
+                                                            
+                                <div>
+                                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 text-white">Kies naam</label>
+                                    <input type="text" id="name" class="form-input h-10 w-full block bg-white cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-700 dark:border-gray-700" 
+                                    maxlength="30" placeholder="Choose name (required)" required>
                                 </div>
-
                             </div> 
+                        </div>
+                        
+                        
                        </div>
                     </div>
             </div>

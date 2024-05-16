@@ -62,26 +62,7 @@ function homeReload() {
     location.replace(location.href);
 }
 
-function changeColor(value) {
-    //setting cloned div background color in styler
-    document.getElementById("ClonedDiv").style.backgroundColor = value;
-    //calculate border color
-    newvalue = LightenDarkenColor(value, -20);
-    //setting cloned div border color in styler
-    document.getElementById("ClonedDiv").style.borderColor = newvalue;
-}
 
-function changeText(value) {
-    //changing text in cloned div in styler
-    var clonedDiv = document.getElementById('ClonedDiv'); 
-    // Get the element with id "ClonedDiv"
-    var h1Elements = clonedDiv.getElementsByTagName('h1'); 
-    // Get all <h1> elements within "ClonedDiv"
-    if (h1Elements.length > 0) { 
-        // Check if there are any <h1> elements found
-        h1Elements[0].innerHTML = value;
-    }
-}
 
 function LightenDarkenColor(col,amt) {
     var usePound = false;

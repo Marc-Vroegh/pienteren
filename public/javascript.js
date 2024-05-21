@@ -9,13 +9,22 @@ const popUpInnerContainer = document.getElementById('pop-up-inner-container');
 const myClockDisplay = document.getElementById("MyClockDisplay");
 const customDiv = document.getElementById('customDiv');
 
+var HolderOpen = 0;
+var newUser = 0;
+var countDroppedWidgets = 0;
+
 document.body.onload = function() {openHolderCustomWidget()};
+
+function NewUser() {
+    newUser = 1;
+}
 
 function openHolderCustomWidget() {
     //if custom div contains element that starts with customDrag
     if (customDiv.contains(document.getElementById(getElementsByIdStartsWith("customDiv", "div", "customDrag")[0].id)) && (popUpContainerWidget.style.display == 'flex') == false) {
         //if true show pop up container
         popUpContainerWidget.style.display = 'flex';
+        HolderOpen = 1;
     }
 }
 
@@ -124,29 +133,31 @@ function sleep(milliseconds) {
 
 function widgetClick(id) {
     //checking if the pop up container isn't set to flex, which meens its on the foreground and if there hasn't been clicked on a custom widget
-    if ((popUpContainer.style.display == 'flex') == false && (popUpContainerWidget.style.display == 'flex') == false && id.includes("custom") == false) {
-        //set pop-up-container to flex
-        popUpContainer.style.display = 'flex';
-        //set pop-up-styler to flex
-        popUpStyler.style.display = 'flex';
-        //getting element that needs to be cloned
-        var myDiv = document.getElementById(id);
-        //cloning element
-        var divClone = myDiv.cloneNode(true);
-        //changing name of cloned element
-        divClone.id = "ClonedDiv";
-        //creating element input
-        var input = document.createElement("input");
-        //set attribute to that element hidden
-        input.setAttribute("type", "hidden");
-        //set id to changeDIV
-        input.setAttribute("id", "changeDIV");
-        //set value to clicked id
-        input.setAttribute("value", id);
-        //append input child to cloned element
-        divClone.appendChild(input);
-        //append everything to pop up container
-        popUpInnerContainer.appendChild(divClone);
+    if ((popUpContainer.style.display == 'flex') == false && (popUpContainerWidget.style.display == 'flex') == false && id.includes("custom") == false && newUser == 0) {
+        if(HolderOpen == 0) {
+            //set pop-up-container to flex
+            popUpContainer.style.display = 'flex';
+            //set pop-up-styler to flex
+            popUpStyler.style.display = 'flex';
+            //getting element that needs to be cloned
+            var myDiv = document.getElementById(id);
+            //cloning element
+            var divClone = myDiv.cloneNode(true);
+            //changing name of cloned element
+            divClone.id = "ClonedDiv";
+            //creating element input
+            var input = document.createElement("input");
+            //set attribute to that element hidden
+            input.setAttribute("type", "hidden");
+            //set id to changeDIV
+            input.setAttribute("id", "changeDIV");
+            //set value to clicked id
+            input.setAttribute("value", id);
+            //append input child to cloned element
+            divClone.appendChild(input);
+            //append everything to pop up container
+            popUpInnerContainer.appendChild(divClone);
+        } 
     } else {
         //by pressing on widget when widget styler is active call addcustomwidget function
         addCustomWidget();
@@ -208,38 +219,57 @@ function drop(ev) {
     var data = ev.dataTransfer.getData("text");
     var crsf = ""
 
-    //if id contains drag
-    if (!document.getElementById(ev.target.id).contains(document.getElementById('drag'))) {
-        //retrieving target container and append widget
-        ev.target.appendChild(document.getElementById(data));
+    if(ev.target.id.includes("div")) {
+        HolderOpen = 0;
 
-        //setting up data for ajax
-        var data2 = {
-            target: ev.target.id,
-            widget: data
+        if(newUser == 1) {
+            countDroppedWidgets++;
         }
-          
-        //making sure ajax can work by setting a token
-        $.ajaxSetup({
-            headers: {
-               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        })
-        //sending data to database by going to php controller
-        $.ajax({
-            url: "/changeWidget",
-            type: "POST",
-            cache: false,
-            data: data2,
-            success: function(response) {
-                //getting succes reponse
-                //alert(response);
-                //if widget dropped make sure pop up container for widget is hidden
-                popUpContainerWidget.style.display = 'none';
-            }
-        });
+        
+        if(countDroppedWidgets > 2) {
+            alert("Good job, the page will now be refreshed, you can now try out the dashboard, also you can try to style a custom widget by pressing on the default widgets");
+            location.replace(location.href);
+        }
 
-        //document.getElementById("widget_container").style.display = 'none';
+    
+        //if (typeof (document.getElementById(getElementsByIdStartsWith(ev.target.id, "div", "custom")[0].id)) !== 'undefined') {
+        //alert(new2 = document.getElementById(getElementsByIdStartsWith(ev.target.id, "div", "drag")[0].id));
+        //alert(new2);
+    // }
+
+        //if id contains drag
+        if (!document.getElementById(ev.target.id).contains(document.getElementById('drag'))) {
+            //retrieving target container and append widget
+            ev.target.appendChild(document.getElementById(data));
+
+            //setting up data for ajax
+            var data2 = {
+                target: ev.target.id,
+                widget: data
+            }
+            
+            //making sure ajax can work by setting a token
+            $.ajaxSetup({
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            })
+            //sending data to database by going to php controller
+            $.ajax({
+                url: "/changeWidget",
+                type: "POST",
+                cache: false,
+                data: data2,
+                success: function(response) {
+                    //getting succes reponse
+                    //alert(response);
+                    //if widget dropped make sure pop up container for widget is hidden
+                    popUpContainerWidget.style.display = 'none';
+                }
+            });
+
+            //document.getElementById("widget_container").style.display = 'none';
+        }
     }
     //if ((document.getElementById('customDiv').contains(document.getElementById(getElementsByIdStartsWith("customDiv", "div", "customDrag")[0].id))) == false) {
     //}

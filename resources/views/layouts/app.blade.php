@@ -34,7 +34,7 @@
     <!-- Menu Items -->
     <div class="mt-3">
         <!-- Home -->
-        <div class="sidebar-menu-item p-2.5 flex items-center rounded-md  duration-300 cursor-pointer hover:bg-blue-600 text-white" onclick="homeReload()" >
+        <div class="sidebar-menu-item p-2.5 flex items-center rounded-md duration-300 cursor-pointer hover:bg-blue-600 text-white" onclick="homeReload()" >
             <i class="bi bi-house-door-fill"></i>
             <span class="sidebar-menu-item-text text-[15px] ml-4 text-gray-200 font-bold">Home</span>
         </div>

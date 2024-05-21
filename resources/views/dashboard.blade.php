@@ -52,12 +52,14 @@
         <div id="pop-up-styler" class="hidden w-full absolute right-0 top-0 text-white black-container h-screen flex items-center scrollbar-hide">
             <div style="color: white !important; width: 680px; height: 580px; margin-left: auto; margin-right: auto;" class="scrollbar-hide overflow-scroll bg-opacity-95 rounded-2xl bg-neutral-700 p-5">
             <div class="flex justify-between items-center"> 
+
             <h1 class="text-lg">Widget Styler</h1>
             <button class="text-gray-400 hover:text-gray-600 focus:outline-none" onclick="window.location.reload()">
             <i class="bi bi-x text-2xl"></i>
-        </button>
-    </div>
-                    <div class="p-6">
+            </button>
+        </div>
+                        <div class="p-6">
+
                         <div style="width: 100%; height: 340px;" id="pop-up-inner-container" class="h-screen flex justify-center pop-up-inner-container">
                     </div>  
 

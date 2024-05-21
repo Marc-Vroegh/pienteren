@@ -1,0 +1,118 @@
+.sidebar.small {
+    width: 50px; /* Set smaller width */
+}
+
+.sidebar.small #sidebarText {
+    display: none; /* Hide text */
+}
+
+
+.sidebar.small #chevron-icon {
+    display: none; /* Hide submenu and chevron icon */
+}
+
+.sidebar {
+    transition: width 0.5s ease; /* Adding transition for smooth animation */
+}
+
+.widget_container {
+    transition: margin-left 0.5s ease; /* Adding transition for smooth animation */
+}
+
+.dashboard-container {
+    transition: margin-left 0.5s ease; /* Adding transition for smooth animation */
+}
+
+.drag {
+    transition: width 1s ease;
+}
+
+.clock {
+    font-size: 40px;
+}
+
+
+  
+
+@media only screen and (max-width: 600px) {
+    .box {
+        width: 100% !important;
+    }
+    
+    .drag {
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+    }
+}
+
+
+  /* Add your other styles as needed */
+
+@media only screen and (max-width: 1000px) {
+    .outer_container {
+        margin-left: 195px;
+    }
+    #widget_container {
+        margin-left: 200px;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    #widget_container {
+        margin-left: calc(100% / 6);
+    }
+    .outer_container {
+        margin-left: calc(100% / 6);
+    }
+}
+
+body {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+body::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+.hides-croll {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */ 
+}
+
+.hide-scroll::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+.widget_container.widget-content {
+    margin-left: 50px !important;
+}
+
+.outer_container.dashboard-container {
+    margin-left: 50px !important;
+}
+  
+
+.box {
+    min-width: 278px;
+    min-height: 278px;
+    padding: 10px;
+}
+
+
+.widget_container {
+    display: none;
+    max-height: 250px !important;  
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+

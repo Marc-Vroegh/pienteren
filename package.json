@@ -7,11 +7,15 @@
         "watch": "vite build --watch"
     },
     "devDependencies": {
-        "autoprefixer": "^10.4.17",
+        "autoprefixer": "^10.4.19",
         "axios": "^1.6.4",
         "laravel-vite-plugin": "^1.0.0",
-        "postcss": "^8.4.35",
-        "tailwindcss": "^3.4.1",
-        "vite": "^5.0.0"
+        "postcss": "^8.4.38",
+        "tailwindcss": "^3.4.3",
+        "vite": "^5.2.8"
+    },
+    "dependencies": {
+        "javascript": "^1.0.0",
+        "jquery": "^3.7.1"
     }
 }

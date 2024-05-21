@@ -59,6 +59,7 @@
             </button>
         </div>
                         <div class="p-6">
+
                         <div style="width: 100%; height: 340px;" id="pop-up-inner-container" class="h-screen flex justify-center pop-up-inner-container">
                     </div>  
 

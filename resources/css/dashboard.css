@@ -33,6 +33,10 @@
     transition: margin-left 0.5s ease; /* Adding transition for smooth animation */
 }
 
+.drag {
+    transition: width 1s ease;
+}
+
 .clock {
     font-size: 40px;
 }

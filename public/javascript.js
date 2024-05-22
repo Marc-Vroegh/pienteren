@@ -71,10 +71,3 @@ function LightenDarkenColor(col,amt) {
     else if  ( g < 0 ) g = 0;
     return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
 }
-
-
-
-
-
-
-   

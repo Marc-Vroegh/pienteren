@@ -23,6 +23,12 @@
     function handleWidgetClick(widget) {
         defaultWidget = widget.cloneNode(true);
 
+        //Set the value of widgetId in invisibile input
+        const widgetId = widget.getAttribute('data-widget-id');
+        const widgetNumber = widgetId.split('_')[1];
+        console.log(widgetNumber);
+        document.getElementById('default_widget_id').value = widgetNumber;
+
         //Show widgetstyler
         popUpContainer.classList.remove('hidden');
         popUpStyler.classList.toggle('hidden');

@@ -34,29 +34,6 @@ function widgetbarSideMenu() {
 
 
 
-
-document.body.onload = function() {openHolderCustomWidget()};
-
-function openHolderCustomWidget() {
-    //if custom div contains element that starts with customDrag
-    if (customDiv.contains(document.getElementById(getElementsByIdStartsWith("customDiv", "div", "customDrag")[0].id)) && (popUpContainerWidget.style.display == 'flex') == false) {
-        //if true show pop up container
-        popUpContainerWidget.style.display = 'flex';
-    }
-}
-
-function getElementsByIdStartsWith(container, selectorTag, prefix) {
-    var items = [];
-    var myPosts = document.getElementById(container).getElementsByTagName(selectorTag);
-    for (var i = 0; i < myPosts.length; i++) {
-        //omitting undefined null check for brevity
-        if (myPosts[i].id.lastIndexOf(prefix, 0) === 0) {
-            items.push(myPosts[i]);
-        }
-    }
-    return items;
-}
-
 function homeReload() {
     //reloading page
     location.replace(location.href);
@@ -84,111 +61,9 @@ function LightenDarkenColor(col,amt) {
 }
 
 
-//function for sleep of the code
 
-function sleep(milliseconds) {
-    //function for sleep of the code
-    var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-        if ((new Date().getTime() - start) > milliseconds) {
-            break;
-        }
-    }
-}
 
-//on click of the widget show black container
 
-function addCustomWidget() {
-    if ((popUpContainer.style.display == 'flex') == true) {
-        //retrieving all set values in widget styler
-        var div = document.getElementById('changeDIV').value;
-        var color = document.getElementById('color-input').value;
-        var name = document.getElementById('name').value;
-        var box = document.getElementById('box').value;
-
-        //setting them for jquery
-        var data2 = {
-            div: div,
-            color: color,
-            name: name,
-            box: box
-        }
-          
-        //make sure that ajax works by setting a token
-        $.ajaxSetup({
-            headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        })
-        $.ajax({
-            //go to php controller to upload this data to database
-            url: "/customWidget",
-            type: "POST",
-            cache: false,
-            data: data2,
-            success: function(response) {
-                //by succes response reloading page
-                //alert(response);
-                location.replace(location.href);
-            }
-        });
-    } 
-}
-
-function allowDrop(ev) {
-    //allow drop of the widget to the container
-    ev.preventDefault();
-}
-
-function drag(ev) {
-    //on drag of the widget set data
-    ev.dataTransfer.setData("text", ev.target.id);
-}
-
-//When drop append child to container
-
-function drop(ev) {
-    ev.preventDefault();
-    //setting data transfer
-    var data = ev.dataTransfer.getData("text");
-    var crsf = ""
-
-    //if id contains drag
-    if (!document.getElementById(ev.target.id).contains(document.getElementById('drag'))) {
-        //retrieving target container and append widget
-        ev.target.appendChild(document.getElementById(data));
-
-        //setting up data for ajax
-        var data2 = {
-            target: ev.target.id,
-            widget: data
-        }
-          
-        //making sure ajax can work by setting a token
-        $.ajaxSetup({
-            headers: {
-               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        })
-        //sending data to database by going to php controller
-        $.ajax({
-            url: "/changeWidget",
-            type: "POST",
-            cache: false,
-            data: data2,
-            success: function(response) {
-                //getting succes reponse
-                //alert(response);
-                //if widget dropped make sure pop up container for widget is hidden
-                popUpContainerWidget.style.display = 'none';
-            }
-        });
-
-        //document.getElementById("widget_container").style.display = 'none';
-    }
-    //if ((document.getElementById('customDiv').contains(document.getElementById(getElementsByIdStartsWith("customDiv", "div", "customDrag")[0].id))) == false) {
-    //}
-}
 
     //show time for the widget clock
 

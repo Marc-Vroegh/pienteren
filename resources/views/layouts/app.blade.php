@@ -52,7 +52,7 @@
           <span>
             <i class="bi bi-collection"></i>
           </span>
-            <span class="text-[15px] ml-4 text-gray-200" id='submenutxt'>Show widgetbar</span>
+            <span class=" sidebar-menu-item-text text-[15px] ml-4 text-gray-200" id='submenutxt'>Show widgetbar</span>
         </div>
 
         <!-- Edit mode-->
@@ -60,7 +60,7 @@
           <span>
             <i class="bi bi-pencil-fill"></i>
           </span>
-            <span class="text-[15px] ml-4 text-gray-200" id='editmodetxt'>Switch to Edit Mode</span>
+            <span class="sidebar-menu-item-text text-[15px] ml-4 text-gray-200" id='editmodetxt'>Switch to Edit Mode</span>
         </div>
 
         <!-- Logout -->

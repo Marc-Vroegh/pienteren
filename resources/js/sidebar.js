@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Function to toggle sidebar visibility and style
         function toggleSidebar() {
             let menuItems = document.querySelectorAll('.sidebar-menu-item-text');
-
+            console.log(menuItems);
             widget_container.classList.toggle('widget-content');
             outer_container.classList.toggle('dashboard-container');
 

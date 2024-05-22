@@ -10,7 +10,6 @@ const myClockDisplay = document.getElementById("MyClockDisplay");
 const customDiv = document.getElementById('customDiv');
 
 
-
 function toggleWidgetBar() {
     const isOpen = !widgetBar.classList.contains('hidden');
     widgetBar.classList.toggle('hidden');
@@ -27,12 +26,6 @@ function toggleWidgetBar() {
 function widgetbarSideMenu() {
     toggleWidgetBar();
 }
-
-
-
-
-
-
 
 function homeReload() {
     //reloading page

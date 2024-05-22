@@ -44,5 +44,18 @@ class CustomWidgetController extends Controller
     
     }
 
+    public function updatePosition(Request $request)
+    {
+        $request->validate([
+            'widget_id' => 'required|exists:custom_widgets,id',
+            'position' => 'required|integer|min:1|max:14',
+        ]);
+
+        $widget = CustomWidget::find($request->widget_id);
+        $widget->position = $request->position;
+        $widget->save();
+        return response();
+    }
+
 
 }

@@ -32,6 +32,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::post('/custom-widgets', [CustomWidgetController::class, 'store'])->name('customWidgets.store');
 //Updating widget position
 Route::post('/update-widget-position', [CustomWidgetController::class, 'updatePosition']);
+//Deleting a widget
+Route::post('/delete-widget', [CustomWidgetController::class, 'deleteWidget']);
 
 
 Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');

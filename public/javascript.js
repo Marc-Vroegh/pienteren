@@ -8,7 +8,7 @@ const popUpStyler = document.getElementById('pop-up-styler');
 const popUpInnerContainer = document.getElementById('pop-up-inner-container');
 const myClockDisplay = document.getElementById("MyClockDisplay");
 const customDiv = document.getElementById('customDiv');
-
+const editModeText = document.getElementById('editmodetxt');
 
 function toggleWidgetBar() {
     const isOpen = !widgetBar.classList.contains('hidden');
@@ -23,9 +23,28 @@ function toggleWidgetBar() {
 }
 
 
+function toggleEditmode() {
+    const widgetEditButtons = document.querySelectorAll('.widget-menu');
+    widgetEditButtons.forEach(button => {
+        button.classList.toggle('hidden');
+    });
+    const isOpen = !widgetEditButtons[0].classList.contains('hidden'); 
+    if (isOpen) {
+        editModeText.innerHTML = 'Disable Edit Mode'; 
+    } else {
+        editModeText.innerHTML = 'Switch to Edit Mode'; 
+    }
+}
+
+
 function widgetbarSideMenu() {
     toggleWidgetBar();
 }
+
+function editmodeSideMenu(){
+    toggleEditmode();
+}
+
 
 function homeReload() {
     //reloading page
@@ -58,23 +77,4 @@ function LightenDarkenColor(col,amt) {
 
 
 
-    //show time for the widget clock
-
-    function showTime() {
-        var date = new Date();
-        var h = date.getHours(); // 0 - 23
-        var m = date.getMinutes(); // 0 - 59
-        var s = date.getSeconds(); // 0 - 59
-
-        h = (h < 10) ? "0" + h : h;
-        m = (m < 10) ? "0" + m : m;
-        s = (s < 10) ? "0" + s : s;
-
-        var time = h + ":" + m + ":" + s;
-        myClockDisplay.innerText = time;
-        myClockDisplay.textContent = time;
-
-        setTimeout(showTime, 1000);
-    }
-
-    showTime();
+   

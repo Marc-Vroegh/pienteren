@@ -1,4 +1,3 @@
-  <!-- pop-up container for widget styling -->
   <div id="pop-up-container" class="hidden fixed inset-0 w-full h-screen bg-black bg-opacity-40 z-50">
     <div id="pop-up-styler" class="hidden w-full h-screen flex items-center justify-center">
         <div class="bg-neutral-700 bg-opacity-95 rounded-2xl p-5 w-[680px] h-[620px] overflow-y-auto">

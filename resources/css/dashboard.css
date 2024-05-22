@@ -38,16 +38,6 @@
 }
 
 
-  
-
-
-
-
-
-
-
-
-
 @media only screen and (max-width: 600px) {
     .box {
         width: 100% !important;
@@ -139,3 +129,4 @@ body::-webkit-scrollbar {
         width: calc(100% - 0.5rem); 
     }
 }
+

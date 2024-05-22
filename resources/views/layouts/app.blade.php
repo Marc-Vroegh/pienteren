@@ -47,11 +47,20 @@
         </div>
         
         <!-- Submenu -->
-        <div class="hidden text-sm cursor-pointer pt-2.5 pb-2.5 rounded-md w-4/5 mx-auto text-gray-200 font-bold hover:bg-blue-600" id="submenu" opened="false" onclick="widgetbarSideMenu();">
+        <!-- Widgetbar -->
+        <div class="hidden text-sm cursor-pointer pt-2.5 pb-2.5 rounded-md w-4/5 mx-auto text-gray-200 font-bold hover:bg-blue-600" id="widgetbar_button" opened="false" onclick="widgetbarSideMenu();">
           <span>
             <i class="bi bi-collection"></i>
           </span>
             <span class="text-[15px] ml-4 text-gray-200" id='submenutxt'>Show widgetbar</span>
+        </div>
+
+        <!-- Edit mode-->
+        <div class="hidden text-sm cursor-pointer pt-2.5 pb-2.5 rounded-md w-4/5 mx-auto text-gray-200 font-bold hover:bg-blue-600" id="editmode_button" opened="false" onclick="editmodeSideMenu();">
+          <span>
+            <i class="bi bi-pencil-fill"></i>
+          </span>
+            <span class="text-[15px] ml-4 text-gray-200" id='editmodetxt'>Switch to Edit Mode</span>
         </div>
 
         <!-- Logout -->
@@ -65,7 +74,7 @@
     </div>
 </div>
 @show
-<div id="outer_container" style="" class="scrollbar-hide outer_container">
+<div id="outer_container" class="scrollbar-hide outer_container">
     @yield('content')
 </div>
 <script src="javascript.js"></script>

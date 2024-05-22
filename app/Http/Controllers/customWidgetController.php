@@ -50,12 +50,23 @@ class CustomWidgetController extends Controller
             'widget_id' => 'required|exists:custom_widgets,id',
             'position' => 'required|integer|min:1|max:14',
         ]);
-
+        
         $widget = CustomWidget::find($request->widget_id);
         $widget->position = $request->position;
         $widget->save();
         return response();
     }
 
+    public function deleteWidget(Request $request)
+    {
+        // id of widget to select corerct one
+        $widgetId = $request->input('widget_id');
+        $widget = CustomWidget::find($widgetId);
 
+        if ($widget) {
+            // Delete the widget
+            $widget->delete();
+            return response()->json(['success' => true]);
+        }
+    }
 }

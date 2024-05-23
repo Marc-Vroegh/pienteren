@@ -121,28 +121,32 @@ function editWidget(widgetId) {
 }
 
 function deleteWidget(widgetId) {
-    fetch('/delete-widget', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-        },
-        body: JSON.stringify({
-            widget_id: widgetId
+    if (confirm('Are you sure you want to remove this widget?')) {
+        fetch('/delete-widget', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({
+                widget_id: widgetId
+            })
         })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            var widgetElement = document.getElementById('widget' + widgetId);
-            if (widgetElement) {
-                widgetElement.parentElement.removeChild(widgetElement);
-                console.log('Widget deleted successfully');
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                var widgetElement = document.getElementById('widget' + widgetId);
+                if (widgetElement) {
+                    widgetElement.parentElement.removeChild(widgetElement);
+                    console.log('Widget deleted successfully');
+                }
+            } else {
+                console.error('Failed to delete widget');
             }
-        } else {
-            console.error('Failed to delete widget');
-        }
-    })
-    .catch(error => console.error('Error:', error));
+        })
+        .catch(error => console.error('Error:', error));
+    } else {
+        console.log('Widget deletion canceled');
+    }
 }
 </script>

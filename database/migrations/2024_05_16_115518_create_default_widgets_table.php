@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('icon');
-            $table->integer('value');
+            $table->bigInteger('value');
             $table->string('unit');
             $table->timestamps();
         });

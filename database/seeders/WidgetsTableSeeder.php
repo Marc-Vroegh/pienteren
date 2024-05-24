@@ -13,6 +13,7 @@ class WidgetsTableSeeder extends Seeder
      */
     public function run(): void
     {
+        //Temp
         defaultWidget::create([
             'title' => 'Temprature',
             'icon' => 'bi-thermometer',
@@ -20,11 +21,20 @@ class WidgetsTableSeeder extends Seeder
             'unit' => 'celsius',
         ]);
 
+        //Humidty
         defaultWidget::create([
             'title' => 'Humidty',
             'icon' => 'bi-moisture',
             'value' => 20,
             'unit' => '%',
+        ]);
+
+        //Clock
+        defaultWidget::create([
+            'title' => 'Clock',
+            'icon' => 'bi-clock',
+            'value' => time(),
+            'unit' => 'time',
         ]);
     }
 }

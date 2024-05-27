@@ -3,94 +3,70 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\customWidget;
-use App\Models\dataWidget;
+use App\Models\CustomWidget;
 use Auth;
-
-class customWidgetController extends Controller
+use App\Models\defaultWidget;
+class CustomWidgetController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
-    {
-        $div = $request['div'];
-        $color = $request['color'];
-        $name = $request['name'];
-        $box = $request['box'];
-
-        customWidget::create([
-            "email"=>Auth::user()->email,
-            "toCloneDiv"=>$div,
-            "color"=>$color,
-            "name"=>$name,
-            "source"=>$box,
-            "clonedDiv"=>"empty"
-        ]);
-    
-        $count = dataWidget::where('widget', 'LIKE', '%customDrag%')->where('email', Auth::user()->email)->get();
-        $Count = $count->count();
-        $new = $Count;
-
-
-
-        $divnew = "customDiv";
-        $newdrag = "customDrag".strval($new);
-
-        dataWidget::create([
-            "email"=>Auth::user()->email,
-            "container"=>$divnew,
-            "widget"=>$newdrag
+{
+          $request->validate([
+            'box' => 'required',
+            'color' => 'required',
+            'name' => 'required|max:255',
+            'default_widget_id' => 'required|exists:default_widgets,id', 
         ]);
         
-        return response()->json(["msg"=>"succes"]);
+        //Check the highest entry
+        $maxPosition = CustomWidget::max('position');
+        $nextPosition = 1;
+        //Check logic if position is taken
+        if ($maxPosition) {
+            $nextPosition = $maxPosition + 1;
+        } else {
+            $nextPosition = 1;
+        }
+
+        // get the icon
+        $defaultWidget = DefaultWidget::findOrFail($request->input('default_widget_id'));
+        $customWidget = new CustomWidget([
+            'user_id' => auth()->id(),
+            'default_widget_id' => $request->default_widget_id,
+            'name' => $request->name,
+            'color' => $request->color,
+            'box' => $request->box,
+            'icon' => $defaultWidget->icon, 
+            'position' => $nextPosition,
+        ]);
+       
+        $customWidget->save();
+        return redirect('/home');
+    
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function updatePosition(Request $request)
     {
-        //
+        $request->validate([
+            'widget_id' => 'required|exists:custom_widgets,id',
+            'position' => 'required|integer|min:1|max:14',
+        ]);
+        
+        $widget = CustomWidget::find($request->widget_id);
+        $widget->position = $request->position;
+        $widget->save();
+        return response();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function deleteWidget(Request $request)
     {
-        //
-    }
+        // id of widget to select corerct one
+        $widgetId = $request->input('widget_id');
+        $widget = CustomWidget::find($widgetId);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        if ($widget) {
+            // Delete the widget
+            $widget->delete();
+            return response()->json(['success' => true]);
+        }
     }
 }

@@ -15,9 +15,19 @@
     transition: width 0.5s ease; /* Adding transition for smooth animation */
 }
 
-.widget_container {
-    transition: margin-left 0.5s ease; /* Adding transition for smooth animation */
+@media only screen and (max-width: 1000px) {
+    .outer_container {
+        margin-left: 195px;
+    }
 }
+
+@media only screen and (min-width: 1000px) {
+    .outer_container {
+        margin-left: calc(100% / 6);
+    }
+}
+
+
 
 .dashboard-container {
     transition: margin-left 0.5s ease; /* Adding transition for smooth animation */
@@ -32,8 +42,6 @@
 }
 
 
-  
-
 @media only screen and (max-width: 600px) {
     .box {
         width: 100% !important;
@@ -47,25 +55,6 @@
 }
 
 
-  /* Add your other styles as needed */
-
-@media only screen and (max-width: 1000px) {
-    .outer_container {
-        margin-left: 195px;
-    }
-    #widget_container {
-        margin-left: 200px;
-    }
-}
-
-@media only screen and (min-width: 1000px) {
-    #widget_container {
-        margin-left: calc(100% / 6);
-    }
-    .outer_container {
-        margin-left: calc(100% / 6);
-    }
-}
 
 body {
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
@@ -85,9 +74,7 @@ body::-webkit-scrollbar {
     display: none;  /* Safari and Chrome */
 }
 
-.widget_container.widget-content {
-    margin-left: 50px !important;
-}
+
 
 .outer_container.dashboard-container {
     margin-left: 50px !important;
@@ -101,18 +88,49 @@ body::-webkit-scrollbar {
 }
 
 
-.widget_container {
-    display: none;
-    max-height: 250px !important;  
-}
 
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
 }
 
-/* For IE, Edge and Firefox */
+
 .scrollbar-hide {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  
+    scrollbar-width: none; 
+}
+
+
+.widget_container {
+    width: 100vw; 
+    width: -webkit-fill-available;
+    width: -moz-available; 
+    box-sizing: border-box;
+    padding: 1rem 1rem;
+}
+
+/* Grid layout */
+.widget_container .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    column-gap: 4rem; 
+    row-gap: 1rem; 
+}
+
+
+.widget_container .widget {
+    margin: 0; 
+}
+
+
+@media (max-width: 640px) {
+    .widget_container .widget {
+        width: calc(50% - 0.5rem);    
+     }
+}
+
+@media (max-width: 480px) {
+    .widget_container .widget {
+        width: calc(100% - 0.5rem); 
+    }
 }
 

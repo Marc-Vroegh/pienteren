@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_widgets', function (Blueprint $table) {
+        Schema::create('default_widgets', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
-            $table->string('container');
-            $table->string('widget');
-            $table->timestamp('created_at')->nullable();
+            $table->string('title');
+            $table->string('icon');
+            $table->bigInteger('value');
+            $table->string('unit');
+            $table->timestamps();
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_widgets');
+        Schema::dropIfExists('default_widgets');
     }
 };

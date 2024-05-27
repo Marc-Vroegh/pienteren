@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class dataWidget extends Model
+class defaultWidget extends Model
 {
-    public $timestamps = false;
-    protected $fillable = ["container", "widget", "email"];
+    protected $fillable = ['title', 'icon', 'value', 'unit'];
     use HasFactory;
 }

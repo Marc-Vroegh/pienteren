@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CustomWidget;
 use Illuminate\Http\Request;
 use App\Models\dataBox;
+use App\Models\defaultWidget;
+
+
 use Auth;
 
 class HomeController extends Controller
@@ -24,9 +28,11 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        //$return = dataBox::where("email", Auth::user()->email)->orderBy('id', 'DESC')->get();
-        $return = dataBox::orderBy('id', 'DESC')->get();
-        return view('dashboard')->with('return', $return);
+    {   
+        $userId = auth()->id(); //catch auth user
+        $dataBoxes = dataBox::orderBy('id', 'DESC')->get(); 
+        $customWidgets = CustomWidget::where('user_id', $userId)->get();
+        $widgets = defaultWidget::all(); 
+        return view('dashboard', compact('dataBoxes', 'widgets', 'customWidgets'));
     }
 }

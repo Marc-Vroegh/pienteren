@@ -15,24 +15,21 @@
                 <input type="hidden" id="fname" value="<?php echo $perms['email'] ?>" name="email"><br>
 
                 <?php echo $perms['email'] ?><?php if ($perms['temp'] == 1) { $value = 0; } else { $value = 1; } ?>
-                <?php if ($perms['temp'] == 1) { ?>Verwijder Temp<?php } else { ?> Voeg Temp Toe <?php } ?>
-                <input type="submit" name="temp" value="<?php echo $value; ?>" />
+                
+                <?php if ($perms['temp'] == 1) { $value = 0; } else { $value = 1; } ?>
+                <button type="submit" name="temp" value="{{ $value }}" class="btn btn-primary"><?php if ($perms['temp'] == 1) { ?>Verwijder Temperatuur<?php } else { ?> Voeg Temperatuur Toe <?php } ?></button>
 
                 <?php if ($perms['lvh'] == 1) { $value = 0; } else { $value = 1; } ?>
-                <?php if ($perms['lvh'] == 1) { ?>Verwijder Luchtvochtigheid<?php } else { ?> Voeg Luchtvochtigheid Toe <?php } ?>
-                <input type="submit" name="lvh" value="<?php echo $value; ?>" />
+                <button type="submit" name="lvh" value="{{ $value }}" class="btn btn-primary"><?php if ($perms['lvh'] == 1) { ?>Verwijder Luchtvochtigheid<?php } else { ?> Voeg Luchtvochtigheid Toe <?php } ?></button>
 
                 <?php if ($perms['ppm'] == 1) { $value = 0; } else { $value = 1; } ?>
-                <?php if ($perms['ppm'] == 1) { ?>Verwijder Koolstofdioxide<?php } else { ?> Voeg Koolstofdioxide Toe <?php } ?>
-                <input type="submit" name="ppm" value="<?php echo $value; ?>" />
+                <button type="submit" name="ppm" value="{{ $value }}" class="btn btn-primary"><?php if ($perms['ppm'] == 1) { ?>Verwijder Koolstofdioxide<?php } else { ?> Voeg Koolstofdioxide Toe <?php } ?></button>
 
                 <?php if ($perms['db'] == 1) { $value = 0; } else { $value = 1; } ?>
-                <?php if ($perms['db'] == 1) { ?>Verwijder Decibel<?php } else { ?> Voeg Decibel Toe <?php } ?>
-                <input type="submit" name="db" value="<?php echo $value; ?>" />
+                <button type="submit" name="db" value="{{ $value }}" class="btn btn-primary"><?php if ($perms['db'] == 1) { ?>Verwijder Geluidsterkte<?php } else { ?> Voeg Geluidsterkte Toe <?php } ?></button>
 
                 <?php if ($perms['lumen'] == 1) { $value = 0; } else { $value = 1; } ?>
-                <?php if ($perms['lumen'] == 1) { ?>Verwijder Lumen<?php } else { ?> Voeg Lumen Toe <?php } ?>
-                <input type="submit" name="lumen" value="<?php echo $value; ?>" />
+                <button type="submit" name="lumen" value="{{ $value }}" class="btn btn-primary"><?php if ($perms['lumen'] == 1) { ?>Verwijder Lichtsterkte<?php } else { ?> Voeg Lichtsterkte Toe <?php } ?></button>
                 
             </form>
             <?php } ?>

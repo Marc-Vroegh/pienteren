@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\dataBox;
+use App\Models\permissionDataUser;
 use Auth;
 
-class rpiStoreController extends Controller
+class widgetPermissionsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,20 +29,27 @@ class rpiStoreController extends Controller
      */
     public function store(Request $request)
     {
-        $temp = $request['temp'];
-        $lvh = $request['lvh'];
-        $ppm = $request['ppm'];
-        $db = $request['db'];
-        $lumen = $request['lumen'];
+            $perm = permissionDataUser::where('email', $request['email'])->first();
+            if(isset($request['temp'])) {
+                $perm->temp = $request['temp'];
+            }
+            if(isset($request['lvh'])) {
+                $perm->lvh = $request['lvh'];
+            }
+            if(isset($request['ppm'])) {
+                $perm->ppm = $request['ppm'];
+            }
+            if(isset($request['db'])) {
+                $perm->db = $request['db'];
+            }
+            if(isset($request['lumen'])) {
+                $perm->lumen = $request['lumen'];
+            }
+            $perm->save();
 
-        dataBox::create([
-            "email"=>Auth::user()->email,
-            "temp"=>$temp,
-            "lvh"=>$lvh,
-            "ppm"=>$ppm,
-            "db"=>$db,
-            "lumen"=>$lumen
-        ]);
+            return redirect()->to('/home'); 
+
+       // $perm->save();
     }
 
     /**

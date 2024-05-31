@@ -15,7 +15,6 @@
         "vite": "^5.2.8"
     },
     "dependencies": {
-        "javascript": "^1.0.0",
-        "jquery": "^3.7.1"
+        "javascript": "^1.0.0"
     }
 }

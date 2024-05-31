@@ -3,14 +3,14 @@
     <div class="max-w-md w-full space-y-8 bg-black bg-opacity-75 py-12 px-4 sm:px-6 lg:px-8 rounded-lg">
         <div>
             <h2 class="text-center text-3xl font-extrabold text-white">
-                {{ __('Herstel Wachtwoord') }}
+                {{ __('Herstel Wachtwoord2') }}
             </h2>
         </div>
         <form method="POST" action="{{ route('password.email') }}" class="mt-8 space-y-6">
             @csrf
 
             @if (session('status'))
-                <div class="alert alert-success" role="alert">
+                <div class="alert alert-success text-white" role="alert">
                     {{ session('status') }}
                 </div>
             @endif

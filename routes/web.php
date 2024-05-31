@@ -2,11 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\widgetController;
-use App\Http\Controllers\customWidgetController;
+use App\Http\Controllers\CustomWidgetController;
+use App\Http\Controllers\widgetPermissionsController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\rpiStoreController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,10 +29,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::post('/changeWidget', [widgetController::class, 'store']);
-Route::get('/retrieveWidget', [widgetController::class, 'show']);
 
-Route::post('/customWidget', [customWidgetController::class, 'store']);
+//Creation of custom widget
+Route::post('/custom-widgets', [CustomWidgetController::class, 'store'])->name('customWidgets.store');
+Route::post('/widget-permissions', [widgetPermissionsController::class, 'store'])->name('widgetPermissionsController.store');
+//Updating widget position
+Route::post('/update-widget-position', [CustomWidgetController::class, 'updatePosition']);
+//Deleting a widget
+Route::post('/delete-widget', [CustomWidgetController::class, 'deleteWidget']);
+
 
 Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
 Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');

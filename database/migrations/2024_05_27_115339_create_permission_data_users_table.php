@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_boxes', function (Blueprint $table) {
+        Schema::create('permission_data_users', function (Blueprint $table) {
             $table->id();
             $table->string('email');
             $table->integer('temp');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_boxes');
+        Schema::dropIfExists('permission_data_users');
     }
 };

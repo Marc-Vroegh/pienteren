@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('custom_widgets', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
-            $table->string('toCloneDiv');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('default_widget_id')->nullable()->constrained()->onDelete('set null');
+            $table->string('icon')->nullable();  
+            $table->unsignedBigInteger('position');
+            $table->string('box');
             $table->string('color');
             $table->string('name');
-            $table->string('source');
-            $table->string('clonedDiv');
-            $table->timestamp('created_at')->nullable();
+            $table->timestamps();
         });
     }
 

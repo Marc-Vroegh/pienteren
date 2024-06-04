@@ -25,6 +25,12 @@
                 var KanNietOphalen = "No permissions";
                 var empty = "";
 
+                    //
+                    //
+                    //this needs to change at a later date, with php database relations
+                    //
+                    //
+
                 customWidgets[2].forEach(function(defaultWidget) {
                     var permissionType = [customWidgets[3].temp, customWidgets[3].lvh, customWidgets[3].ppm, customWidgets[3].db, customWidgets[3].lumen];
                     var valueType = [customWidgets[1].temp, customWidgets[1].lvh, customWidgets[1].ppm, customWidgets[1].db, customWidgets[1].lumen];

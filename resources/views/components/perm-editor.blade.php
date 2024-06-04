@@ -8,8 +8,7 @@
                     <i class="bi bi-x text-2xl"></i>
                 </button>
             </div>
-            <?PHP //print_r(json_encode($perm)); 
-            foreach ($perm as $perms) { ?>
+            @foreach ($perm as $perms)
             <form action="{{ route('widgetPermissionsController.store') }}" method="POST">
                 @csrf
                 <input type="hidden" id="fname" value="<?php echo $perms['email'] ?>" name="email"><br>
@@ -22,7 +21,7 @@
                 <button type="submit" name="{{$fields[$i]}}" value="{{ $perms[$fields[$i]] == 1 ? 0 : 1 }}" class="btn btn-primary">@if ($perms[$fields[$i]] == 1) Verwijder {{$fields2[$i]}} @else Voeg {{$fields2[$i]}} Toe @endif</button>
                 @endfor    
             </form>
-            <?php } ?>
+            @endforeach
         </div>
     </div>
 </div>

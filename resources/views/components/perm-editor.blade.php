@@ -13,24 +13,14 @@
             <form action="{{ route('widgetPermissionsController.store') }}" method="POST">
                 @csrf
                 <input type="hidden" id="fname" value="<?php echo $perms['email'] ?>" name="email"><br>
-
-                <?php echo $perms['email'] ?><?php if ($perms['temp'] == 1) { $value = 0; } else { $value = 1; } ?>
-                
-                <?php if ($perms['temp'] == 1) { $value = 0; } else { $value = 1; } ?>
-                <button type="submit" name="temp" value="{{ $value }}" class="btn btn-primary"><?php if ($perms['temp'] == 1) { ?>Verwijder Temperatuur<?php } else { ?> Voeg Temperatuur Toe <?php } ?></button>
-
-                <?php if ($perms['lvh'] == 1) { $value = 0; } else { $value = 1; } ?>
-                <button type="submit" name="lvh" value="{{ $value }}" class="btn btn-primary"><?php if ($perms['lvh'] == 1) { ?>Verwijder Luchtvochtigheid<?php } else { ?> Voeg Luchtvochtigheid Toe <?php } ?></button>
-
-                <?php if ($perms['ppm'] == 1) { $value = 0; } else { $value = 1; } ?>
-                <button type="submit" name="ppm" value="{{ $value }}" class="btn btn-primary"><?php if ($perms['ppm'] == 1) { ?>Verwijder Koolstofdioxide<?php } else { ?> Voeg Koolstofdioxide Toe <?php } ?></button>
-
-                <?php if ($perms['db'] == 1) { $value = 0; } else { $value = 1; } ?>
-                <button type="submit" name="db" value="{{ $value }}" class="btn btn-primary"><?php if ($perms['db'] == 1) { ?>Verwijder Geluidsterkte<?php } else { ?> Voeg Geluidsterkte Toe <?php } ?></button>
-
-                <?php if ($perms['lumen'] == 1) { $value = 0; } else { $value = 1; } ?>
-                <button type="submit" name="lumen" value="{{ $value }}" class="btn btn-primary"><?php if ($perms['lumen'] == 1) { ?>Verwijder Lichtsterkte<?php } else { ?> Voeg Lichtsterkte Toe <?php } ?></button>
-                
+                {{$perms['email']}}
+                @php
+                $fields = ['temp', 'lvh', 'ppm', 'db', 'lumen'];
+                $fields2 = ['temperatuur', 'luchtvochtigheid', 'Koolstofdioxide', 'Geluidsterkte', 'Lichtsterkte'];
+                @endphp
+                @for ($i = 0; $i < count($fields); $i++)
+                <button type="submit" name="{{$fields[$i]}}" value="{{ $perms[$fields[$i]] == 1 ? 0 : 1 }}" class="btn btn-primary">@if ($perms[$fields[$i]] == 1) Verwijder {{$fields2[$i]}} @else Voeg {{$fields2[$i]}} Toe @endif</button>
+                @endfor    
             </form>
             <?php } ?>
         </div>

@@ -26,50 +26,20 @@
                 var empty = "";
 
                 customWidgets[2].forEach(function(defaultWidget) {
-                    if(widget.default_widget_id == defaultWidget.id) {
-                        if(defaultWidget.unit == "graden") {
-                            if(customWidgets[3].temp == 1) {
-                                value = customWidgets[1].temp;
-                                unit = "graden";
-                            } else {
-                                value = KanNietOphalen;
-                                unit = empty;
-                            }
-                        }
-                        if(defaultWidget.unit == "procent") {
-                            if(customWidgets[3].lvh == 1) {
-                                value = customWidgets[1].lvh;
-                                unit = "procent";
-                            } else {
-                                value = KanNietOphalen;
-                                unit = empty;
-                            }
-                        }
-                        if(defaultWidget.unit == "ppm") {
-                            if(customWidgets[3].ppm == 1) {
-                                value = customWidgets[1].ppm;
-                                unit = "ppm";
-                            } else {
-                                value = KanNietOphalen;
-                                unit = empty;
-                            }
-                        }
-                        if(defaultWidget.unit == "dB") {
-                            if(customWidgets[3].db == 1) {
-                                value = customWidgets[1].db;
-                                unit = "dB";
-                            } else {
-                                value = KanNietOphalen;
-                                unit = empty;
-                            }
-                        }
-                        if(defaultWidget.unit == "lumen") {
-                            if(customWidgets[3].lumen == 1) {
-                                value = customWidgets[1].lumen;
-                                unit = "lumen";
-                            } else {
-                                value = KanNietOphalen;
-                                unit = empty;
+                    var permissionType = [customWidgets[3].temp, customWidgets[3].lvh, customWidgets[3].ppm, customWidgets[3].db, customWidgets[3].lumen];
+                    var valueType = [customWidgets[1].temp, customWidgets[1].lvh, customWidgets[1].ppm, customWidgets[1].db, customWidgets[1].lumen];
+                    const unitType = ["graden", "procent", "ppm", "dB", "lumen"];
+                    
+                    for (let i = 0; i < unitType.length; i++) {
+                        if(widget.default_widget_id == defaultWidget.id) {
+                            if(defaultWidget.unit == unitType[i]) {
+                                if(permissionType[i] == 1) {
+                                    value = valueType[i];
+                                    unit = unitType[i];
+                                } else {
+                                    value = KanNietOphalen;
+                                    unit = empty;
+                                }
                             }
                         }
                     }

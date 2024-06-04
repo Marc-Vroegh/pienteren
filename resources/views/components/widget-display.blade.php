@@ -27,7 +27,7 @@
 
                     //
                     //
-                    //this needs to change at a later date, with php database relations
+                    //this might need to change at a later date, with php database relations, or when the dashboard functionality is getting implemented
                     //
                     //
 

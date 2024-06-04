@@ -29,21 +29,19 @@ class widgetPermissionsController extends Controller
      */
     public function store(Request $request)
     {
-            $perm = permissionDataUser::where('email', $request['email'])->first();
+        $perm = permissionDataUser::where('email', $request['email'])->first();
             
-            $fields = ['temp', 'lvh', 'ppm', 'db', 'lumen'];
+        $fields = ['temp', 'lvh', 'ppm', 'db', 'lumen'];
 
-            foreach ($fields as $field) {
-                if (isset($request[$field])) {
+        foreach ($fields as $field) {
+            if (isset($request[$field])) {
                     $perm->$field = $request[$field];
-                }
             }
+        }
 
-            $perm->save();
+        $perm->save();
 
-            return redirect()->to('/home'); 
-
-       // $perm->save();
+        return redirect()->to('/home'); 
     }
 
     /**

@@ -11,7 +11,7 @@
             @foreach ($perm as $perms)
             <form action="{{ route('widgetPermissionsController.store') }}" method="POST">
                 @csrf
-                <input type="hidden" id="fname" value="<?php echo $perms['email'] ?>" name="email"><br>
+                <input type="hidden" id="fname" value="{{$perms['email']}}" name="email"><br>
                 {{$perms['email']}}
                 @php
                 $fields = ['temp', 'lvh', 'ppm', 'db', 'lumen'];

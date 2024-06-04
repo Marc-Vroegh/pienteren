@@ -65,7 +65,7 @@ class CustomWidgetController extends Controller
 
         if ($widget) {
             // Delete the widget
-            $widget->delete();
+            $widget->delete(); 
             return response()->json(['success' => true]);
         }
     }

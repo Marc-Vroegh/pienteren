@@ -68,12 +68,12 @@
         @endif
 
         @if(auth()->id() == 1)
-        <!-- Edit mode-->
-        <div class="text-sm cursor-pointer pt-2.5 pb-2.5 rounded-md w-4/5 mx-auto text-gray-200 font-bold hover:bg-blue-600" id="editmode_button" opened="false" onclick="ShowPermissionsUser();">
+        <!-- Dashboard manager -->
+        <div class="hidden text-sm cursor-pointer pt-2.5 pb-2.5 rounded-md w-4/5 mx-auto text-gray-200 font-bold hover:bg-blue-600" id="dashboard_button" opened="false" onclick="dashboardManager();">
           <span>
-            <i class="bi bi-pencil-fill"></i>
+            <i class="bi bi-back"></i>
           </span>
-            <span class="sidebar-menu-item-text text-[15px] ml-4 text-gray-200" id='editmodetxt'>Switch to Permissions mode</span>
+            <span class="sidebar-menu-item-text text-[15px] ml-4 text-gray-200" id='editmodetxt'>Open Dashboard Manager</span>
         </div>
         @endif
 

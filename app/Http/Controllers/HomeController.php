@@ -67,15 +67,23 @@ class HomeController extends Controller
 
         if($wantedDash1 == 1) {
             if(auth()->id() == 1) {
+                //check if user has dashboard
                 $findDashboardUser = User::find(1)->Dashboards()->orderBy('id', 'ASC')->first();
+                //wanteddash is id of dashboard
                 $wantedDash = $findDashboardUser->id;
             } else {
+                //get all dashboard on order
                 $dashboard = Dashboards::orderBy('id', 'ASC')->get();
+                //set fallback value
                 $wantedDash = 1;
+                //foreach dashboard
                 foreach ($dashboard as $dash) {
                 $new = User::find(auth()->id())->dashboardRights()->where('dashboard_id', $dash->id)->first();
+                //check if user has right to dashboard
                     if($new->view == 1) {
+                        //set wanted dash
                         $wantedDash = $dash->id;
+                        //break loop
                         break;
                     }
                 }

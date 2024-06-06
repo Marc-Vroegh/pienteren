@@ -10,7 +10,7 @@
     <div id="pop-up-styler-new" class="hidden w-full h-screen flex items-center justify-center">
       <div class="bg-neutral-700 bg-opacity-95 rounded-2xl p-5 w-[680px] h-[620px] overflow-y-auto">
         <div class="flex justify-between items-center mb-4">
-          <h1 class="text-lg text-white">Permissions</h1>
+          <h1 class="text-lg text-white">Dashboard Manager</h1>
           <button class="text-gray-400 hover:text-gray-600 focus:outline-none" onclick="window.location.reload()">
             <i class="bi bi-x text-2xl"></i>
           </button>

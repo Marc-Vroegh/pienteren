@@ -45,7 +45,7 @@ function editmodeSideMenu(){
     toggleEditmode();
 }
 
-function ShowPermissionsUser(){
+function dashboardManager(){
     document.getElementById("pop-up-container-new").style.display = 'block';
     document.getElementById("pop-up-styler-new").style.display = 'flex';
 }

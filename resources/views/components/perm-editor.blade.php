@@ -15,21 +15,25 @@
             <i class="bi bi-x text-2xl"></i>
           </button>
         </div>
+        <body class="bg-gray-100 flex items-center justify-center min-h-screen">
         <div class="m-5">
-          <div class="bg-black p-5 rounded-lg">
-            <div class="mb-3">
-              <h1 class="text-white mb-2">Add Dashboard</h1>
+            <div style="background-image: url('/images/images.png'); background-size: cover; background-position: center;" class="relative p-5 rounded-lg bg-hero">
+            <div class="absolute inset-0 bg-black opacity-20 rounded-lg"></div>
+            <div class="relative z-10">
+                <div class="mb-3">
+                <h1 class="text-white font-extrabold text-lg mb-2">Add Dashboard</h1>
+                </div>
+                <form action="{{ route('databaseController.store') }}" method="POST">
+                @csrf
+                <div id="input-container" class="text-center">
+                    <input id="toggle-input" type="text" class="w-full border border-gray-300 rounded-lg bg-transparent-unfocused focus:bg-gray-200 focus:outline-none px-1 py-1" name="name"/>
+                </div>
+                <button type="submit" class="hidden bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none">
+                    Add Dashboard
+                </button>
+                </form>
             </div>
-            <form action="{{ route('databaseController.store') }}" method="POST">
-              @csrf
-              <div id="input-container" class="text-center">
-                <input id="toggle-input" type="text" class="w-full border border-gray-300 rounded-lg bg-transparent-unfocused focus:bg-gray-200 focus:outline-none px-1 py-1" name="name"/>
-              </div>
-              <button type="submit" class="hidden bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none">
-                Add Dashboard
-              </button>
-            </form>
-          </div>
+            </div>
         </div>
         <div class="flex flex-wrap justify-stretch">
           @foreach ($perm[1] as $dashboard)

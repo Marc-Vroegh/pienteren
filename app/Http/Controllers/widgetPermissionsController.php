@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\permissionDataUser;
+use App\Models\dashboardRights;
 use Auth;
 
 class widgetPermissionsController extends Controller
@@ -29,19 +29,19 @@ class widgetPermissionsController extends Controller
      */
     public function store(Request $request)
     {
-        $perm = permissionDataUser::where('email', $request['email'])->first();
-            
-        $fields = ['temp', 'lvh', 'ppm', 'db', 'lumen'];
+        $edit = $request['edit'] == "checked" ? 1 : 0;
+        $view = $request['view'] == "checked" ? 1 : 0;
 
-        foreach ($fields as $field) {
-            if (isset($request[$field])) {
-                    $perm->$field = $request[$field];
-            }
-        }
+        $perm = dashboardRights::where('user_id', $request['user_id'])
+            ->where('dashboard_id', $request['dashboard_id'])
+            ->first();
+
+        $perm->edit = $edit;
+        $perm->view = $view;
 
         $perm->save();
 
-        return redirect()->to('/home'); 
+        return redirect()->to('/home');
     }
 
     /**

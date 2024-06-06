@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+
   
 <div class="dashboard-container scrollbar-hide overflow-scroll">
 
@@ -38,5 +39,16 @@
 
     {{-- pop up styler --}}
     <x-widget-styler />
+
+    <div class="fixed bottom-0 left-0 w-full p-4 flex justify-center">
+    @foreach ($defaultRights as $defaultRight)
+        @if (auth()->id() == 1 || $defaultRight->view == 1)
+            <form action="/home" method="GET" class="mr-2">
+                <input type="hidden" name="id" value="{{ $defaultRight->dashboard_id }}">
+                <button type="submit" class="btn btn-sm btn-primary text-white">Dashboard {{ $defaultRight->dashboard_id }}</button>
+            </form>
+        @endif
+    @endforeach
+</div>
 </div>
 @endsection

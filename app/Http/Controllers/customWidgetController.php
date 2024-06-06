@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\CustomWidget;
 use Auth;
 use App\Models\defaultWidget;
+use Session;
 class CustomWidgetController extends Controller
 {
     public function store(Request $request)
@@ -32,6 +33,7 @@ class CustomWidgetController extends Controller
         $customWidget = new CustomWidget([
             'user_id' => auth()->id(),
             'default_widget_id' => $request->default_widget_id,
+            'Dashboards_id' => Session::get('dash_id'),
             'name' => $request->name,
             'color' => $request->color,
             'box' => $request->box,

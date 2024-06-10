@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class defaultWidget extends Model
 {
+    use hasFactory;
     protected $fillable = ['title', 'icon', 'value', 'unit'];
-    use HasFactory;
+    public $timestamps = false;  
 }

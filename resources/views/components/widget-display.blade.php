@@ -11,43 +11,91 @@
     </div>
 </div>
 
+<div id="element" data-edit="{{ Session::get('edit') }}" data-user="{{ auth()->id() }}" >
+    <!-- Inhoud van het element -->
+</div>
+
+
 <script>
     var customWidgets = @json($customWidgets);
+    var value = 0;
 
-    customWidgets.forEach(function(widget) {
-    var divId = 'div' + widget.position;
-    var divElement = document.getElementById(divId);
-    if (divElement) {
-        var textColorClass = isDarkColor(widget.color) ? 'text-white' : 'text-black';
 
-        var widgetHtml = `
-        <div class="widget bg-white rounded shadow-md w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 p-4 hover:bg-gray-100 flex flex-col ${textColorClass}" 
-        style="background-color: ${widget.color}; position: relative;" 
-        draggable="true" 
-        ondragstart="drag(event)" 
-        id="widget${widget.id}">
-            <h2 class="text-lg font-bold text-center" data-editable="title">${widget.name}</h2>
-            <hr class="my-2 w-full">
-            <div class="flex flex-1 items-center justify-center">
-                <div class="flex items-center">
-                    <div class="text-6xl mr-4">
-                    <i class="bi ${widget.icon}" style="font-size: 6rem;"></i>
-            </div>
-            <div class="flex flex-col items-center">
-                <p class="text-2xl">${widget.value}</p>
-                <p class="text-lg">${widget.unit}</p>
-            </div>
-        </div>
-    </div>
-    <div id="edit-widget" class="widget-menu absolute bottom-0 left-0 right-0 p-1 bg-gray-800 text-white flex justify-around items-center hidden">
-        <i class="bi bi-pencil-square cursor-pointer text-sm" onclick="editWidget(${widget.id})"></i>
-        <i class="bi bi-trash cursor-pointer text-sm" onclick="deleteWidget(${widget.id})"></i>
-    </div>
-</div>
-            </div>`;
-        divElement.innerHTML = widgetHtml;
-    }
-});
+
+    customWidgets[0].forEach(function(widget) {
+            var divId = 'div' + widget.position;
+            var divElement = document.getElementById(divId);
+            if (divElement) {
+                var textColorClass = isDarkColor(widget.color) ? 'text-white' : 'text-black';
+
+                    //
+                    //
+                    //this might need to change at a later date, with php database relations, or when the dashboard functionality is getting implemented
+                    //
+                    //
+
+                customWidgets[2].forEach(function(defaultWidget) {
+                    if(customWidgets[1] !== null) {
+                       var valueType = [customWidgets[1].temp, customWidgets[1].lvh, customWidgets[1].ppm, customWidgets[1].db, customWidgets[1].lumen];
+                    } else {
+                        valueType = 1;
+                    }
+                    const unitType = ["graden", "procent", "ppm", "dB", "lumen"];
+                    
+                    if(widget.default_widget_id == defaultWidget.id) {
+                        for (let i = 0; i < unitType.length; i++) {
+                            if(defaultWidget.unit == unitType[i]) {
+                                if (valueType == 1) {
+                                        value = "Offline";
+                                        unit = "Of geen data beschikbaar";
+
+                                    } else {
+                                        value = valueType[i];
+                                        unit = unitType[i];
+                                    }
+                            }
+                        }    
+                    }
+                });
+
+                var element = document.getElementById('element');
+                var editValue = element.getAttribute('data-edit');
+                var userValue = element.getAttribute('data-user');
+                
+                // Haal de waarde van data-edit-attribuut op
+
+                var draggableValue = (editValue == 1 || userValue == 1) ? 'true' : 'false';
+
+                var widgetHtml = `
+                    <div class="widget bg-white rounded shadow-md w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 p-4 hover:bg-gray-100 flex flex-col ${textColorClass}" 
+                        style="background-color: ${widget.color}; position: relative;" 
+                        draggable="${draggableValue}" 
+                        ondragstart="drag(event)" 
+                        id="widget${widget.id}">
+                        <h2 class="text-lg font-bold text-left" data-editable="title">${widget.name}</h2>
+                        <div class="flex flex-1 items-center justify-center">
+                            <div class="flex items-center">
+                                <div class="text-6xl mr-4">
+                                    <i class="bi ${widget.icon}" style="font-size: 6rem;"></i>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p class="text-2xl">${value}</p> 
+                                    <p class="text-lg">${unit}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="edit-widget" class="widget-menu absolute bottom-0 left-0 right-0 p-1 bg-gray-800 text-white flex justify-around items-center hidden">
+                            <i class="bi bi-pencil-square cursor-pointer text-sm" onclick="editWidget(${widget.id})"></i>
+                            <i class="bi bi-trash cursor-pointer text-sm" onclick="deleteWidget(${widget.id})"></i>
+                        </div>
+                    </div>`;
+
+                divElement.innerHTML = widgetHtml;
+
+            }
+    });
+
+
 
 function isDarkColor(color) {
     let rgb = hexToRgb(color);

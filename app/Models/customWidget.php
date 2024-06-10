@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class CustomWidget extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id', 'default_widget_id', 'name', 'color', 'box', 'icon', 'position'];
+    protected $fillable = ['user_id', 'default_widget_id', 'Dashboards_id', 'name', 'color', 'box', 'icon', 'position'];
 
-    public function user()
+    public function Dashboards()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Dashboards::class);
     }
 }

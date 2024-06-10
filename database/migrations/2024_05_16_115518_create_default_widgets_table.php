@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+
         Schema::create('default_widgets', function (Blueprint $table) {
             $table->id();
             $table->string('title');
@@ -29,3 +30,4 @@ return new class extends Migration
         Schema::dropIfExists('default_widgets');
     }
 };
+

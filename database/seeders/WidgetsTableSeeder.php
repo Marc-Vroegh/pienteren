@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+//use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\defaultWidget;
 
@@ -13,28 +13,39 @@ class WidgetsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        //Temp
         defaultWidget::create([
-            'title' => 'Temprature',
-            'icon' => 'bi-thermometer',
-            'value' => 10,
-            'unit' => 'celsius',
+            'title' => 'Temperatuur',
+            'icon' => 'bi-thermometer-half',
+            'value' => '18',
+            'unit' => 'graden', 
         ]);
 
-        //Humidty
         defaultWidget::create([
-            'title' => 'Humidty',
-            'icon' => 'bi-moisture',
-            'value' => 20,
-            'unit' => '%',
+            'title' => 'Luchtvochtigheid',
+            'icon' => 'bi-cloud-fill',
+            'value' => '55',
+            'unit' => 'procent', 
         ]);
 
-        //Clock
         defaultWidget::create([
-            'title' => 'Clock',
-            'icon' => 'bi-clock',
-            'value' => time(),
-            'unit' => 'time',
+            'title' => 'Koolstofdioxide',
+            'icon' => 'bi-cloud-download-fill',
+            'value' => '72',
+            'unit' => 'ppm', 
+        ]);
+
+        defaultWidget::create([
+            'title' => 'Geluidsterkte',
+            'icon' => 'bi-speedometer2',
+            'value' => '55',
+            'unit' => 'dB', 
+        ]);
+
+        defaultWidget::create([
+            'title' => 'Lichtsterkte',
+            'icon' => 'bi-lightbulb-fill',
+            'value' => '400',
+            'unit' => 'lumen', 
         ]);
     }
 }

@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const sidebarText = document.getElementById('sidebarText');
     const widgetbarButton = document.getElementById('widgetbar_button');
     const editmodeButton = document.getElementById('editmode_button');
+    const dashboardButton = document.getElementById('dashboard_button');
     const chevronIcon = document.getElementById('chevron-icon');
     const widgetSubtext = document.getElementById('widgetbar_buttontxt');
     const settingsDiv = document.getElementById('settingsButton');
@@ -73,4 +74,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     // Click event for editmodeButton
     settingsDiv.addEventListener('click', toggleEditModeButton);
+
+    function toggleDashboardButton() {
+        dashboardButton.classList.toggle('hidden');
+        if (dashboardButton.getAttribute('opened') == 'false') {
+            dashboardButton.setAttribute('opened', 'true');
+        } else if (dashboardButton.getAttribute('opened') == 'true') {
+            dashboardButton.setAttribute('opened', 'false');
+        }
+    }
+    // Click event for editmodeButton
+    settingsDiv.addEventListener('click', toggleDashboardButton);
 });

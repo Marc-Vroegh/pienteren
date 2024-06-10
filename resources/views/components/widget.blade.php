@@ -1,4 +1,4 @@
-    <div  class="widget bg-white rounded shadow-md w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 p-4 hover:bg-gray-100 hover:shadow-lg hover:scale-105 cursor-pointer transition duration-300 ease-in-out flex flex-col" onclick="handleWidgetClick(this)" data-widget-id="{{ $widgetId }}">
+    <div class="widget bg-white rounded shadow-md w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 p-4 hover:bg-gray-100 hover:shadow-lg hover:scale-105 cursor-pointer transition duration-300 ease-in-out flex flex-col" onclick="handleWidgetClick(this)" data-widget-id="{{ $widgetId }}">
         <h2 class="text-lg font-bold text-left" data-editable="title">{{ $title }}</h2>
         <div class="flex flex-1 items-center justify-center">
             <div class="flex items-center">
@@ -31,6 +31,12 @@
         //Show widgetstyler
         popUpContainer.classList.remove('hidden');
         popUpStyler.classList.toggle('hidden');
+
+        const form = document.getElementById('form-click');
+
+        defaultWidget.addEventListener('click', function () {
+            form.submit();
+        });
 
         //Remove the onclick and classes from the cloned widget
         defaultWidget.removeAttribute('onclick');

@@ -51,6 +51,8 @@ function dashboardManager(){
 }
 
 
+
+
 function homeReload() {
     //reloading page
     location.replace(location.href);

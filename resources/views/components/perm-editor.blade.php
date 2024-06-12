@@ -30,13 +30,15 @@
         <div class="flex flex-wrap justify-stretch">
           @foreach ($perm[1] as $dashboard)
             <div class="relative viewport-custom m-3 p-3 rounded-lg bg-neutral-800 w-[296px]">
-              <div id="overlay-transparent-{{ $dashboard->id }}" class="absolute bottom-0 m-3 ml-5 mr-5 rounded-t-lg left-0 right-0 h-[32px] bg-opacity-30 bg-black"></div>
+              <div id="overlay-transparent-{{ $dashboard->id }}" class="absolute bottom-0 m-3 ml-5 mr-5 rounded-t-lg left-0 right-0 h-[32px] bg-opacity-30 bg-black hidden"></div>
               <h3 class="text-white">{{ $dashboard->name }}</h3>
-              <div class="scrollbar-hide overflow-scroll h-full max-h-48" onscroll="handleScroll({{ $dashboard->id }})">
+              @php $counter = 0; @endphp
+              <div id="scroll-{{ $dashboard->id }}" class="scrollbar-hide overflow-scroll h-full max-h-48" onscroll="handleScroll({{ $dashboard->id }})">
                 @foreach ($perm[2] as $permission)
                   @if ($permission->dashboard_id == $dashboard->id)
                     @foreach ($perm[0] as $userDetails)
                       @if ($userDetails->id == $permission->user_id && $userDetails->id !== 1)
+                         @php $counter++ @endphp
                         <div class="bg-neutral-700 m-2 p-2 rounded-lg">
                           <h3 class="text-white">{{ $userDetails->email }}</h3>
                           <form action="{{ route('widgetPermissionsController.store') }}" method="POST">
@@ -70,6 +72,7 @@
                 @endforeach
               </div>
             </div>
+            <input type="hidden" id="increment-field-{{ $dashboard->id }}" value="{{$counter}}">
           @endforeach
         </div>
       </div>
@@ -86,5 +89,23 @@
         overlay.style.display = 'none';
       }
     }
+
+    window.onload = function() {
+
+    function handleHide(dashboardId) {
+        var increment = document.getElementById('increment-field-' + dashboardId);
+        var overlay = document.getElementById('overlay-transparent-' + dashboardId);
+
+        if (increment.value > 2) {
+            overlay.classList.remove('hidden');
+        } else {
+            overlay.classList.add('hidden');
+        }
+    }
+
+      @foreach ($perm[1] as $dashboard)
+        handleHide({{ $dashboard->id }});
+      @endforeach
+    };
   </script>
 </body>

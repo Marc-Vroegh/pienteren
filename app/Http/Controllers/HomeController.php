@@ -63,9 +63,9 @@ class HomeController extends Controller
         }
 
         //check if id is set then use the rquest otherwise use 1 
-        $wantedDash1 = $request->query('id') ?? 1;
+        $wantedDash1 = $request->query('id') ?? "null";
 
-        if($wantedDash1 == 1) {
+        if($wantedDash1 == "null") {
             if(auth()->id() == 1) {
                 //check if user has dashboard
                 $findDashboardUser = User::find(1)->Dashboards()->orderBy('id', 'ASC')->first();
@@ -94,6 +94,8 @@ class HomeController extends Controller
 
        //checking the dashboardrights a user has an checking if user has an right record to his wanted id 
         $checkUserRight = User::find(auth()->id())->dashboardRights()->where('dashboard_id', $wantedDash)->first();
+
+        //echo $checkUserRight;
         //check if users is allowed to view his wanted id or is admin that can see every dashboard no matter which settings
         if ($checkUserRight->view == 1 || auth()->id() == 1) {
             //retrieving all widgets from dashboard that is selected with wanted id

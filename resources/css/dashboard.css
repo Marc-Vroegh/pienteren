@@ -139,3 +139,19 @@ body::-webkit-scrollbar {
     }
 }
 
+.input-button {
+    position: relative;
+}
+
+.input-button input {
+    padding-right: 2.5rem; /* Adjust padding to accommodate the button */
+}
+
+.input-button button {
+    position: absolute;
+    right: 0rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+

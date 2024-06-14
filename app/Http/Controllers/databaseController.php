@@ -9,6 +9,15 @@ use App\Models\User;
 
 class databaseController extends Controller
 {
+    public function destroy(Request $request)
+    {
+        $dashboard = $request->input('id');
+        Dashboards::find($dashboard)->dashboardRights()->delete();
+        Dashboards::find($dashboard)->CustomWidgets()->delete();
+        Dashboards::find($dashboard)->delete();
+        return redirect('/home');
+    }
+
     public function store(Request $request)
     {
         $name = $request['name'];
@@ -27,7 +36,7 @@ class databaseController extends Controller
 
         foreach ($all as $user) {
             dashboardRights::create([
-                "view"=>1,
+                "view"=>0,
                 "edit"=>0,
                 "user_id"=>$user->id,
                 "dashboard_id"=>$id

@@ -30,8 +30,21 @@
         <div class="flex flex-wrap justify-stretch">
           @foreach ($perm[1] as $dashboard)
             <div class="relative viewport-custom m-3 p-3 rounded-lg bg-neutral-800 w-[296px]">
-              <div id="overlay-transparent-{{ $dashboard->id }}" class="absolute bottom-0 m-3 ml-5 mr-5 rounded-t-lg left-0 right-0 h-[32px] bg-opacity-30 bg-black hidden"></div>
-              <h3 class="text-white">{{ $dashboard->name }}</h3>
+              <div id="overlay-transparent-{{ $dashboard->id }}" class="absolute bottom-0 m-3 ml-5 mr-5 rounded-t-lg left-0 right-0 h-[32px] gradient hidden"></div>
+              <div class="flex justify-between">
+                <h3 class="text-white">{{ $dashboard->name }}</h3>
+                @if ($dashboard->id !== 1)
+                  <div class="mr-3">
+                    <form action="{{ route('dashboardController.destroy') }}" method="POST">
+                      @csrf
+                      <input type="hidden" name="id" value="{{$dashboard->id}}"/>
+                      <button type="submit" class="hover:text-blue-700 text-white text-sm">
+                        <i class="bi bi-trash"></i>
+                      </button>
+                    </form>
+                  </div>
+                @endif
+              </div>
               @php $counter = 0; @endphp
               <div id="scroll-{{ $dashboard->id }}" class="scrollbar-hide overflow-scroll h-full max-h-48" onscroll="handleScroll({{ $dashboard->id }})">
                 @foreach ($perm[2] as $permission)
@@ -84,9 +97,9 @@
       var overlay = document.getElementById('overlay-transparent-' + dashboardId);
       var scrollableDiv = overlay.parentElement.querySelector('.overflow-scroll');
       if (scrollableDiv.scrollTop === 0) {
-        overlay.style.display = 'block';
+        overlay.classList.remove('hidden');
       } else {
-        overlay.style.display = 'none';
+        overlay.classList.add('hidden');
       }
     }
 

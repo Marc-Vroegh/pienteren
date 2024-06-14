@@ -35,6 +35,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::post('/custom-widgets', [CustomWidgetController::class, 'store'])->name('customWidgets.store');
 Route::post('/widget-permissions', [widgetPermissionsController::class, 'store'])->name('widgetPermissionsController.store');
 
+Route::post('/delete-dashboard', [databaseController::class, 'destroy'])->name('dashboardController.destroy');
+
 Route::post('/addDatabase', [databaseController::class, 'store'])->name('databaseController.store');
 //Updating widget position
 Route::post('/update-widget-position', [CustomWidgetController::class, 'updatePosition']);

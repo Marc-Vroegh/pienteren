@@ -16,7 +16,7 @@
                 <form id="form-click" action="{{ route('customWidgets.store') }}" method="POST">
                     @csrf
                     <input type="hidden" id="default_widget_id" name="default_widget_id">
-                    <div id="pop-up-inner-container-change" class="bg-neutral-900 p-5 rounded-xl mt-4">
+                    <div id="pop-up-inner-container-change" class="bg-neutral-800 p-5 rounded-xl mt-4">
                         <div class="grid grid-cols-3 gap-3">
                             <div>
                                 <label for="box" class="block mb-2 text-sm font-medium text-white">Kies bron</label>
@@ -36,8 +36,8 @@
                                 <input type="text" id="name" name="name" class="form-input h-10 w-full bg-white cursor-pointer rounded-lg dark:bg-gray-700 dark:border-gray-700" maxlength="30" placeholder="Choose name (required)" required>
                             </div>
                             <div class="flex justify-center items-center h-fit">
-                                <button style="margin-top: 45px;" type="submit" class="z-20 bg-black bg-opacity-20 hover:bg-opacity-50 text-white font-bold py-1 px-2 rounded-sm focus:outline-none absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                                    Create Widget
+                                <button style="margin-top: 40px;" type="submit" class="z-20 bg-black bg-opacity-20 hover:bg-opacity-50 text-white font-bold py-1 px-2 rounded-full focus:outline-none absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                                    Add
                                 </button>
                             </div>
                         </div>

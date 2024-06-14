@@ -39,29 +39,44 @@
 
     {{-- pop up styler --}}
     <x-widget-styler />
-
-    <div class="fixed bottom-0 left-0 h-8 whitespace-nowrap w-full flex justify-center scrollbar-hide">
-        <div class="scrollbar-hide w-fit max-w-2xl bg-black from-black bg-opacity-80 border-1 border-x-1 border-t-1 border-black p-1 rounded-lg inline-block flex overflow-scroll">
-            @foreach ($defaultRights as $defaultRight)
-                @php
-                    $isActive = $defaultRight->dashboard_id == request()->get('id');
-                @endphp
-                @if (auth()->id() == 1 || $defaultRight->view == 1)
-                <form action="/home" method="GET" class="mr-2">
-                    <input type="hidden" name="id" value="{{ $defaultRight->dashboard_id }}">
-                    <button type="submit" 
+    
+    @php $count = 0; @endphp
+    @foreach ($defaultRights as $defaultRight)
+        @if (auth()->id() == 1 || $defaultRight->view == 1)
+            @php $count++; @endphp
+        @endif
+    @endforeach
+    @if($count > 1)
+        <div class="fixed bottom-0 left-0 h-8 whitespace-nowrap w-full flex justify-center scrollbar-hide">
+            <div class="scrollbar-hide w-fit max-w-2xl bg-black from-black bg-opacity-80 border-1 border-x-1 border-t-1 border-black p-1 rounded-lg inline-block flex overflow-scroll">
+                @foreach ($defaultRights as $defaultRight)
+                    @php
+                        $isActive = $defaultRight->dashboard_id == Session::get('dash_id');
+                        $value = $defaultRight->dashboard_id;
+                    @endphp
+                    @if (auth()->id() == 1 || $defaultRight->view == 1)
+                    <form action="/home" method="GET" class="mr-2">
+                        <input type="hidden" name="id" value="{{ $defaultRight->dashboard_id }}">
+                        <button type="submit" 
                             class="btn btn-sm btn-primary text-gray-200 
-                                   @if($isActive) text-blue-500 shadow-md @else text-gray-200 @endif">
-                        Dashboard {{ $defaultRight->dashboard_id }}
-                    </button>
-                </form>
-                @endif
-            @endforeach
+                            @if($isActive) text-blue-500 shadow-md @else text-gray-200 @endif">
+
+                            @php
+                                $dashboard = Session::get('dashboard');
+                            @endphp
+                            @foreach ($dashboard as $dashboards)
+                                @if ($value == $dashboards->id)
+                                    {{ $dashboards->name }}
+                                    @break
+                                @endif
+                            @endforeach
+                        </button>
+                    </form>
+                    @endif
+                @endforeach
+            </div>
         </div>
-    </div>
-    
-    
-    
-    
+    @endif
 </div>
+
 @endsection

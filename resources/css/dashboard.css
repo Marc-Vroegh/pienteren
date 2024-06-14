@@ -154,4 +154,8 @@ body::-webkit-scrollbar {
     transform: translateY(-50%);
 }
 
+.gradient {
+    background: linear-gradient(to bottom, rgba(38, 38, 38, 0.2), rgba(38, 38, 38)); /* Adjust opacity here */
+}
+
 

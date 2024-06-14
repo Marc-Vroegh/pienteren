@@ -46,8 +46,8 @@
                         for (let i = 0; i < unitType.length; i++) {
                             if(defaultWidget.unit == unitType[i]) {
                                 if (valueType == 1) {
-                                        value = "Offline";
-                                        unit = "Of geen data beschikbaar";
+                                        value = "Offline,";
+                                        unit = "No data availble.";
 
                                     } else {
                                         value = valueType[i];

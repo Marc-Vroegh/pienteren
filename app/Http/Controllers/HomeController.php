@@ -53,7 +53,7 @@ class HomeController extends Controller
                 // Voeg rechten toe als ze nog niet bestaan
                 if (!$rightsExist) {
                     DashboardRights::create([
-                        "view" => 1,
+                        "view" => 0,
                         "edit" => 0,
                         "user_id" => $user->id,
                         "dashboard_id" => $dashboard->id
@@ -63,9 +63,9 @@ class HomeController extends Controller
         }
 
         //check if id is set then use the rquest otherwise use 1 
-        $wantedDash1 = $request->query('id') ?? 1;
+        $wantedDash1 = $request->query('id') ?? "null";
 
-        if($wantedDash1 == 1) {
+        if($wantedDash1 == "null") {
             if(auth()->id() == 1) {
                 //check if user has dashboard
                 $findDashboardUser = User::find(1)->Dashboards()->orderBy('id', 'ASC')->first();
@@ -94,6 +94,8 @@ class HomeController extends Controller
 
        //checking the dashboardrights a user has an checking if user has an right record to his wanted id 
         $checkUserRight = User::find(auth()->id())->dashboardRights()->where('dashboard_id', $wantedDash)->first();
+
+        //echo $checkUserRight;
         //check if users is allowed to view his wanted id or is admin that can see every dashboard no matter which settings
         if ($checkUserRight->view == 1 || auth()->id() == 1) {
             //retrieving all widgets from dashboard that is selected with wanted id
@@ -116,15 +118,20 @@ class HomeController extends Controller
             $widgets = defaultWidget::all();
 
             //getting all dashboard rights
+            $name = Dashboards::all();
 
             //setting sessions for the permissions of the users
             Session::put('dash_id', $checkUserRight->dashboard_id);
             Session::put('edit', $checkUserRight->edit);
+            Session::put('dashboard', $name);
 
             $perm = array(User::all(), Dashboards::all(), dashboardRights::all());
             return view('dashboard', compact('widgets', 'customWidgets', 'perm', 'defaultRights'));
         } else {
-            echo "You are not allowed to see this dashboard";
+            echo "You do not have any dashboards yet, ask your admin to add the rights to view a dashboard.";
+            echo '<br><a href="' . route('logout') . '" onclick="event.preventDefault(); document.getElementById(\'logout-form\').submit();">
+            <span>' . __('Logout') . '</span>
+            <form id="logout-form" action="' . route('logout') . '" method="POST" class="d-none">' . csrf_field() . '</form></a>';
         }
     }
 }

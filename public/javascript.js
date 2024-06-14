@@ -78,3 +78,13 @@ function LightenDarkenColor(col,amt) {
     else if  ( g < 0 ) g = 0;
     return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
 }
+
+function input() {
+    var input = document.getElementById('toggle-input').value;
+    var button = document.getElementById('perm-button');
+    if (input.trim() !== "") {
+        button.classList.remove('hidden');
+    } else {
+        button.classList.add('hidden');
+    }
+}

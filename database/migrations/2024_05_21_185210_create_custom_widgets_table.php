@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('Dashboards_id');
             $table->string('icon')->nullable();  
             $table->unsignedBigInteger('position');
-            $table->string('box');
+            $table->foreignId('box')->constrained('boxes')->onDelete('cascade');
             $table->string('color');
             $table->string('name');
             $table->timestamps();

@@ -17,10 +17,9 @@ return new class extends Migration
             $table->integer('temp');
             $table->integer('lvh');
             $table->integer('ppm');
-            $table->integer('co2');
             $table->integer('db');
             $table->integer('lumen');
-            $table->timestamp('created_at')->nullable();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

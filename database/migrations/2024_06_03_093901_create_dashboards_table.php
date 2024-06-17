@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('custom_widgets', function (Blueprint $table) {
+        Schema::create('dashboards', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
-            $table->string('toCloneDiv');
-            $table->string('color');
             $table->string('name');
-            $table->string('source');
-            $table->string('clonedDiv');
+            $table->integer('user_id');
             $table->timestamp('created_at')->nullable();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('custom_widgets');
+        Schema::dropIfExists('dashboards');
     }
 };

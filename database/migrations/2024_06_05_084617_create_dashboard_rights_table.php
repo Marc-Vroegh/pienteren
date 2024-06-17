@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_widgets', function (Blueprint $table) {
+        Schema::create('dashboard_rights', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
-            $table->string('container');
-            $table->string('widget');
+            $table->integer('view');
+            $table->integer('edit');
+            $table->integer('user_id');
+            $table->integer('dashboard_id');
             $table->timestamp('created_at')->nullable();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_widgets');
+        Schema::dropIfExists('dashboard_rights');
     }
 };

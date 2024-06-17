@@ -1,21 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Elements
-    var hamburgerIcon = document.querySelector('.bi-list');
+    const hamburgerIcon = document.querySelector('.bi-list');
     const sidebar = document.getElementById('sidebar');
     const sidebarText = document.getElementById('sidebarText');
-    const submenu = document.getElementById('submenu');
+    const widgetbarButton = document.getElementById('widgetbar_button');
+    const editmodeButton = document.getElementById('editmode_button');
+    const dashboardButton = document.getElementById('dashboard_button');
     const chevronIcon = document.getElementById('chevron-icon');
-    const widgetSubtext = document.getElementById('submenutxt');
+    const widgetSubtext = document.getElementById('widgetbar_buttontxt');
     const settingsDiv = document.getElementById('settingsButton');
 
     // Function to handle click on hamburger icon and toggle sidebar visibility
     function handleHamburgerClick() {
-        //A function to toggle multipile visibilitiy on elements.
+        //A function to toggle multiple visibility on elements.
         function toggleVisibility(...elements) {
-            //Loop throguh all the elements
+            //Loop through all the elements
             elements.forEach(element => {
                 if (element) {
-                    //If its element toggle
+                    //If it's element toggle
                     element.classList.toggle('hidden');
                 }
             });
@@ -23,18 +25,18 @@ document.addEventListener("DOMContentLoaded", function () {
         // Function to toggle sidebar visibility and style
         function toggleSidebar() {
             let menuItems = document.querySelectorAll('.sidebar-menu-item-text');
-
+            console.log(menuItems);
             widget_container.classList.toggle('widget-content');
             outer_container.classList.toggle('dashboard-container');
 
             // Toggle small class to make sidebar smaller
             sidebar.classList.toggle('small');
             // Toggle classes to hide which shouldn't be displayed when collapsed
-            toggleVisibility(sidebarText,widgetSubtext,settingsDiv)
+            toggleVisibility(sidebarText, widgetSubtext, settingsDiv)
 
-            // Make sure the submenu stays closed when user closes it and vice versa
-            if (submenu.getAttribute('opened') == 'false') {
-                submenu.classList.toggle('hidden');
+            // Make sure the widgetbarButton stays closed when user closes it and vice versa
+            if (widgetbarButton.getAttribute('opened') == 'false') {
+                widgetbarButton.classList.toggle('hidden');
             }
             // Toggle hidden class for menu item texts
             menuItems.forEach(function (menuItem) {
@@ -44,21 +46,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
         toggleSidebar(); // Toggle sidebar visibility and style when hamburger icon is clicked
     }
-    
+
     if (hamburgerIcon) {
         hamburgerIcon.addEventListener('click', handleHamburgerClick);
     }
 
-    function toggleSubMenu() {
-        submenu.classList.toggle('hidden');
+    function toggleWidgetBarButton() {
+        widgetbarButton.classList.toggle('hidden');
         chevronIcon.classList.toggle('bi-chevron-up');
         chevronIcon.classList.toggle('bi-chevron-down');
-        if (submenu.getAttribute('opened') == 'false') {
-            submenu.setAttribute('opened', 'true');
-        } else if (submenu.getAttribute('opened') == 'true') {
-            submenu.setAttribute('opened', 'false');
+        if (widgetbarButton.getAttribute('opened') == 'false') {
+            widgetbarButton.setAttribute('opened', 'true');
+        } else if (widgetbarButton.getAttribute('opened') == 'true') {
+            widgetbarButton.setAttribute('opened', 'false');
         }
     }
-    // Click event for submenu
-    settingsDiv.addEventListener('click', toggleSubMenu);
+    // Click event for widgetBarButton
+    settingsDiv.addEventListener('click', toggleWidgetBarButton);
+
+    function toggleEditModeButton() {
+        editmodeButton.classList.toggle('hidden');
+        if (editmodeButton.getAttribute('opened') == 'false') {
+            editmodeButton.setAttribute('opened', 'true');
+        } else if (editmodeButton.getAttribute('opened') == 'true') {
+            editmodeButton.setAttribute('opened', 'false');
+        }
+    }
+    // Click event for editmodeButton
+    settingsDiv.addEventListener('click', toggleEditModeButton);
+
+    function toggleDashboardButton() {
+        dashboardButton.classList.toggle('hidden');
+        if (dashboardButton.getAttribute('opened') == 'false') {
+            dashboardButton.setAttribute('opened', 'true');
+        } else if (dashboardButton.getAttribute('opened') == 'true') {
+            dashboardButton.setAttribute('opened', 'false');
+        }
+    }
+    // Click event for editmodeButton
+    settingsDiv.addEventListener('click', toggleDashboardButton);
 });

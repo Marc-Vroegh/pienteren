@@ -1,3 +1,4 @@
+@props(['dataBoxes'])
 <div id="pop-up-container" class="hidden fixed inset-0 w-full h-screen bg-black bg-opacity-40 z-50">
     <div id="pop-up-styler" class="hidden w-full h-screen flex items-center justify-center">
         <div class="bg-neutral-700 bg-opacity-95 rounded-2xl p-5 w-[600px] h-[550px] overflow-y-auto">
@@ -22,9 +23,9 @@
                                 <label for="box" class="block mb-2 text-sm font-medium text-white">Kies bron</label>
                                 <select id="box" name="box" class="form-select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                     <option value="Select">Select</option>
-                                    @for ($i = 1; $i <= 5; $i++)
-                                        <option value="{{ $i }}">{{ "Box" . $i }}</option>
-                                    @endfor
+                                    @foreach ($dataBoxes as $dataBox)
+                                    <option value="{{ $dataBox->id }}">{{ "Box " . $dataBox->id }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div>

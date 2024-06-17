@@ -36,6 +36,7 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {  
+        $dataBoxes = DataBox::all();
         $allDashboards = Dashboards::all();
 
         //for every dashboard
@@ -126,7 +127,7 @@ class HomeController extends Controller
             Session::put('dashboard', $name);
 
             $perm = array(User::all(), Dashboards::all(), dashboardRights::all());
-            return view('dashboard', compact('widgets', 'customWidgets', 'perm', 'defaultRights'));
+            return view('dashboard', compact('widgets', 'customWidgets', 'perm', 'defaultRights', 'dataBoxes'));
         } else {
             echo "You do not have any dashboards yet, ask your admin to add the rights to view a dashboard.";
             echo '<br><a href="' . route('logout') . '" onclick="event.preventDefault(); document.getElementById(\'logout-form\').submit();">

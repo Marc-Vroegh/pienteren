@@ -38,7 +38,7 @@
     </div>
 
     {{-- pop up styler --}}
-    <x-widget-styler />
+    <x-widget-styler :dataBoxes="$dataBoxes" />
     
     @php $count = 0; @endphp
     @foreach ($defaultRights as $defaultRight)

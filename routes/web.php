@@ -42,6 +42,9 @@ Route::post('/addDatabase', [databaseController::class, 'store'])->name('databas
 Route::post('/update-widget-position', [CustomWidgetController::class, 'updatePosition']);
 //Deleting a widget
 Route::post('/delete-widget', [CustomWidgetController::class, 'deleteWidget']);
+//Show databoxes
+
+
 
 
 Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');

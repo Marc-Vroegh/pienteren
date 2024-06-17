@@ -11,11 +11,11 @@ class rpiStoreController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function showAllDataboxes()
     {
-        //
+        $dataBoxes = DataBox::all();
+        return view('dashboard', compact('dataBoxes'));
     }
-
     /**
      * Show the form for creating a new resource.
      */

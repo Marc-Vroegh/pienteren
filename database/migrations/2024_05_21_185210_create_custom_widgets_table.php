@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('default_widget_id')->nullable()->constrained()->onDelete('set null');
+            $table->foreignId('box')->constrained('data_boxes')->onDelete('cascade');
             $table->string('Dashboards_id');
             $table->string('icon')->nullable();  
             $table->unsignedBigInteger('position');
-            $table->foreignId('box')->constrained('boxes')->onDelete('cascade');
             $table->string('color');
             $table->string('name');
             $table->timestamps();

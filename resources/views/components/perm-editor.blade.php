@@ -91,30 +91,40 @@
 
   <script>
     function handleScroll(dashboardId) {
+      //getting the illusion effect overlay 
       var overlay = document.getElementById('overlay-transparent-' + dashboardId);
+      //getting the scrollable div
       var scrollableDiv = overlay.parentElement.querySelector('.overflow-scroll');
+      //if scrollable div is at top
       if (scrollableDiv.scrollTop === 0) {
+        //show overlay
         overlay.classList.remove('hidden');
       } else {
+        //hide overlay
         overlay.classList.add('hidden');
       }
     }
 
     function pushDatabase(counter, user_id, dash_id) {
+          //getting the specific user clicked edit element by dertermining the dashboard id and the row number clicked
           if (document.getElementById('edit-' + counter + dash_id).checked) {
+            //if true set edit checked
             var edit = "checked";
           }
+          //getting the specific user clicked view element by dertermining the dashboard id and the row number clicked
           if (document.getElementById('view-' + counter + dash_id).checked) {
+            //if true set view checked
             var view = "checked";
           }
 
-          
+          //pushing data to database
           fetch('/widget-permissions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             },
+            //setting up data variable
             body: JSON.stringify({
                 user_id: user_id,
                 dash_id: dash_id,
@@ -122,6 +132,7 @@
                 view: view
             })
         })
+        //getting response
         .then(response => response.json())
         .then(data => {
             if (data.success) {
@@ -136,17 +147,22 @@
     window.onload = function() {
 
     function handleHide(dashboardId) {
+        //getting increment row value
         var increment = document.getElementById('increment-field-' + dashboardId);
+        //getting overlay
         var overlay = document.getElementById('overlay-transparent-' + dashboardId);
 
         if (increment.value > 2) {
+          //if incremeny value is more than two means 3 rows or more show 
             overlay.classList.remove('hidden');
         } else {
+          //if incremeny value is more than two means 3 rows or more hide
             overlay.classList.add('hidden');
         }
     }
 
       @foreach ($perm[1] as $dashboard)
+        //call the function
         handleHide({{ $dashboard->id }});
       @endforeach
     };

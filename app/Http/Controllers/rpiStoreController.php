@@ -29,12 +29,14 @@ class rpiStoreController extends Controller
      */
     public function store(Request $request)
     {
+        //putting requests in variables
         $temp = $request['temp'];
         $lvh = $request['lvh'];
         $ppm = $request['ppm'];
         $db = $request['db'];
         $lumen = $request['lumen'];
 
+        //creating new databox row with the data
         dataBox::create([
             "email"=>Auth::user()->email,
             "temp"=>$temp,

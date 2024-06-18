@@ -30,7 +30,7 @@
         <div class="flex flex-wrap justify-stretch">
           @foreach ($perm[1] as $dashboard)
             <div class="relative viewport-custom m-3 p-3 rounded-lg bg-neutral-800 w-[296px]">
-              <div id="overlay-transparent-{{ $dashboard->id }}" class="absolute bottom-0 m-3 ml-5 mr-5 rounded-t-lg left-0 right-0 h-[48px] gradient hidden"></div>
+              <div id="overlay-transparent-{{ $dashboard->id }}" class="absolute bottom-0 m-3 ml-5 mr-5 left-0 right-0 h-[30px] gradient hidden"></div>
               <div class="flex justify-between">
                 <h3 class="text-white">{{ $dashboard->name }}</h3>
                 @if ($dashboard->id !== 1)
@@ -55,10 +55,6 @@
                         <div class="bg-neutral-700 m-2 p-2 rounded-lg">
                           <h3 class="text-white">{{ $userDetails->email }}</h3>
                           <form>
-                            @csrf
-                            <input type="hidden" name="user_id" value="{{ $permission->user_id }}" />
-                            <input type="hidden" name="dashboard_id" value="{{ $dashboard->id }}" />
-
                             @php
                               $viewChecked = $permission->view == 1 ? 'checked' : '';
                               $editChecked = $permission->edit == 1 ? 'checked' : '';

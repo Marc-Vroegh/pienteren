@@ -38,7 +38,7 @@ class rpiStoreController extends Controller
 
         //creating new databox row with the data
         dataBox::create([
-            "email"=>Auth::user()->email,
+            "email"=> "no@no.com",
             "temp"=>$temp,
             "lvh"=>$lvh,
             "ppm"=>$ppm,

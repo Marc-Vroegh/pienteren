@@ -67,7 +67,7 @@
                 var draggableValue = (editValue == 1 || userValue == 1) ? 'true' : 'false';
 
                 var widgetHtml = `
-                    <div class="widget bg-white rounded shadow-md w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 p-4 hover:bg-gray-100 flex flex-col ${textColorClass}" 
+                    <div onclick="show(${widget.id});" class="widget bg-white rounded shadow-md w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 p-4 hover:bg-gray-100 flex flex-col ${textColorClass}" 
                         style="background-color: ${widget.color}; position: relative;" 
                         draggable="${draggableValue}" 
                         ondragstart="drag(event)" 
@@ -196,5 +196,52 @@ function deleteWidget(widgetId) {
     } else {
         console.log('Widget deletion canceled');
     }
+}
+
+function show(id) {
+    fetch('/view', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        body: JSON.stringify({
+            id: id
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log('succes retrieving widget data');
+        } else {
+            console.log('Failed retrieving widget data');
+        }
+        displayViewWithData(data.data);
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function formatDate(dateString) {
+    //format data
+    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+    //format it in text nl
+    return new Date(dateString).toLocaleDateString('nl-NL', options);
+}
+
+function displayViewWithData(data) {
+    viewContainer.classList.remove('hidden');
+
+    data.forEach(function (dataa) {
+        //alert(dataa);
+        //call format data function
+        const formattedDate = formatDate(dataa.created_at);
+        //create html
+        var dataHtml = `
+        <div class="m-3 p-5 rounded-lg bg-gray-500">
+            ${dataa.name} ${dataa.unit}, ${formattedDate}
+        </div>`;
+        //append to innerhtml add element
+        document.getElementById('add-element').innerHTML += dataHtml;
+    });
 }
 </script>

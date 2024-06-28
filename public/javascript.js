@@ -3,6 +3,7 @@ const dashboard = document.getElementById('dashboard');
 const subMenu = document.getElementById('submenu');
 const subMenuText = document.getElementById('submenutxt');
 const popUpContainer = document.getElementById('pop-up-container');
+const viewContainer = document.getElementById('view-element');
 const popUpContainerWidget = document.getElementById('pop-up-container-widget');
 const popUpStyler = document.getElementById('pop-up-styler');
 const popUpInnerContainer = document.getElementById('pop-up-inner-container');

@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\rpiStoreController;
 use App\Http\Controllers\databaseController;
+use App\Http\Controllers\viewController;
 
 
 /*
@@ -43,6 +44,13 @@ use App\Http\Controllers\databaseController;
 
     //Deleting a widget
     Route::post('/delete-widget', [CustomWidgetController::class, 'deleteWidget']);
+
+
+//view stuff
+
+    Route::post('/view', [viewController::class, 'index']);
+
+
 
 
 //dashboard stuff

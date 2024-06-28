@@ -11,6 +11,7 @@
 
     <!-- Dashboard -->
     <x-widget-display :customWidgets="$customWidgets" />
+    <x-widget-view/>
     <x-perm-editor :perm="$perm" />
 
     <!-- Widgetbar -->
